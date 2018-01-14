@@ -1,4 +1,4 @@
-# `chunkwm-rs`
+# `chunkwm-rs` [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)](https://travis-ci.org/splintah/chunkwm-rs)
 A Rust 'bridge' for creating [chunkwm](https://github.com/koekeishiya/chunkwm) plugins.
 
 ## Usage
