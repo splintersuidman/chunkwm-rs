@@ -1,0 +1,16 @@
+language: rust
+
+os: osx
+
+rust:
+  - stable
+  - beta
+  - nightly
+
+matrix:
+  allow_failures:
+    - rust: nightly
+
+script:
+  - cargo test --verbose --all
+  - cargo build --verbose

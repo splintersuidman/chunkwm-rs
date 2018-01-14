@@ -1,0 +1,8 @@
+[package]
+name = "chunkwm"
+version = "0.1.0"
+authors = ["Splinter Suidman"]
+
+[dependencies]
+core-graphics = "0.12.4"
+core-foundation = "0.4.6"
