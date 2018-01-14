@@ -14,3 +14,7 @@ If you want to get the `Makefile` template and a small Rust library template, se
 There are two ways to see the rendered documentation:
 - Clone this repository, `cd` into it, and run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
 - Create your own library depending on this library, run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
+
+## TODO / Contributing
+I want to add the functions the chunkwm api provides to the Rust plugin, but that takes some time.
+Contributions are very welcome!
