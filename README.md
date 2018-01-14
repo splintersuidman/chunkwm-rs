@@ -1,6 +1,15 @@
 # `chunkwm-rs` [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)](https://travis-ci.org/splintah/chunkwm-rs)
 A Rust 'bridge' for creating [chunkwm](https://github.com/koekeishiya/chunkwm) plugins.
 
+## Features
+- [x] Event handler.
+- [x] Easy API.
+- [x] `CVar` support.
+- [x] Subscriptions.
+
+### Planned
+- [ ] Common methods.
+
 ## Usage
 Add the following your `Cargo.toml`:
 ```toml
