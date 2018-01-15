@@ -1,18 +1,24 @@
 language: rust
-
 os: osx
-
 cache: cargo
-
 rust:
-  - stable
-  - beta
-  - nightly
-
+- stable
+- beta
+- nightly
 matrix:
   allow_failures:
-    - rust: nightly
-
+  - rust: nightly
 script:
-  - cargo build --verbose
-  - cargo test --verbose --all
+- cargo build --verbose
+- cargo test --verbose --all
+after_success: |
+  [ $TRAVIS_BRANCH = master ] &&
+  [ $TRAVIS_PULL_REQUEST = false ] &&
+  cargo doc &&
+  echo "<meta http-equiv=refresh content=0;url=chunkwm/index.html>" > target/doc/index.html &&
+  sudo pip install ghp-import &&
+  ghp-import -n target/doc &&
+  git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
+env:
+  global:
+    secure: ZT3Zt0d+5Pyex9/F7H8P69Ips0gZ1uJ1g83cGmmMJsn2yZa2lwyRfVpIPwPCoqTHba1OtGWKW0dGbrFJb5/f+nXFgEN5irMXXHLKqNqjvwFFu5emH4I1drcOe/oDAOHhLYz2DHtScLFMOV60iZDUv8sd81bQh9k2UUXoh41VqFrt5yKcxam0bpsP0MjkRudOrqDr1U4MYEGkj+7m1dO4kaqauozQkBLaj+EepXYS2EwXSQnjJJv7JfILCNT20ltcvEs4B4dexerh1di2R0le7yysC8+ltPvgQUQR5ZsVDX2+HtD3EfM/FffXh/mKKJ+0Fzanb91Ub8NO4wMDutmShLw4LfN0eUU+CM0uMzfXTLQ0WEPxtmYEIB6fVAQQ205R+lAL/LK45Y44Ala8YuQ795St4wR04Jn74uxGMu5d8q08cltuYOAPtvzgEpWbr0bnwuvEVLwb1ho87J0AIC5U1TZ+eImcVkftyZ5T3k+8yRzxOQMC7w5HGVzbMq2r+fs2NiKbB15gu6DVaVh3YRYNq+l6ZoEV7yLxGv02Jl4E0aLmAmrtYLu/25n4VNTRKatRoiLA7kl6wGGAm9kAa4zcrJL15iVGIa8e1Glj7DAbHNaUB5oLZnueZF0rZrFxUz7/0w+7cKeqsEzFPlzBlwqFQwzTpces8G0g6p+iCMB2SUA=
