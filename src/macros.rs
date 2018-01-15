@@ -137,8 +137,8 @@ macro_rules! create_c_bridge {
 
         // Create a new handler and return it. In C/C++ a `void *` can be used.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_create_handler(api: &'static API) -> *mut $struct_ident {
-            let _handler = unsafe { transmute(Box::new($struct_ident::new(&api))) };
+        pub unsafe extern "C" fn chunkwm_rust_create_handler(api: &'static API) -> *mut $struct_ident {
+            let _handler = transmute(Box::new($struct_ident::new(&api)));
             _handler
         }
 
@@ -150,7 +150,7 @@ macro_rules! create_c_bridge {
 
         //
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_get_version() -> *const c_char {
+        pub unsafe extern "C" fn chunkwm_rust_get_version() -> *const c_char {
             ffi::CString::new($struct_ident::version())
                 .unwrap()
                 .into_raw()
@@ -158,28 +158,28 @@ macro_rules! create_c_bridge {
 
         //
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_subscribe_to_events() -> *const Subscription {
+        pub unsafe extern "C" fn chunkwm_rust_subscribe_to_events() -> *const Subscription {
             let subscriptions = $struct_ident::subscribe();
             subscriptions.as_ptr()
         }
 
         // Runs `shutdown` on the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_shutdown_handler(ptr: *mut $struct_ident) {
-            let _handler = unsafe { &mut *ptr };
+        pub unsafe extern "C" fn chunkwm_rust_shutdown_handler(ptr: *mut $struct_ident) {
+            let _handler = &mut *ptr;
             _handler.shutdown();
         }
 
         // Send events containing an application to the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_send_event_with_application(
+        pub unsafe extern "C" fn chunkwm_rust_send_event_with_application(
             ptr: *mut $struct_ident,
             event: *const c_char,
             application: RawApplication,
         ) {
-            let _handler = unsafe { &mut *ptr };
+            let _handler = &mut *ptr;
             let application: Box<Application> = Box::new(application.into());
-            let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
+            let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
                 "chunkwm_export_application_launched" => {
@@ -206,14 +206,14 @@ macro_rules! create_c_bridge {
 
         // Send events containing a window to the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_send_event_with_window(
+        pub unsafe extern "C" fn chunkwm_rust_send_event_with_window(
             ptr: *mut $struct_ident,
             event: *const c_char,
             window: RawWindow,
         ) {
-            let _handler = unsafe { &mut *ptr };
+            let _handler = &mut *ptr;
             let window: Box<Window> = Box::new(window.into());
-            let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
+            let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
                 "chunkwm_export_window_created" => _handler.handle(Event::WindowCreated(window)),
@@ -235,13 +235,13 @@ macro_rules! create_c_bridge {
 
         // Send events containing a display to the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_send_event_with_display(
+        pub unsafe extern "C" fn chunkwm_rust_send_event_with_display(
             ptr: *mut $struct_ident,
             event: *const c_char,
             display: DisplayID,
         ) {
-            let _handler = unsafe { &mut *ptr };
-            let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
+            let _handler = &mut *ptr;
+            let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
                 "chunkwm_export_display_added" => _handler.handle(Event::DisplayAdded(display)),
@@ -254,11 +254,11 @@ macro_rules! create_c_bridge {
 
         // Send events containing payloads to the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_send_event_with_daemon_command(
+        pub unsafe extern "C" fn chunkwm_rust_send_event_with_daemon_command(
             ptr: *mut $struct_ident,
             payload: RawPayload,
         ) {
-            let _handler = unsafe { &mut *ptr };
+            let _handler = &mut *ptr;
             let payload: Payload = payload.into();
 
             _handler.handle(Event::DaemonCommand(payload));
@@ -266,12 +266,12 @@ macro_rules! create_c_bridge {
 
         // Send events containing 'nothing' or unknown events to the event handler.
         #[no_mangle]
-        pub extern "C" fn chunkwm_rust_send_event_with_nothing(
+        pub unsafe extern "C" fn chunkwm_rust_send_event_with_nothing(
             ptr: *mut $struct_ident,
             event: *const c_char,
         ) {
-            let _handler = unsafe { &mut *ptr };
-            let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
+            let _handler = &mut *ptr;
+            let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
                 "chunkwm_export_display_changed" => _handler.handle(Event::DisplayChanged),
