@@ -27,19 +27,19 @@ pub trait HandleEvent {
 
 /// The `Event` enum allows for easy pattern matching on events.
 pub enum Event {
-    ApplicationLaunched(Application),
-    ApplicationTerminated(Application),
-    ApplicationActivated(Application),
-    ApplicationDeactivated(Application),
-    ApplicationHidden(Application),
-    ApplicationUnhidden(Application),
-    WindowCreated(Window),
-    WindowDestroyed(Window),
-    WindowFocused(Window),
-    WindowMoved(Window),
-    WindowResized(Window),
-    WindowMinimized(Window),
-    WindowDeminimized(Window),
+    ApplicationLaunched(Box<Application>),
+    ApplicationTerminated(Box<Application>),
+    ApplicationActivated(Box<Application>),
+    ApplicationDeactivated(Box<Application>),
+    ApplicationHidden(Box<Application>),
+    ApplicationUnhidden(Box<Application>),
+    WindowCreated(Box<Window>),
+    WindowDestroyed(Box<Window>),
+    WindowFocused(Box<Window>),
+    WindowMoved(Box<Window>),
+    WindowResized(Box<Window>),
+    WindowMinimized(Box<Window>),
+    WindowDeminimized(Box<Window>),
     DisplayAdded(DisplayID),
     DisplayRemoved(DisplayID),
     DisplayMoved(DisplayID),
@@ -50,7 +50,7 @@ pub enum Event {
     Other(String),
 }
 
-/// The `Subscription` enum is used to subscribe to ChunkWM events.
+/// The `Subscription` enum is used to subscribe to `ChunkWM` events.
 // NOTE(splintah): order must be the same as the C version.
 #[repr(C)]
 pub enum Subscription {

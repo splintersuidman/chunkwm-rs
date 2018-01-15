@@ -27,7 +27,7 @@ impl WindowFlag {
     pub fn from(flag: u32) -> Vec<WindowFlag> {
         let mut flags = Vec::new();
 
-        if flag & (1 << 0) != 0 {
+        if flag & 1 != 0 {
             flags.push(WindowFlag::InitMinimized);
         }
         if flag & (1 << 1) != 0 {

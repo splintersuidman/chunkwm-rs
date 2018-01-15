@@ -90,10 +90,10 @@ impl API {
 ///     }
 ///
 ///     fn handle(&mut self, _: Event) {
-///         self.global_desktop_mode.set_value("bsp".to_owned());
+///         self.global_desktop_mode.set_value(&"bsp".to_owned());
 ///         assert_eq!(self.global_desktop_mode.get_value().unwrap(), "bsp".to_owned());
 ///
-///         self.bsp_spawn_left.set_value(NumericBool::from(false));
+///         self.bsp_spawn_left.set_value(&NumericBool::from(false));
 ///         assert_eq!(self.bsp_spawn_left.get_value().unwrap().value, false);
 ///     }
 ///     // some methods omitted
@@ -138,7 +138,7 @@ impl<T: FromStr + Display> CVar<T> {
     }
 
     /// Set the value of the `CVar`.
-    pub fn set_value(&mut self, value: T) {
+    pub fn set_value(&mut self, value: &T) {
         self.api.update_cvar(self.name, &value);
         // self._value = value;
     }
@@ -151,7 +151,7 @@ impl<T: FromStr + Display> CVar<T> {
     }
 }
 
-/// The `NumericBool` is often used in a ChunkWM config. It is a boolean type that is either 0 or 1
+/// The `NumericBool` is often used in a `ChunkWM` config. It is a boolean type that is either 0 or 1
 /// (false or true respectively). This struct allows you to create a `CVar` that is a numeric bool,
 /// and easily get its value.
 ///

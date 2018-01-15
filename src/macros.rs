@@ -178,7 +178,7 @@ macro_rules! create_c_bridge {
             application: RawApplication,
         ) {
             let _handler = unsafe { &mut *ptr };
-            let application: Application = application.into();
+            let application: Box<Application> = Box::new(application.into());
             let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
 
             match event.as_str() {
@@ -212,7 +212,7 @@ macro_rules! create_c_bridge {
             window: RawWindow,
         ) {
             let _handler = unsafe { &mut *ptr };
-            let window: Window = window.into();
+            let window: Box<Window> = Box::new(window.into());
             let event = unsafe { ffi::CStr::from_ptr(event).to_string_lossy().into_owned() };
 
             match event.as_str() {
