@@ -8,6 +8,7 @@ core-graphics = "0.12.4"
 core-foundation = "0.4.6"
 
 [features]
+accessibility = []
 border = []
 
 [build-dependencies]

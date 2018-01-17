@@ -6,9 +6,8 @@ A Rust 'bridge' for creating [chunkwm] plugins.
 - [x] Easy API.
 - [x] `CVar` support.
 - [x] Subscriptions.
-
-### Planned
-- [ ] Common methods.
+- [x] Border methods (feature `border`).
+- [ ] Accessibility methods (feature `accessibility`).
 
 ## Usage
 Add the following your `Cargo.toml`:
