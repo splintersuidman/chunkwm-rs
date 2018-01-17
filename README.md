@@ -1,5 +1,5 @@
-# `chunkwm-rs` [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)](https://travis-ci.org/splintah/chunkwm-rs)
-A Rust 'bridge' for creating [chunkwm](https://github.com/koekeishiya/chunkwm) plugins.
+# `chunkwm-rs` [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)][travis]
+A Rust 'bridge' for creating [chunkwm] plugins.
 
 ## Features
 - [x] Event handler.
@@ -27,3 +27,7 @@ There are two ways to see the rendered documentation:
 ## TODO / Contributing
 I want to add the functions the chunkwm api provides to the Rust plugin, but that takes some time.
 Contributions are very welcome!
+
+[Rust plugin template]: https://github.com/splintah/chunkwm-rs-template
+[chunkwm]: https://github.com/koekeishiya/chunkwm
+[travis]: https://travis-ci.org/splintah/chunkwm-rs
