@@ -8,8 +8,8 @@ fn main() {
             .flag("-objc")
             .flag("-framework")
             .flag("Cocoa")
-            .include("./chunkwm/src/common/border/")
-            .file("./chunkwm/src/common/border/border.mm")
+            .include("./chunkwm-lib/border/")
+            .file("./chunkwm-lib/border/border.mm")
             .compile("border");
     }
 }

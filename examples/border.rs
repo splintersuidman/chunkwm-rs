@@ -1,3 +1,5 @@
+// Run with `cargo run --example border --features border`.
+
 extern crate chunkwm;
 
 use chunkwm::common::border::*;
