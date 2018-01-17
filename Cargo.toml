@@ -6,3 +6,9 @@ authors = ["Splinter Suidman"]
 [dependencies]
 core-graphics = "0.12.4"
 core-foundation = "0.4.6"
+
+[features]
+border = []
+
+[build-dependencies]
+cc = "1.0"
