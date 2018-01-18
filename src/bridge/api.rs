@@ -7,6 +7,13 @@ use std::fmt::{Display, Error, Formatter};
 use std::str::FromStr;
 use std::marker::PhantomData;
 
+#[repr(C)]
+pub enum LogLevel {
+    Debug = 0,
+    Warn = 1,
+    Error = 2,
+}
+
 /// The `API` struct is a raw type (i.e. the same as used in C code), and contains methods for
 /// creating, finding, and getting `CVar`s.
 ///
@@ -14,10 +21,11 @@ use std::marker::PhantomData;
 /// [`CVar`](./struct.CVar.html) to create handles to these `CVar`s.
 #[repr(C)]
 pub struct API {
-    update_cvar: unsafe extern "C" fn(*const c_char, *const c_char),
-    acquire_cvar: unsafe extern "C" fn(*const c_char) -> *const c_char,
-    find_cvar: unsafe extern "C" fn(*const c_char) -> bool,
-    plugin_broadcast: unsafe extern "C" fn(*const c_char, *const c_char, *mut c_void, usize),
+    _update_cvar: unsafe extern "C" fn(*const c_char, *const c_char),
+    _acquire_cvar: unsafe extern "C" fn(*const c_char) -> *const c_char,
+    _find_cvar: unsafe extern "C" fn(*const c_char) -> bool,
+    _plugin_broadcast: unsafe extern "C" fn(*const c_char, *const c_char, *mut c_void, usize),
+    _log: unsafe extern "C" fn(level: LogLevel, format: *const c_char),
 }
 
 impl API {
@@ -25,7 +33,7 @@ impl API {
     pub fn cvar_exists(&self, name: &str) -> bool {
         let name: *const c_char = CString::new(name).unwrap().into_raw();
 
-        unsafe { (self.find_cvar)(name) }
+        unsafe { (self._find_cvar)(name) }
     }
 
     /// Creates a new CVar with a value.
@@ -40,7 +48,7 @@ impl API {
         let name = CString::new(name).unwrap().into_raw();
         let value = CString::new(format!("{}", value)).unwrap().into_raw();
 
-        unsafe { (self.update_cvar)(name, value) }
+        unsafe { (self._update_cvar)(name, value) }
     }
 
     /// Updates a CVar.
@@ -51,7 +59,7 @@ impl API {
         let name = CString::new(name).unwrap().into_raw();
         let value = CString::new(format!("{}", value)).unwrap().into_raw();
 
-        unsafe { (self.update_cvar)(name, value) }
+        unsafe { (self._update_cvar)(name, value) }
     }
 
     /// Gets a CVar.
@@ -61,11 +69,18 @@ impl API {
     pub fn get_cvar<T: FromStr>(&self, name: &str) -> Result<T, <T as FromStr>::Err> {
         let name = CString::new(name).unwrap().into_raw();
         let value = unsafe {
-            let v = (self.acquire_cvar)(name);
+            let v = (self._acquire_cvar)(name);
             CStr::from_ptr(v).to_string_lossy().into_owned()
         };
 
         value.parse::<T>()
+    }
+
+    /// Log with a specified log level. A newline will be added to the message, so no need to do
+    /// that yourself.
+    pub fn log<S: AsRef<str>>(&self, level: LogLevel, message: S) {
+        let message = format!("{}\n", message.as_ref());
+        unsafe { (self._log)(level, CString::new(message).unwrap().into_raw()) }
     }
 }
 
