@@ -2,65 +2,51 @@
 
 use raw::*;
 use std::ffi;
-use core_foundation::base::CFTypeRef;
-
-type AXUIElementRef = CFTypeRef;
 
 /// The `Application` struct.
 #[derive(Debug)]
-pub struct Application {
-    pub element: AXUIElementRef,
-    pub observer: RawObserver,
-    /// The application's name.
-    pub name: String,
-    /// The application's process id.
-    pub pid: i32,
-    pub process_serial_number: ProcessSerialNumber,
+pub struct Application(ApplicationRef);
+
+impl Application {
+    pub fn get_element(&self) -> AXUIElementRef {
+        unsafe { (*self.0).element }
+    }
+
+    pub fn get_observer(&self) -> RawObserver {
+        unsafe { (*self.0).observer }
+    }
+
+    pub fn get_name(&self) -> String {
+        unsafe {
+            ffi::CStr::from_ptr((*self.0).name)
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    pub fn get_pid(&self) -> i32 {
+        unsafe { (*self.0).pid }
+    }
+
+    pub fn get_process_serial_number(&self) -> ProcessSerialNumber {
+        unsafe { (*self.0).process_serial_number }
+    }
 }
 
-impl<'a> From<&'a RawApplication> for Application {
-    fn from(raw_app: &RawApplication) -> Application {
-        Application {
-            element: raw_app.element,
-            observer: raw_app.observer,
-            name: unsafe {
-                ffi::CStr::from_ptr(raw_app.name)
-                    .to_string_lossy()
-                    .into_owned()
-            },
-            pid: raw_app.pid,
-            process_serial_number: raw_app.process_serial_number,
-        }
+impl From<ApplicationRef> for Application {
+    fn from(application_ref: ApplicationRef) -> Application {
+        Application(application_ref)
+    }
+}
+
+impl<'a> From<&'a mut RawApplication> for Application {
+    fn from(raw_app: &mut RawApplication) -> Application {
+        Application(raw_app)
     }
 }
 
 impl Into<Application> for RawApplication {
-    fn into(self) -> Application {
-        let name = unsafe {
-            ffi::CStr::from_ptr(self.name)
-                .to_string_lossy()
-                .into_owned()
-        };
-
-        Application {
-            element: self.element,
-            observer: self.observer,
-            name,
-            pid: self.pid,
-            process_serial_number: self.process_serial_number,
-        }
-    }
-}
-
-impl Into<RawApplication> for Application {
-    fn into(self) -> RawApplication {
-        let name = ffi::CString::new(self.name).unwrap().into_raw();
-        RawApplication {
-            element: self.element,
-            observer: self.observer,
-            name,
-            pid: self.pid,
-            process_serial_number: self.process_serial_number,
-        }
+    fn into(mut self) -> Application {
+        Application(&mut self)
     }
 }

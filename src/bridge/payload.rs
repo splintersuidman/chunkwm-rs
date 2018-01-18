@@ -5,32 +5,26 @@ use std::ffi;
 
 /// The `Payload` struct.
 #[derive(Debug)]
-pub struct Payload {
-    ///
-    pub sock_fd: i32,
-    /// The command like in `chunkc plugin::command message`.
-    pub command: String,
-    /// The message like in `chunkc plugin::command message`.
-    pub message: String,
+pub struct Payload(PayloadRef);
+
+impl Payload {
+    pub fn get_sock_fd(&self) -> i32 {
+        unsafe { (*self.0).sock_fd }
+    }
+
+    /// Get the command like in `chunkc plugin::command message`.
+    pub fn get_command(&self) -> String {
+        unsafe { ffi::CStr::from_ptr((*self.0).command).to_string_lossy().into_owned() }
+    }
+
+    /// Get the message like in `chunkc plugin::command message`.
+    pub fn get_message(&self) -> String {
+        unsafe { ffi::CStr::from_ptr((*self.0).message).to_string_lossy().into_owned() }
+    }
 }
 
 impl Into<Payload> for RawPayload {
-    fn into(self) -> Payload {
-        let command = unsafe {
-            ffi::CStr::from_ptr(self.command)
-                .to_string_lossy()
-                .into_owned()
-        };
-        let message = unsafe {
-            ffi::CStr::from_ptr(self.message)
-                .to_string_lossy()
-                .into_owned()
-        };
-
-        Payload {
-            sock_fd: self.sock_fd,
-            command,
-            message,
-        }
+    fn into(mut self) -> Payload {
+        Payload(&mut self)
     }
 }

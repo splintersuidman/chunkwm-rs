@@ -3,7 +3,7 @@ use std::os::raw::{c_char, c_int, c_ulong};
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
 
-type AXUIElementRef = CFTypeRef;
+pub type AXUIElementRef = CFTypeRef;
 type PID = c_int;
 
 /// The raw observer.
@@ -44,6 +44,8 @@ pub struct RawApplication {
     pub process_serial_number: ProcessSerialNumber,
 }
 
+pub type ApplicationRef = *mut RawApplication;
+
 /// The raw window representation. This is used in the C/C++ plugin, and shouldn't really be
 /// necessary for you to use in your Rust code.
 #[repr(C)]
@@ -55,7 +57,7 @@ pub struct RawWindow {
     ///
     pub sub_role: CFStringRef,
     /// The 'owner' application of the window, i.e. the application it belongs to.
-    pub owner: *const RawApplication,
+    pub owner: ApplicationRef,
     /// The window's id.
     pub id: u32,
     /// The window's name.
@@ -71,6 +73,8 @@ pub struct RawWindow {
     pub size: CGSize,
 }
 
+pub type WindowRef = *mut RawWindow;
+
 /// The raw payload representation. This is used in the C/C++ plugin, and shouldn't really be
 /// necessary for you to use in your Rust code.
 #[repr(C)]
@@ -79,3 +83,5 @@ pub struct RawPayload {
     pub command: *const c_char,
     pub message: *const c_char,
 }
+
+pub type PayloadRef = *mut RawPayload;

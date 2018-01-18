@@ -58,76 +58,62 @@ impl WindowFlag {
 
 /// The `Window` struct.
 #[derive(Debug)]
-pub struct Window {
-    ///
-    pub element: AXUIElementRef,
-    /// The window's main role.
-    pub main_role: String,
-    /// The window's main role.
-    pub sub_role: String,
-    /// The 'owner' application of the window, i.e. the application it belongs to.
-    pub owner: Application,
-    /// The window's name.
-    pub name: String,
-    /// The window's id.
-    pub id: u32,
-    /// The flags on the window.
-    pub flags: Vec<WindowFlag>,
-    /// The window's level.
-    pub level: u32,
-    /// The window's position.
-    pub position: CGPoint,
-    /// The window's size.
-    pub size: CGSize,
-}
+pub struct Window(WindowRef);
 
-impl Into<Window> for RawWindow {
-    fn into(self) -> Window {
-        let owner: &RawApplication =
-            unsafe { &*self.owner };
+impl Window {
+    pub fn get_element(&self) -> AXUIElementRef {
+        unsafe { (*self.0).element }
+    }
 
-        Window {
-            element: self.element,
-            main_role: unsafe { CFString::wrap_under_get_rule(self.main_role).to_string() },
-            sub_role: unsafe { CFString::wrap_under_get_rule(self.sub_role).to_string() },
-            owner: owner.into(),
-            name: unsafe {
-                ffi::CStr::from_ptr(self.name)
-                    .to_string_lossy()
-                    .into_owned()
-            },
-            id: self.id,
-            flags: WindowFlag::from(self.flags),
-            level: self.level,
-            position: self.position,
-            size: self.size,
+    pub fn get_main_role(&self) -> String {
+        unsafe { CFString::wrap_under_get_rule((*self.0).main_role).to_string() }
+    }
+
+    pub fn get_sub_role(&self) -> String {
+        unsafe { CFString::wrap_under_get_rule((*self.0).sub_role).to_string() }
+    }
+
+    pub fn get_owner(&self) -> Application {
+        unsafe { Application::from(((*self.0).owner)) }
+    }
+
+    pub fn get_name(&self) -> String {
+        unsafe {
+            ffi::CStr::from_ptr((*self.0).name)
+                .to_string_lossy()
+                .into_owned()
         }
+    }
+
+    pub fn get_id(&self) -> u32 {
+        unsafe { (*self.0).id }
+    }
+
+    pub fn get_flags(&self) -> Vec<WindowFlag> {
+        unsafe { WindowFlag::from((*self.0).flags) }
+    }
+
+    pub fn get_level(&self) -> u32 {
+        unsafe { (*self.0).level }
+    }
+
+    pub fn get_position(&self) -> CGPoint {
+        unsafe { (*self.0).position }
+    }
+
+    pub fn get_size(&self) -> CGSize {
+        unsafe { (*self.0).size }
     }
 }
 
-impl<'a> From<&'a RawWindow> for Window {
-    fn from(raw_window: &RawWindow) -> Window {
-        let owner: &RawApplication = unsafe { &*raw_window.owner };
+impl Into<Window> for RawWindow {
+    fn into(mut self) -> Window {
+        Window(&mut self)
+    }
+}
 
-        Window {
-            element: raw_window.element,
-            main_role: unsafe {
-                CFString::wrap_under_get_rule(raw_window.main_role).to_string()
-            },
-            sub_role: unsafe {
-                CFString::wrap_under_get_rule(raw_window.sub_role).to_string()
-            },
-            owner: owner.into(),
-            name: unsafe {
-                ffi::CStr::from_ptr(raw_window.name)
-                    .to_string_lossy()
-                    .into_owned()
-            },
-            id: raw_window.id,
-            flags: WindowFlag::from(raw_window.flags),
-            level: raw_window.level,
-            position: raw_window.position,
-            size: raw_window.size,
-        }
+impl<'a> From<&'a mut RawWindow> for Window {
+    fn from(raw_window: &mut RawWindow) -> Window {
+        Window(&mut *raw_window)
     }
 }
