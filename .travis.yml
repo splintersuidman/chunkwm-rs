@@ -19,7 +19,7 @@ before_script:
 
 script:
 - cargo build --verbose
-- cargo test --verbose --all
+- cargo test --verbose --all --features border
 
 after_success:
 - cargo doc-upload
