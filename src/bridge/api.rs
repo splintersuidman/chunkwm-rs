@@ -5,6 +5,7 @@ use std::os::raw::{c_char, c_void};
 use std::ffi::{CStr, CString};
 use std::fmt::{Display, Error, Formatter};
 use std::str::FromStr;
+use std::marker::PhantomData;
 
 /// The `API` struct is a raw type (i.e. the same as used in C code), and contains methods for
 /// creating, finding, and getting `CVar`s.
@@ -110,7 +111,7 @@ pub struct CVar<T: FromStr + Display> {
     /// The reference to the api.
     api: &'static API,
     // `_value` is needed for the `T` type.
-    _value: T,
+    value_marker: PhantomData<T>,
 }
 
 impl<T: FromStr + Display> CVar<T> {
@@ -118,10 +119,10 @@ impl<T: FromStr + Display> CVar<T> {
     pub fn new(name: &'static str, api: &'static API) -> Result<Self, &'static str> {
         let value = api.get_cvar::<T>(name);
         match value {
-            Ok(v) => Ok(CVar {
+            Ok(_) => Ok(CVar {
                 name,
                 api: api,
-                _value: v,
+                value_marker: PhantomData::default(),
             }),
             Err(_) => Err("could not find cvar"),
         }
@@ -133,20 +134,18 @@ impl<T: FromStr + Display> CVar<T> {
         CVar {
             name,
             api: api,
-            _value: value,
+            value_marker: PhantomData::default(),
         }
     }
 
     /// Set the value of the `CVar`.
     pub fn set_value(&mut self, value: &T) {
         self.api.update_cvar(self.name, &value);
-        // self._value = value;
     }
 
     /// Get the value of the `CVar`.
     pub fn get_value(&mut self) -> Result<T, <T as FromStr>::Err> {
         let value = self.api.get_cvar::<T>(self.name)?;
-        // self._value = value.clone();
         Ok(value)
     }
 }
