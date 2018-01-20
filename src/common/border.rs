@@ -15,8 +15,8 @@ type BorderWindowRef = *mut BorderWindow;
 
 #[link(name = "Cocoa", kind = "framework")]
 extern "C" {
-    #[link_name = "\u{1}_CreateBorderWindow"]
-    fn CreateBorderWindow(
+    #[link_name = "\u{1}_create_border_window"]
+    fn create_border_window(
         x: c_int,
         y: c_int,
         w: c_int,
@@ -26,12 +26,12 @@ extern "C" {
         border_color: c_uint,
     ) -> BorderWindowRef;
 
-    #[link_name = "\u{1}_UpdateBorderWindowRect"]
-    fn UpdateBorderWindowRect(border: BorderWindowRef, x: c_int, y: c_int, w: c_int, h: c_int);
-    #[link_name = "\u{1}_UpdateBorderWindowColor"]
-    fn UpdateBorderWindowColor(border: BorderWindowRef, color: c_uint);
-    #[link_name = "\u{1}_DestroyBorderWindow"]
-    fn DestroyBorderWindow(border: BorderWindowRef);
+    #[link_name = "\u{1}_update_border_window_rect"]
+    fn update_border_window_rect(border: BorderWindowRef, x: c_int, y: c_int, w: c_int, h: c_int);
+    #[link_name = "\u{1}_update_border_window_color"]
+    fn update_border_window_color(border: BorderWindowRef, color: c_uint);
+    #[link_name = "\u{1}_destroy_border_window"]
+    fn destroy_border_window(border: BorderWindowRef);
 }
 
 /// This struct is the wrapper for the border methods.
@@ -49,7 +49,7 @@ impl Border {
         border_color: u32,
     ) -> Self {
         let border_window_ref = unsafe {
-            CreateBorderWindow(x, y, w, h, border_width, border_radius, border_color)
+            create_border_window(x, y, w, h, border_width, border_radius, border_color)
         };
         Border(border_window_ref)
     }
@@ -59,7 +59,7 @@ impl Border {
         if self.0 != ptr::null_mut() {
             Err("couldn't set rect: outlived pointer")
         } else {
-            unsafe { UpdateBorderWindowRect(self.0, x, y, w, h) }
+            unsafe { update_border_window_rect(self.0, x, y, w, h) }
             Ok(())
         }
     }
@@ -69,7 +69,7 @@ impl Border {
         if self.0 != ptr::null_mut() {
             Err("couldn't set color: outlived pointer")
         } else {
-            unsafe { UpdateBorderWindowColor(self.0, color) }
+            unsafe { update_border_window_color(self.0, color) }
             Ok(())
         }
     }
@@ -77,7 +77,7 @@ impl Border {
     /// Destroy the border.
     pub fn destroy(&self) {
         if self.0 != ptr::null_mut() {
-            unsafe { DestroyBorderWindow(self.0) }
+            unsafe { destroy_border_window(self.0) }
         }
     }
 }
@@ -85,7 +85,7 @@ impl Border {
 impl Drop for Border {
     fn drop(&mut self) {
         if self.0 != ptr::null_mut() {
-            unsafe { DestroyBorderWindow(self.0) }
+            unsafe { destroy_border_window(self.0) }
         }
     }
 }

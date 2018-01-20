@@ -4,7 +4,9 @@ use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
 
 pub type AXUIElementRef = CFTypeRef;
-type PID = c_int;
+// NOTE(splintah): sizeof(AXError) == 4, docs list signed values.
+pub type AXError = i32;
+pub type PID = c_int;
 
 /// The raw observer.
 #[derive(Debug, Clone, Copy)]
