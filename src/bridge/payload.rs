@@ -14,12 +14,20 @@ impl Payload {
 
     /// Get the command like in `chunkc plugin::command message`.
     pub fn get_command(&self) -> String {
-        unsafe { ffi::CStr::from_ptr((*self.0).command).to_string_lossy().into_owned() }
+        unsafe {
+            ffi::CStr::from_ptr((*self.0).command)
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// Get the message like in `chunkc plugin::command message`.
     pub fn get_message(&self) -> String {
-        unsafe { ffi::CStr::from_ptr((*self.0).message).to_string_lossy().into_owned() }
+        unsafe {
+            ffi::CStr::from_ptr((*self.0).message)
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 }
 

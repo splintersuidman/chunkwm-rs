@@ -70,9 +70,8 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn list_for_application(application: &Application) -> Result<Vec<Window>, &'static str> {
-        let window: &[WindowRef] = unsafe {
-            window::window_list_for_application(application.get_application_ref()?)
-        };
+        let window: &[WindowRef] =
+            unsafe { window::window_list_for_application(application.get_application_ref()?) };
         let window: Vec<WindowRef> = window.to_vec();
         Ok(window
             .iter()

@@ -165,9 +165,9 @@ impl<T: FromStr + Display> CVar<T> {
     }
 }
 
-/// The `NumericBool` is often used in a `ChunkWM` config. It is a boolean type that is either 0 or 1
-/// (false or true respectively). This struct allows you to create a `CVar` that is a numeric bool,
-/// and easily get its value.
+/// The `NumericBool` is often used in a `ChunkWM` config. It is a boolean type that is either 0 or
+/// 1 (false or true respectively).
+/// This struct allows you to create a `CVar` that is a numeric bool, and easily get its value.
 ///
 /// ## Example
 /// ```rust

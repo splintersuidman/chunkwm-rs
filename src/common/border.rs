@@ -47,9 +47,8 @@ impl Border {
         border_radius: i32,
         border_color: u32,
     ) -> Self {
-        let border_window_ref = unsafe {
-            create_border_window(x, y, w, h, border_width, border_radius, border_color)
-        };
+        let border_window_ref =
+            unsafe { create_border_window(x, y, w, h, border_width, border_radius, border_color) };
         Border(border_window_ref)
     }
 

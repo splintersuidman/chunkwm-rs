@@ -1,7 +1,8 @@
 extern crate cc;
 
 fn main() {
-    #[cfg(feature = "border")] {
+    #[cfg(feature = "border")]
+    {
         cc::Build::new()
             .warnings(false)
             .flag("-objc")
@@ -10,7 +11,8 @@ fn main() {
             .compile("border");
     }
 
-    #[cfg(feature = "accessibility")] {
+    #[cfg(feature = "accessibility")]
+    {
         cc::Build::new()
             .warnings(false)
             .flag("-objc")
