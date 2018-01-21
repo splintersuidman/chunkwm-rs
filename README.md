@@ -6,12 +6,13 @@ A Rust 'bridge' for creating [chunkwm] plugins.
 - [x] Easy API.
 - [x] `CVar` support.
 - [x] Subscriptions.
-- [x] Border methods (feature `border`).
-- [ ] Accessibility methods (feature `accessibility`).
+- [x] Border methods (feature `border`, see [Features](#features)).
+- [x] Accessibility methods (feature `accessibility`, see [Features](#features)).
 
 ## Usage
 Add the following your `Cargo.toml`:
 ```toml
+[dependencies]
 chunkwm = { git = "https://github.com/splintah/chunkwm-rs" }
 ```
 You then have to compile it as a `cdylib`, and use the `plugin.cpp` file from the [Rust plugin template](https://github.com/splintah/chunkwm-rs-template).
@@ -22,6 +23,19 @@ If you want to get the `Makefile` template and a small Rust library template, se
 There are two ways to see the rendered documentation:
 - Clone this repository, `cd` into it, and run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
 - Create your own library depending on this library, run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
+
+## Features
+There are two features that toggle the compilation of the C/C++ library: `border` and `accessibility`.
+The `border` features gives you access to the `chunkwm::common::border` path.
+The `border` features gives you access to the `chunkwm::common::accessibility` path, and enables some extra methods on `Window` and `Application`.
+
+To use these features:
+```toml
+[dependencies]
+chunkwm = { git = "https://github.com/splintah/chunkwm-rs", features = ["border", "accessibility"] }
+```
+
+You can, of course, only use the features you're interested in.
 
 ## TODO / Contributing
 I want to add the functions the chunkwm api provides to the Rust plugin, but that takes some time.

@@ -18,8 +18,8 @@ before_script:
 - cargo install-update -a
 
 script:
-- cargo build --verbose
-- cargo test --verbose --all --features border
+- cargo build --verbose --features "border accessibility"
+- cargo test --verbose --all --features "border accessibility"
 - |
-  cargo doc --verbose
-  cargo doc-upload --features border --features accessibility
+  cargo doc --verbose --features "border accessibility"
+  cargo doc-upload

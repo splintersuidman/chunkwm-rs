@@ -10,6 +10,8 @@ use core_foundation::string::CFString;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::element;
+#[cfg(feature = "accessibility")]
+use common::accessibility::window;
 
 type AXUIElementRef = CFTypeRef;
 
@@ -65,6 +67,29 @@ impl WindowFlag {
 pub struct Window(WindowRef);
 
 impl Window {
+    /// Destroy the window.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn list_for_application(application: Application) -> Result<Vec<Window>, &'static str> {
+        let window: &[WindowRef] = unsafe {
+            window::window_list_for_application(application.get_application_ref()?)
+        };
+        let window: Vec<WindowRef> = window.to_vec();
+        Ok(window
+            .iter()
+            .map(|app_ref| Window::from(*app_ref))
+            .collect())
+    }
+
+    /// Get the raw window pointer.
+    pub unsafe fn get_window_ref(&self) -> Result<WindowRef, &'static str> {
+        if self.0 != ptr::null_mut() {
+            Ok(self.0)
+        } else {
+            Err("null pointer")
+        }
+    }
+
     /// Get element.
     pub fn get_element(&self) -> Result<AXUIElementRef, &'static str> {
         if self.0 != ptr::null_mut() {
@@ -160,98 +185,126 @@ impl Window {
     }
 
     /// Check whether window is minimized.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_minimized(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::is_window_minimized(self.get_element()?) } {
-                Ok(())
-            } else {
-                Err("could not run is_minimized successfully")
-            }
+        if unsafe { element::is_window_minimized(self.get_element()?) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run is_minimized successfully")
         }
     }
 
     /// Check whether window is resizable.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_resizable(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::is_window_resizable(self.get_element()?) } {
-                Ok(())
-            } else {
-                Err("could not run is_resizable successfully")
-            }
+        if unsafe { element::is_window_resizable(self.get_element()?) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run is_resizable successfully")
         }
     }
 
     /// Check whether window is movable.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_movable(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::is_window_movable(self.get_element()?) } {
-                Ok(())
-            } else {
-                Err("could not run is_movable successfully")
-            }
+        if unsafe { element::is_window_movable(self.get_element()?) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run is_movable successfully")
         }
     }
 
     /// Check whether window is fullscreen.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_fullscreen(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::is_window_fullscreen(self.get_element()?) } {
-                Ok(())
-            } else {
-                Err("could not run is_fullscreen successfully")
-            }
+        if unsafe { element::is_window_fullscreen(self.get_element()?) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run is_fullscreen successfully")
         }
     }
 
     /// Set the position of the window.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn set_position(&self, x: f32, y: f32) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::set_window_position(self.get_element()?, x, y) } {
-                Ok(())
-            } else {
-                Err("could not run set_position successfully")
-            }
+        if unsafe { element::set_window_position(self.get_element()?, x, y) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run set_position successfully")
         }
     }
 
     /// Set the size of the window.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn set_size(&self, width: f32, height: f32) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            if unsafe { element::set_window_size(self.get_element()?, width, height) } {
-                Ok(())
-            } else {
-                Err("could not run set_size successfully")
-            }
+        if unsafe { element::set_window_size(self.get_element()?, width, height) } {
+            Ok(())
         } else {
-            Err("null pointer")
+            Err("could not run set_size successfully")
         }
     }
 
     /// Close the window.
+    /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn close(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
-            unsafe { element::close_window(self.get_element()?) };
-            Ok(())
-        } else {
-            Err("null pointer")
-        }
+        unsafe { element::close_window(self.get_element()?) };
+        Ok(())
+    }
+
+    /// Destroy the window.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn destroy(&self) -> Result<(), &'static str> {
+        unsafe { window::destroy_window(self.get_window_ref()?) };
+        Ok(())
+    }
+
+    /// Check whether the window is standard.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn is_standard(&self) -> Result<(), &'static str> {
+        unsafe { window::is_window_standard(self.get_window_ref()?) };
+        Ok(())
+    }
+
+    /// Add a flag to the window.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn add_flag(&self, flag: WindowFlag) -> Result<(), &'static str> {
+        unsafe { window::add_flags(self.get_window_ref()?, flag as u32) };
+        Ok(())
+    }
+
+    /// Check whether the window has a flag.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn has_flag(&self, flag: WindowFlag) -> Result<bool, &'static str> {
+        Ok(unsafe { window::has_flags(self.get_window_ref()?, flag as u32) })
+    }
+
+    /// Remove a flag to from window.
+    /// Needed features: `accessibility`.
+    #[cfg(feature = "accessibility")]
+    pub fn remove_flag(&self, flag: WindowFlag) -> Result<(), &'static str> {
+        unsafe { window::clear_flags(self.get_window_ref()?, flag as u32) };
+        Ok(())
+    }
+}
+
+#[cfg(feature = "accessibility")]
+impl Copy for Window {}
+
+#[cfg(feature = "accessibility")]
+impl Clone for Window {
+    fn clone(&self) -> Self {
+        unsafe { Window::from(window::copy_window(self.0)) }
     }
 }
 
@@ -264,5 +317,11 @@ impl Into<Window> for RawWindow {
 impl<'a> From<&'a mut RawWindow> for Window {
     fn from(raw_window: &mut RawWindow) -> Window {
         Window(&mut *raw_window)
+    }
+}
+
+impl From<WindowRef> for Window {
+    fn from(window_ref: WindowRef) -> Window {
+        Window(window_ref)
     }
 }
