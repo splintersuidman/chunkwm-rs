@@ -8,25 +8,33 @@ use std::ffi;
 pub struct Payload(PayloadRef);
 
 impl Payload {
-    pub fn get_sock_fd(&self) -> i32 {
-        unsafe { (*self.0).sock_fd }
+    pub fn get_payload_ref(&self) -> Result<PayloadRef, &'static str> {
+        if !self.0.is_null() {
+            Ok(self.0)
+        } else {
+            Err("null pointer")
+        }
+    }
+
+    pub fn get_sock_fd(&self) -> Result<i32, &'static str> {
+        unsafe { Ok((*self.get_payload_ref()?).sock_fd) }
     }
 
     /// Get the command like in `chunkc plugin::command message`.
-    pub fn get_command(&self) -> String {
+    pub fn get_command(&self) -> Result<String, &'static str> {
         unsafe {
-            ffi::CStr::from_ptr((*self.0).command)
+            Ok(ffi::CStr::from_ptr((*self.get_payload_ref()?).command)
                 .to_string_lossy()
-                .into_owned()
+                .into_owned())
         }
     }
 
     /// Get the message like in `chunkc plugin::command message`.
-    pub fn get_message(&self) -> String {
+    pub fn get_message(&self) -> Result<String, &'static str> {
         unsafe {
-            ffi::CStr::from_ptr((*self.0).message)
+            Ok(ffi::CStr::from_ptr((*self.get_payload_ref()?).message)
                 .to_string_lossy()
-                .into_owned()
+                .into_owned())
         }
     }
 }

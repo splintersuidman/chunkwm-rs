@@ -23,7 +23,8 @@ impl Application {
     // TODO(splintah): ProcessFlags type?
     #[cfg(feature = "accessibility")]
     pub fn get_processes() -> Result<Vec<Application>, &'static str> {
-        let applications: &[ApplicationRef] = unsafe { application::get_running_processes(0) };
+        let applications: &[ApplicationRef] =
+            unsafe { application::get_running_processes(0) };
         let applications: Vec<ApplicationRef> = applications.to_vec();
         Ok(applications
             .iter()
@@ -44,61 +45,37 @@ impl Application {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn destroy(&self) -> Result<(), &'static str> {
-        if !self.0.is_null() {
-            unsafe { application::destroy_application(self.0) };
-            Ok(())
-        } else {
-            Err("null pointer")
-        }
+        unsafe { application::destroy_application(self.get_application_ref()?) };
+        Ok(())
     }
 
     /// Get the application's element.
     pub fn get_element(&self) -> Result<AXUIElementRef, &'static str> {
-        if !self.0.is_null() {
-            Ok(unsafe { (*self.0).element })
-        } else {
-            Err("null pointer")
-        }
+        unsafe { Ok((*self.get_application_ref()?).element) }
     }
 
     /// Get the application's observer.
     pub fn get_observer(&self) -> Result<RawObserver, &'static str> {
-        if !self.0.is_null() {
-            Ok(unsafe { (*self.0).observer })
-        } else {
-            Err("null pointer")
-        }
+        unsafe { Ok((*self.get_application_ref()?).observer) }
     }
 
     /// Get the application's name.
     pub fn get_name(&self) -> Result<String, &'static str> {
-        if !self.0.is_null() {
-            Ok(unsafe {
-                ffi::CStr::from_ptr((*self.0).name)
-                    .to_string_lossy()
-                    .into_owned()
-            })
-        } else {
-            Err("null pointer")
+        unsafe {
+            Ok(ffi::CStr::from_ptr((*self.get_application_ref()?).name)
+                .to_string_lossy()
+                .into_owned())
         }
     }
 
     /// Get the application's pid.
     pub fn get_pid(&self) -> Result<i32, &'static str> {
-        if !self.0.is_null() {
-            Ok(unsafe { (*self.0).pid })
-        } else {
-            Err("null pointer")
-        }
+        unsafe { Ok((*self.get_application_ref()?).pid) }
     }
 
     /// Get the application's process serial number.
     pub fn get_process_serial_number(&self) -> Result<ProcessSerialNumber, &'static str> {
-        if !self.0.is_null() {
-            Ok(unsafe { (*self.0).process_serial_number })
-        } else {
-            Err("null pointer")
-        }
+        unsafe { Ok((*self.get_application_ref()?).process_serial_number) }
     }
 }
 
