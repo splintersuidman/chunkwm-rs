@@ -2,7 +2,6 @@
 
 use raw::*;
 use std::ffi;
-use std::ptr;
 #[cfg(feature = "accessibility")]
 use common::accessibility::application;
 
@@ -34,7 +33,7 @@ impl Application {
 
     /// Get the raw window pointer.
     pub unsafe fn get_application_ref(&self) -> Result<ApplicationRef, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(self.0)
         } else {
             Err("null pointer")
@@ -45,7 +44,7 @@ impl Application {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn destroy(&self) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             unsafe { application::destroy_application(self.0) };
             Ok(())
         } else {
@@ -55,7 +54,7 @@ impl Application {
 
     /// Get the application's element.
     pub fn get_element(&self) -> Result<AXUIElementRef, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).element })
         } else {
             Err("null pointer")
@@ -64,7 +63,7 @@ impl Application {
 
     /// Get the application's observer.
     pub fn get_observer(&self) -> Result<RawObserver, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).observer })
         } else {
             Err("null pointer")
@@ -73,7 +72,7 @@ impl Application {
 
     /// Get the application's name.
     pub fn get_name(&self) -> Result<String, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe {
                 ffi::CStr::from_ptr((*self.0).name)
                     .to_string_lossy()
@@ -86,7 +85,7 @@ impl Application {
 
     /// Get the application's pid.
     pub fn get_pid(&self) -> Result<i32, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).pid })
         } else {
             Err("null pointer")
@@ -95,7 +94,7 @@ impl Application {
 
     /// Get the application's process serial number.
     pub fn get_process_serial_number(&self) -> Result<ProcessSerialNumber, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).process_serial_number })
         } else {
             Err("null pointer")

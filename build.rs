@@ -3,7 +3,6 @@ extern crate cc;
 fn main() {
     #[cfg(feature = "border")] {
         cc::Build::new()
-            .cpp(true)
             .warnings(false)
             .flag("-objc")
             .flag("-Wno-shadow-ivar")
@@ -13,7 +12,6 @@ fn main() {
 
     #[cfg(feature = "accessibility")] {
         cc::Build::new()
-            .cpp(true)
             .warnings(false)
             .flag("-objc")
             .flag("-Wno-deprecated-declarations")

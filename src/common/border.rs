@@ -1,7 +1,6 @@
 //! The border module contains a wrapper for the C methods.
 
 use std::os::raw::{c_int, c_uint};
-use std::ptr;
 
 #[repr(C)]
 #[derive(Debug)]
@@ -56,7 +55,7 @@ impl Border {
 
     /// Set the border rectangle.
     pub fn set_rect(&self, x: i32, y: i32, w: i32, h: i32) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             unsafe { update_border_window_rect(self.0, x, y, w, h) }
             Ok(())
         } else {
@@ -69,7 +68,7 @@ impl Border {
     /// # Warning: do not use (yet).
     /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
     pub fn set_color(&self, color: u32) -> Result<(), &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             unsafe { update_border_window_color(self.0, color) }
             Ok(())
         } else {
@@ -79,7 +78,7 @@ impl Border {
 
     /// Destroy the border.
     pub fn destroy(&self) {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             unsafe { destroy_border_window(self.0) }
         }
     }
@@ -87,7 +86,7 @@ impl Border {
 
 impl Drop for Border {
     fn drop(&mut self) {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             unsafe { destroy_border_window(self.0) }
         }
     }

@@ -3,7 +3,6 @@
 use application::*;
 use raw::*;
 use std::ffi;
-use std::ptr;
 use core_graphics::geometry::{CGPoint, CGSize};
 use core_foundation::base::{CFTypeRef, TCFType};
 use core_foundation::string::CFString;
@@ -70,7 +69,7 @@ impl Window {
     /// Destroy the window.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
-    pub fn list_for_application(application: Application) -> Result<Vec<Window>, &'static str> {
+    pub fn list_for_application(application: &Application) -> Result<Vec<Window>, &'static str> {
         let window: &[WindowRef] = unsafe {
             window::window_list_for_application(application.get_application_ref()?)
         };
@@ -83,7 +82,7 @@ impl Window {
 
     /// Get the raw window pointer.
     pub unsafe fn get_window_ref(&self) -> Result<WindowRef, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(self.0)
         } else {
             Err("null pointer")
@@ -92,7 +91,7 @@ impl Window {
 
     /// Get element.
     pub fn get_element(&self) -> Result<AXUIElementRef, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).element })
         } else {
             Err("could not get element")
@@ -101,7 +100,7 @@ impl Window {
 
     /// Get main role.
     pub fn get_main_role(&self) -> Result<String, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { CFString::wrap_under_get_rule((*self.0).main_role).to_string() })
         } else {
             Err("could not get main_role")
@@ -110,7 +109,7 @@ impl Window {
 
     /// Get sub role.
     pub fn get_sub_role(&self) -> Result<String, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { CFString::wrap_under_get_rule((*self.0).sub_role).to_string() })
         } else {
             Err("could not get sub_role")
@@ -119,8 +118,8 @@ impl Window {
 
     /// Get owner.
     pub fn get_owner(&self) -> Result<Application, &'static str> {
-        if self.0 != ptr::null_mut() {
-            Ok(unsafe { Application::from(((*self.0).owner)) })
+        if !self.0.is_null() {
+            Ok(unsafe { Application::from((*self.0).owner) })
         } else {
             Err("could not get owner")
         }
@@ -128,7 +127,7 @@ impl Window {
 
     /// Get name.
     pub fn get_name(&self) -> Result<String, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe {
                 ffi::CStr::from_ptr((*self.0).name)
                     .to_string_lossy()
@@ -141,7 +140,7 @@ impl Window {
 
     /// Get id.
     pub fn get_id(&self) -> Result<u32, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).id })
         } else {
             Err("could not get id")
@@ -150,7 +149,7 @@ impl Window {
 
     /// Get flags.
     pub fn get_flags(&self) -> Result<Vec<WindowFlag>, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { WindowFlag::from((*self.0).flags) })
         } else {
             Err("could not get flags")
@@ -159,7 +158,7 @@ impl Window {
 
     /// Get level.
     pub fn get_level(&self) -> Result<u32, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).level })
         } else {
             Err("could not get level")
@@ -168,7 +167,7 @@ impl Window {
 
     /// Get position.
     pub fn get_position(&self) -> Result<CGPoint, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).position })
         } else {
             Err("could not get position")
@@ -177,7 +176,7 @@ impl Window {
 
     /// Get size.
     pub fn get_size(&self) -> Result<CGSize, &'static str> {
-        if self.0 != ptr::null_mut() {
+        if !self.0.is_null() {
             Ok(unsafe { (*self.0).size })
         } else {
             Err("could not get size")
@@ -297,9 +296,6 @@ impl Window {
         Ok(())
     }
 }
-
-#[cfg(feature = "accessibility")]
-impl Copy for Window {}
 
 #[cfg(feature = "accessibility")]
 impl Clone for Window {

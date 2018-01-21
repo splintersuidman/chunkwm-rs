@@ -144,8 +144,8 @@ impl<T: FromStr + Display> CVar<T> {
     }
 
     /// Create a new `CVar` handle with a value. The given value will be set.
-    pub fn with_value(name: &'static str, value: T, api: &'static API) -> Self {
-        api.create_cvar(name, &value);
+    pub fn with_value(name: &'static str, value: &T, api: &'static API) -> Self {
+        api.create_cvar(name, value);
         CVar {
             name,
             api: api,
