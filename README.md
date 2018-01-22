@@ -1,4 +1,4 @@
-# `chunkwm-rs` [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)][travis]
+# chunkwm-rs [![Build Status](https://travis-ci.org/splintah/chunkwm-rs.svg?branch=master)][travis]
 A Rust 'bridge' for creating [chunkwm] plugins.
 
 ## Features
@@ -6,8 +6,8 @@ A Rust 'bridge' for creating [chunkwm] plugins.
 - [x] Easy API.
 - [x] `CVar` support.
 - [x] Subscriptions.
-- [x] Border methods (feature `border`, see [Features](#features)).
-- [x] Accessibility methods (feature `accessibility`, see [Features](#features)).
+- [x] Border methods (feature `border`, see [Cargo features](#cargo-features)).
+- [x] Accessibility methods (feature `accessibility`, see [Cargo features](#cargo-features)).
 
 ## Usage
 Add the following your `Cargo.toml`:
@@ -24,7 +24,7 @@ There are two ways to see the rendered documentation:
 - Clone this repository, `cd` into it, and run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
 - Create your own library depending on this library, run `cargo doc`. The documentation is now available in `./target/doc/chunkwm/index.html`.
 
-## Features
+## Cargo features
 There are two features that toggle the compilation of the C/C++ library: `border` and `accessibility`.
 The `border` features gives you access to the `chunkwm::common::border` path.
 The `border` features gives you access to the `chunkwm::common::accessibility` path, and enables some extra methods on `Window` and `Application`.
