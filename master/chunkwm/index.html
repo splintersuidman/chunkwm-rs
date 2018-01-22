@@ -58,6 +58,7 @@
                            <td class='docblock-short'>
                                 <p>The <code>api</code> module contains the raw <code>chunkwm_api</code> struct, and contains a <code>CVar</code> struct to create a
 handle to a specific <code>CVar</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -65,6 +66,7 @@ handle to a specific <code>CVar</code>.</p>
                                   title='mod chunkwm::application'>application</a></td>
                            <td class='docblock-short'>
                                 <p>This module contains the application type and its implementations.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -79,6 +81,7 @@ handle to a specific <code>CVar</code>.</p>
                                   title='mod chunkwm::event'>event</a></td>
                            <td class='docblock-short'>
                                 <p>This module contains types and traits for event handling.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -86,6 +89,7 @@ handle to a specific <code>CVar</code>.</p>
                                   title='mod chunkwm::payload'>payload</a></td>
                            <td class='docblock-short'>
                                 <p>This module contains the payload type and its implementations.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -94,6 +98,7 @@ handle to a specific <code>CVar</code>.</p>
                            <td class='docblock-short'>
                                 <p>The prelude <code>use</code>s all important types for easy importing.
 Just <code>use chunkwm::prelude::*</code> to import these.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -101,6 +106,7 @@ Just <code>use chunkwm::prelude::*</code> to import these.</p>
                                   title='mod chunkwm::window'>window</a></td>
                            <td class='docblock-short'>
                                 <p>This module contains the window type and its implementations.</p>
+
                            </td>
                        </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
 <table>
@@ -109,14 +115,16 @@ Just <code>use chunkwm::prelude::*</code> to import these.</p>
                                   title='macro chunkwm::create_c_bridge'>create_c_bridge</a></td>
                            <td class='docblock-short'>
                                 <p>This macro creates the bridge to the C/C++ plugin. When writing a handler this should always be
-done. You should pass your plugin struct&#39;s identifier to this macro.</p>
+done. You should pass your plugin struct's identifier to this macro.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="macro" href="macro.name.html"
                                   title='macro chunkwm::name'>name</a></td>
                            <td class='docblock-short'>
-                                <p>A macro to specify the plugin&#39;s name.</p>
+                                <p>A macro to specify the plugin's name.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -124,6 +132,7 @@ done. You should pass your plugin struct&#39;s identifier to this macro.</p>
                                   title='macro chunkwm::subscribe'>subscribe</a></td>
                            <td class='docblock-short'>
                                 <p>This macro makes it easy to subscribe to events.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -131,13 +140,15 @@ done. You should pass your plugin struct&#39;s identifier to this macro.</p>
                                   title='macro chunkwm::subscribe_all'>subscribe_all</a></td>
                            <td class='docblock-short'>
                                 <p>A macro to subscribe to all events.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="macro" href="macro.version.html"
                                   title='macro chunkwm::version'>version</a></td>
                            <td class='docblock-short'>
-                                <p>A macro to specify the plugin&#39;s version.</p>
+                                <p>A macro to specify the plugin's version.</p>
+
                            </td>
                        </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -146,14 +157,16 @@ done. You should pass your plugin struct&#39;s identifier to this macro.</p>
                                   title='struct chunkwm::ProcessSerialNumber'>ProcessSerialNumber</a></td>
                            <td class='docblock-short'>
                                 <p>The process serial number. Both used as a raw type and as a Rust type.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawApplication.html"
                                   title='struct chunkwm::RawApplication'>RawApplication</a></td>
                            <td class='docblock-short'>
-                                <p>The raw application representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw application representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -161,22 +174,25 @@ necessary for you to use in your Rust code.</p>
                                   title='struct chunkwm::RawObserver'>RawObserver</a></td>
                            <td class='docblock-short'>
                                 <p>The raw observer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawPayload.html"
                                   title='struct chunkwm::RawPayload'>RawPayload</a></td>
                            <td class='docblock-short'>
-                                <p>The raw payload representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw payload representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawWindow.html"
                                   title='struct chunkwm::RawWindow'>RawWindow</a></td>
                            <td class='docblock-short'>
-                                <p>The raw window representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw window representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
@@ -234,20 +250,22 @@ necessary for you to use in your Rust code.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

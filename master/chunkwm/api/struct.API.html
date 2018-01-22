@@ -53,7 +53,6 @@
 <pre class='rust struct'><div class="docblock attributes">#[repr(C)]
 </div>pub struct API { /* fields omitted */ }</pre><div class='docblock'><p>The <code>API</code> struct is a raw type (i.e. the same as used in C code), and contains methods for
 creating, finding, and getting <code>CVar</code>s.</p>
-
 <p>You can keep the <code>API</code> in your event handler struct, but you can also use
 <a href="./struct.CVar.html"><code>CVar</code></a> to create handles to these <code>CVar</code>s.</p>
 </div>
@@ -65,17 +64,14 @@ creating, finding, and getting <code>CVar</code>s.</p>
 <div class='docblock'><p>Checks whether a CVar has been declared.</p>
 </div><h4 id='method.create_cvar' class="method"><span id='create_cvar.v' class='invisible'><code>pub fn <a href='#method.create_cvar' class='fnname'>create_cvar</a>&lt;V:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>V)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#43-52' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Creates a new CVar with a value.</p>
-
 <p>Every value type that implements <code>Display</code> can be used as a <code>CVar</code>, since the value is
 formatted as a string, and then passed to the C API.</p>
 </div><h4 id='method.update_cvar' class="method"><span id='update_cvar.v' class='invisible'><code>pub fn <a href='#method.update_cvar' class='fnname'>update_cvar</a>&lt;V:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>V)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#58-63' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Updates a CVar.</p>
-
 <p>Every value type that implements <code>Display</code> can be used as a <code>CVar</code>, since the value is
 formatted as a string, and then passed to the C API.</p>
 </div><h4 id='method.get_cvar' class="method"><span id='get_cvar.v' class='invisible'><code>pub fn <a href='#method.get_cvar' class='fnname'>get_cvar</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a>&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a>&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html#associatedtype.Err" title="type core::str::FromStr::Err">Err</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#69-77' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Gets a CVar.</p>
-
 <p>The type of the value has to be specified (using the turbofish <code>::&lt;&gt;</code>), because the value is
 received as a string and then parsed to the specified type.</p>
 </div><h4 id='method.log' class="method"><span id='log.v' class='invisible'><code>pub fn <a href='#method.log' class='fnname'>log</a>&lt;S:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;(&amp;self, level: <a class="enum" href="../../chunkwm/prelude/enum.LogLevel.html" title="enum chunkwm::prelude::LogLevel">LogLevel</a>, message: S)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#81-84' title='goto source code'>[src]</a></span></h4>
@@ -94,20 +90,22 @@ that yourself.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

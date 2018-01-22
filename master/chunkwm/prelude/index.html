@@ -60,6 +60,7 @@ Just <code>use chunkwm::prelude::*</code> to import these.</p>
                            <td class='docblock-short'>
                                 <p>The <code>API</code> struct is a raw type (i.e. the same as used in C code), and contains methods for
 creating, finding, and getting <code>CVar</code>s.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -67,6 +68,7 @@ creating, finding, and getting <code>CVar</code>s.</p>
                                   title='struct chunkwm::prelude::Application'>Application</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Application</code> struct.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -76,6 +78,7 @@ creating, finding, and getting <code>CVar</code>s.</p>
                                 <p>The <code>CVar</code> struct allows you to easily create a handle to <code>CVars</code>, that might be updated. You
 can use all types that implement <code>Display</code> and <code>FromStr</code> as value type for the <code>CVar</code>. You can
 therefore easily implement your own <code>CVar</code> compatible types.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -85,6 +88,7 @@ therefore easily implement your own <code>CVar</code> compatible types.</p>
                                 <p>The <code>NumericBool</code> is often used in a <code>ChunkWM</code> config. It is a boolean type that is either 0 or
 1 (false or true respectively).
 This struct allows you to create a <code>CVar</code> that is a numeric bool, and easily get its value.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -92,6 +96,7 @@ This struct allows you to create a <code>CVar</code> that is a numeric bool, and
                                   title='struct chunkwm::prelude::Payload'>Payload</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Payload</code> struct.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -99,14 +104,16 @@ This struct allows you to create a <code>CVar</code> that is a numeric bool, and
                                   title='struct chunkwm::prelude::ProcessSerialNumber'>ProcessSerialNumber</a></td>
                            <td class='docblock-short'>
                                 <p>The process serial number. Both used as a raw type and as a Rust type.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawApplication.html"
                                   title='struct chunkwm::prelude::RawApplication'>RawApplication</a></td>
                            <td class='docblock-short'>
-                                <p>The raw application representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw application representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -114,22 +121,25 @@ necessary for you to use in your Rust code.</p>
                                   title='struct chunkwm::prelude::RawObserver'>RawObserver</a></td>
                            <td class='docblock-short'>
                                 <p>The raw observer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawPayload.html"
                                   title='struct chunkwm::prelude::RawPayload'>RawPayload</a></td>
                            <td class='docblock-short'>
-                                <p>The raw payload representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw payload representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.RawWindow.html"
                                   title='struct chunkwm::prelude::RawWindow'>RawWindow</a></td>
                            <td class='docblock-short'>
-                                <p>The raw window representation. This is used in the C/C++ plugin, and shouldn&#39;t really be
+                                <p>The raw window representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -137,6 +147,7 @@ necessary for you to use in your Rust code.</p>
                                   title='struct chunkwm::prelude::Window'>Window</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Window</code> struct.</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -145,6 +156,7 @@ necessary for you to use in your Rust code.</p>
                                   title='enum chunkwm::prelude::Event'>Event</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Event</code> enum allows for easy pattern matching on events.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -159,6 +171,7 @@ necessary for you to use in your Rust code.</p>
                                   title='enum chunkwm::prelude::Subscription'>Subscription</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Subscription</code> enum is used to subscribe to <code>ChunkWM</code> events.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -166,6 +179,7 @@ necessary for you to use in your Rust code.</p>
                                   title='enum chunkwm::prelude::WindowFlag'>WindowFlag</a></td>
                            <td class='docblock-short'>
                                 <p>The flags on a <code>Window</code>.</p>
+
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
@@ -174,6 +188,7 @@ necessary for you to use in your Rust code.</p>
                                   title='trait chunkwm::prelude::HandleEvent'>HandleEvent</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>HandleEvent</code> trait should be implemented on your Plugin struct.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
@@ -203,6 +218,7 @@ necessary for you to use in your Rust code.</p>
                                   title='type chunkwm::prelude::DisplayID'>DisplayID</a></td>
                            <td class='docblock-short'>
                                 <p>The display identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -238,20 +254,22 @@ necessary for you to use in your Rust code.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

@@ -52,7 +52,6 @@
                </span><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#98' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct CFPropertyList(_);</pre><div class='docblock'><p>A CFPropertyList struct. This is superclass to <a href="../data/struct.CFData.html"><code>CFData</code></a>, <a href="../string/struct.CFString.html"><code>CFString</code></a>, <a href="../array/struct.CFArray.html"><code>CFArray</code></a>,
 <a href="../dictionary/struct.CFDictionary.html"><code>CFDictionary</code></a>, <a href="../date/struct.CFDate.html"><code>CFDate</code></a>, <a href="../boolean/struct.CFBoolean.html"><code>CFBoolean</code></a>, and <a href="../number/struct.CFNumber.html"><code>CFNumber</code></a>.</p>
-
 <p>This superclass type does not have its own <code>CFTypeID</code>, instead each instance has the <code>CFTypeID</code>
 of the subclass it is an instance of. Thus, this type cannot implement the <a href="../base/trait.TCFType.html"><code>TCFType</code></a> trait,
 since it cannot implement the static <a href="../base/trait.TCFType.html#method.type_of"><code>TCFType::type_id()</code></a> method.</p>
@@ -81,8 +80,7 @@ CFDate, CFBoolean, or CFNumber.</p>
 <div class='docblock'><p>Try to downcast the <a href="struct.CFPropertyList.html"><code>CFPropertyList</code></a> to a subclass. Checking if the instance is the correct
 subclass happens at runtime and an error is returned if it is not the correct type.
 Works similar to <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html#method.downcast"><code>Box::downcast</code></a>.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <pre class="rust rust-example-rendered">
 <span class="comment">// Create a string.</span>
 <span class="kw">let</span> <span class="ident">string</span>: <span class="ident">CFString</span> <span class="op">=</span> <span class="ident">CFString</span>::<span class="ident">from_static_string</span>(<span class="string">&quot;FooBar&quot;</span>);
@@ -121,20 +119,22 @@ Works similar to <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html#me
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
