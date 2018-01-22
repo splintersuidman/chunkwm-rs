@@ -184,23 +184,32 @@ macro_rules! create_c_bridge {
             match event.as_str() {
                 "chunkwm_export_application_launched" => {
                     _handler.handle(Event::ApplicationLaunched(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_application_terminated" => {
                     _handler.handle(Event::ApplicationTerminated(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_application_activated" => {
                     _handler.handle(Event::ApplicationActivated(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_application_deactivated" => {
                     _handler.handle(Event::ApplicationDeactivated(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_application_hidden" => {
                     _handler.handle(Event::ApplicationHidden(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_application_unhidden" => {
                     _handler.handle(Event::ApplicationUnhidden(application))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
-                _ => _handler.handle(Event::Other(event)),
+                _ => {
+                    _handler.handle(Event::Other(event))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
             };
         }
 
@@ -216,20 +225,38 @@ macro_rules! create_c_bridge {
             let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
-                "chunkwm_export_window_created" => _handler.handle(Event::WindowCreated(window)),
+                "chunkwm_export_window_created" => {
+                    _handler.handle(Event::WindowCreated(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
                 "chunkwm_export_window_destroyed" => {
                     _handler.handle(Event::WindowDestroyed(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
-                "chunkwm_export_window_focused" => _handler.handle(Event::WindowFocused(window)),
-                "chunkwm_export_window_moved" => _handler.handle(Event::WindowMoved(window)),
-                "chunkwm_export_window_resized" => _handler.handle(Event::WindowResized(window)),
+                "chunkwm_export_window_focused" => {
+                    _handler.handle(Event::WindowFocused(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_window_moved" => {
+                    _handler.handle(Event::WindowMoved(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_window_resized" => {
+                    _handler.handle(Event::WindowResized(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
                 "chunkwm_export_window_minimized" => {
                     _handler.handle(Event::WindowMinimized(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
                 "chunkwm_export_window_deminimized" => {
                     _handler.handle(Event::WindowDeminimized(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
                 }
-                _ => _handler.handle(Event::Other(event)),
+                _ => {
+                    _handler.handle(Event::Other(event))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
             };
         }
 
@@ -244,11 +271,26 @@ macro_rules! create_c_bridge {
             let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
-                "chunkwm_export_display_added" => _handler.handle(Event::DisplayAdded(display)),
-                "chunkwm_export_display_removed" => _handler.handle(Event::DisplayRemoved(display)),
-                "chunkwm_export_display_moved" => _handler.handle(Event::DisplayMoved(display)),
-                "chunkwm_export_display_resized" => _handler.handle(Event::DisplayResized(display)),
-                _ => _handler.handle(Event::Other(event)),
+                "chunkwm_export_display_added" => {
+                    _handler.handle(Event::DisplayAdded(display))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_display_removed" => {
+                    _handler.handle(Event::DisplayRemoved(display))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_display_moved" => {
+                    _handler.handle(Event::DisplayMoved(display))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_display_resized" => {
+                    _handler.handle(Event::DisplayResized(display))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                _ => {
+                    _handler.handle(Event::Other(event))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
             };
         }
 
@@ -261,7 +303,8 @@ macro_rules! create_c_bridge {
             let _handler = &mut *ptr;
             let payload: Payload = payload.into();
 
-            _handler.handle(Event::DaemonCommand(payload));
+            _handler.handle(Event::DaemonCommand(payload))
+                .unwrap_or_else(|e| eprintln!("{}", e));
         }
 
         // Send events containing 'nothing' or unknown events to the event handler.
@@ -274,9 +317,18 @@ macro_rules! create_c_bridge {
             let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
             match event.as_str() {
-                "chunkwm_export_display_changed" => _handler.handle(Event::DisplayChanged),
-                "chunkwm_export_space_changed" => _handler.handle(Event::SpaceChanged),
-                _ => _handler.handle(Event::Other(event)),
+                "chunkwm_export_display_changed" => {
+                    _handler.handle(Event::DisplayChanged)
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                "chunkwm_export_space_changed" => {
+                    _handler.handle(Event::SpaceChanged)
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
+                _ => {
+                    _handler.handle(Event::Other(event))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
             }
         }
     }};

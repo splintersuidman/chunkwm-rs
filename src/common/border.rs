@@ -1,5 +1,6 @@
 //! The `border` module contains a wrapper for the C methods that handle borders.
 
+use ChunkWMError;
 use std::os::raw::{c_int, c_uint};
 
 #[repr(C)]
@@ -53,12 +54,12 @@ impl Border {
     }
 
     /// Set the border rectangle.
-    pub fn set_rect(&self, x: i32, y: i32, w: i32, h: i32) -> Result<(), &'static str> {
+    pub fn set_rect(&self, x: i32, y: i32, w: i32, h: i32) -> Result<(), ChunkWMError> {
         if !self.0.is_null() {
             unsafe { update_border_window_rect(self.0, x, y, w, h) }
             Ok(())
         } else {
-            Err("null pointer")
+            Err(ChunkWMError::NullPointer)
         }
     }
 
@@ -66,12 +67,12 @@ impl Border {
     ///
     /// # Warning: do not use (yet).
     /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
-    pub fn set_color(&self, color: u32) -> Result<(), &'static str> {
+    pub fn set_color(&self, color: u32) -> Result<(), ChunkWMError> {
         if !self.0.is_null() {
             unsafe { update_border_window_color(self.0, color) }
             Ok(())
         } else {
-            Err("null pointer")
+            Err(ChunkWMError::NullPointer)
         }
     }
 

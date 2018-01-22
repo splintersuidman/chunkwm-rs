@@ -1,5 +1,6 @@
 //! The `application` module contains the application type and its implementations.
 
+use ChunkWMError;
 use raw::*;
 use std::ffi;
 #[cfg(feature = "accessibility")]
@@ -13,7 +14,7 @@ impl Application {
     /// Get the focused application.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
-    pub fn get_focused() -> Result<Application, &'static str> {
+    pub fn get_focused() -> Result<Application, ChunkWMError> {
         let application = unsafe { application::get_focused_application() };
         Ok(application.into())
     }
@@ -22,7 +23,7 @@ impl Application {
     /// Needed features: `accessibility`.
     // TODO(splintah): ProcessFlags type?
     #[cfg(feature = "accessibility")]
-    pub fn get_processes() -> Result<Vec<Application>, &'static str> {
+    pub fn get_processes() -> Result<Vec<Application>, ChunkWMError> {
         let applications: &[ApplicationRef] =
             unsafe { application::get_running_processes(0) };
         let applications: Vec<ApplicationRef> = applications.to_vec();
@@ -33,34 +34,34 @@ impl Application {
     }
 
     /// Get the raw window pointer.
-    pub unsafe fn get_application_ref(&self) -> Result<ApplicationRef, &'static str> {
+    pub unsafe fn get_application_ref(&self) -> Result<ApplicationRef, ChunkWMError> {
         if !self.0.is_null() {
             Ok(self.0)
         } else {
-            Err("null pointer")
+            Err(ChunkWMError::NullPointer)
         }
     }
 
     /// Destroy the application.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
-    pub fn destroy(&self) -> Result<(), &'static str> {
+    pub fn destroy(&self) -> Result<(), ChunkWMError> {
         unsafe { application::destroy_application(self.get_application_ref()?) };
         Ok(())
     }
 
     /// Get the application's element.
-    pub fn get_element(&self) -> Result<AXUIElementRef, &'static str> {
+    pub fn get_element(&self) -> Result<AXUIElementRef, ChunkWMError> {
         unsafe { Ok((*self.get_application_ref()?).element) }
     }
 
     /// Get the application's observer.
-    pub fn get_observer(&self) -> Result<RawObserver, &'static str> {
+    pub fn get_observer(&self) -> Result<RawObserver, ChunkWMError> {
         unsafe { Ok((*self.get_application_ref()?).observer) }
     }
 
     /// Get the application's name.
-    pub fn get_name(&self) -> Result<String, &'static str> {
+    pub fn get_name(&self) -> Result<String, ChunkWMError> {
         unsafe {
             Ok(ffi::CStr::from_ptr((*self.get_application_ref()?).name)
                 .to_string_lossy()
@@ -69,12 +70,12 @@ impl Application {
     }
 
     /// Get the application's pid.
-    pub fn get_pid(&self) -> Result<i32, &'static str> {
+    pub fn get_pid(&self) -> Result<i32, ChunkWMError> {
         unsafe { Ok((*self.get_application_ref()?).pid) }
     }
 
     /// Get the application's process serial number.
-    pub fn get_process_serial_number(&self) -> Result<ProcessSerialNumber, &'static str> {
+    pub fn get_process_serial_number(&self) -> Result<ProcessSerialNumber, ChunkWMError> {
         unsafe { Ok((*self.get_application_ref()?).process_serial_number) }
     }
 }

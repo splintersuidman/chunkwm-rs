@@ -1,5 +1,6 @@
 //! The `event` module contains types and traits for event handling.
 
+use ChunkWMError;
 use api::*;
 use application::*;
 use payload::*;
@@ -20,7 +21,7 @@ pub trait HandleEvent {
     /// Subscribe to events.
     fn subscribe() -> &'static [Subscription];
     /// Handle an `Event`.
-    fn handle(&mut self, event: Event);
+    fn handle(&mut self, event: Event) -> Result<(), ChunkWMError>;
     /// Is run when the plugin has been stopped.
     fn shutdown(&self);
 }

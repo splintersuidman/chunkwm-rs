@@ -1,6 +1,7 @@
 //! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a
 //! handle to a specific `CVar`.
 
+use ChunkWMError;
 use std::os::raw::{c_char, c_void};
 use std::ffi::{CStr, CString};
 use std::fmt::{Display, Error, Formatter};
@@ -133,7 +134,7 @@ pub struct CVar<T: FromStr + Display> {
 
 impl<T: FromStr + Display> CVar<T> {
     /// Create a new `CVar` handle without a value.
-    pub fn new(name: &'static str, api: &'static API) -> Result<Self, &'static str> {
+    pub fn new(name: &'static str, api: &'static API) -> Result<Self, ChunkWMError> {
         let value = api.get_cvar::<T>(name);
         match value {
             Ok(_) => Ok(CVar {
@@ -141,7 +142,7 @@ impl<T: FromStr + Display> CVar<T> {
                 api: api,
                 value_marker: PhantomData::default(),
             }),
-            Err(_) => Err("could not find cvar"),
+            Err(_) => Err(ChunkWMError::CVarNotFound(name)),
         }
     }
 
@@ -161,9 +162,11 @@ impl<T: FromStr + Display> CVar<T> {
     }
 
     /// Get the value of the `CVar`.
-    pub fn get_value(&mut self) -> Result<T, <T as FromStr>::Err> {
-        let value = self.api.get_cvar::<T>(self.name)?;
-        Ok(value)
+    pub fn get_value(&mut self) -> Result<T, ChunkWMError> {
+        match self.api.get_cvar::<T>(self.name) {
+            Err(_) => Err(ChunkWMError::ParseError("could not get CVar")),
+            Ok(v) => Ok(v),
+        }
     }
 }
 
@@ -231,7 +234,7 @@ impl FromStr for NumericBool {
         match s {
             "0" => Ok(NumericBool::from(false)),
             "1" => Ok(NumericBool::from(true)),
-            _ => Err("could not "),
+            _ => Err("could not convert string to NumericBool"),
         }
     }
 }
