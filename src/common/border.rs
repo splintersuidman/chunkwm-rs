@@ -1,4 +1,4 @@
-//! The border module contains a wrapper for the C methods.
+//! The `border` module contains a wrapper for the C methods that handle borders.
 
 use std::os::raw::{c_int, c_uint};
 

@@ -1,4 +1,4 @@
-//! This module contains types and traits for event handling.
+//! The `event` module contains types and traits for event handling.
 
 use api::*;
 use application::*;
@@ -51,7 +51,7 @@ pub enum Event {
     Other(String),
 }
 
-/// The `Subscription` enum is used to subscribe to `ChunkWM` events.
+/// The `Subscription` enum is used to subscribe to chunkwm events.
 // NOTE(splintah): order must be the same as the C version.
 #[repr(C)]
 pub enum Subscription {

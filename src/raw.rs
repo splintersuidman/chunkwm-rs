@@ -3,9 +3,12 @@ use std::os::raw::{c_char, c_int, c_ulong};
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
 
+/// The reference to UI elements.
 pub type AXUIElementRef = CFTypeRef;
+/// An error type. This is not often used in Rust code.
 // NOTE(splintah): sizeof(AXError) == 4, docs list signed values.
 pub type AXError = i32;
+/// The process identifier type.
 pub type PID = c_int;
 
 /// The raw observer.
@@ -46,6 +49,7 @@ pub struct RawApplication {
     pub process_serial_number: ProcessSerialNumber,
 }
 
+/// A reference to an `Application`.
 pub type ApplicationRef = *mut RawApplication;
 
 /// The raw window representation. This is used in the C/C++ plugin, and shouldn't really be
@@ -75,6 +79,7 @@ pub struct RawWindow {
     pub size: CGSize,
 }
 
+/// A reference to a `Window`.
 pub type WindowRef = *mut RawWindow;
 
 /// The raw payload representation. This is used in the C/C++ plugin, and shouldn't really be
@@ -86,4 +91,5 @@ pub struct RawPayload {
     pub message: *const c_char,
 }
 
+/// A reference to a `Payload`.
 pub type PayloadRef = *mut RawPayload;

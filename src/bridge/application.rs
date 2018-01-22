@@ -1,4 +1,4 @@
-//! This module contains the application type and its implementations.
+//! The `application` module contains the application type and its implementations.
 
 use raw::*;
 use std::ffi;

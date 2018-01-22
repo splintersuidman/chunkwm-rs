@@ -1,4 +1,4 @@
-//! This module contains the payload type and its implementations.
+//! The `payload` module contains the payload type and its implementations.
 
 use raw::*;
 use std::ffi;

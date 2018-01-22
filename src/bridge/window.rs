@@ -1,4 +1,4 @@
-//! This module contains the window type and its implementations.
+//! The `window` module contains the window type and its implementations.
 
 use application::*;
 use raw::*;
