@@ -171,6 +171,9 @@ impl<T: FromStr + Display> CVar<T> {
 /// 1 (false or true respectively).
 /// This struct allows you to create a `CVar` that is a numeric bool, and easily get its value.
 ///
+/// When a `NumericBool` is formatted using `Display` (i.e. `println!("{}", numeric_bool)`), it
+/// prints the `u8` value. To print the `bool` value, use `println!("{}", numeric_bool.value)`.
+///
 /// ## Example
 /// ```rust
 /// # use chunkwm::api::NumericBool;
