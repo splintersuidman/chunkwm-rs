@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Window` struct in crate `chunkwm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Window">
+
+    <title>chunkwm::window::Window - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Window</p><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.list_for_application">list_for_application</a><a href="#method.get_window_ref">get_window_ref</a><a href="#method.get_element">get_element</a><a href="#method.get_main_role">get_main_role</a><a href="#method.get_sub_role">get_sub_role</a><a href="#method.get_owner">get_owner</a><a href="#method.get_name">get_name</a><a href="#method.get_id">get_id</a><a href="#method.get_flags">get_flags</a><a href="#method.get_level">get_level</a><a href="#method.get_position">get_position</a><a href="#method.get_size">get_size</a><a href="#method.is_minimized">is_minimized</a><a href="#method.is_resizable">is_resizable</a><a href="#method.is_movable">is_movable</a><a href="#method.is_fullscreen">is_fullscreen</a><a href="#method.set_position">set_position</a><a href="#method.set_size">set_size</a><a href="#method.close">close</a><a href="#method.destroy">destroy</a><a href="#method.is_standard">is_standard</a><a href="#method.add_flag">add_flag</a><a href="#method.has_flag">has_flag</a><a href="#method.remove_flag">remove_flag</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a><a href="#impl-Clone">Clone</a><a href="#impl-Into%3CWindow%3E">Into&lt;Window&gt;</a><a href="#impl-From%3C%26%27a%20mut%20RawWindow%3E">From&lt;&amp;&#39;a mut RawWindow&gt;</a><a href="#impl-From%3CWindowRef%3E">From&lt;WindowRef&gt;</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>window</a></p><script>window.sidebarCurrent = {name: 'Window', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>window</a>::<wbr><a class="struct" href=''>Window</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#66' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Window(_);</pre><div class='docblock'><p>The <code>Window</code> struct.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#68-242' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.list_for_application' class="method"><span id='list_for_application.v' class='invisible'><code>pub fn <a href='#method.list_for_application' class='fnname'>list_for_application</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;application: &amp;<a class="struct" href="../../chunkwm/prelude/struct.Application.html" title="struct chunkwm::prelude::Application">Application</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a>&gt;, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#72-80' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Destroy the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.get_window_ref' class="method"><span id='get_window_ref.v' class='invisible'><code>pub unsafe fn <a href='#method.get_window_ref' class='fnname'>get_window_ref</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="type" href="../../chunkwm/prelude/type.WindowRef.html" title="type chunkwm::prelude::WindowRef">WindowRef</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#83-89' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get the raw window pointer.</p>
+</div><h4 id='method.get_element' class="method"><span id='get_element.v' class='invisible'><code>pub fn <a href='#method.get_element' class='fnname'>get_element</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="type" href="../../core_foundation_sys/base/type.CFTypeRef.html" title="type core_foundation_sys::base::CFTypeRef">CFTypeRef</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#92-94' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get element.</p>
+</div><h4 id='method.get_main_role' class="method"><span id='get_main_role.v' class='invisible'><code>pub fn <a href='#method.get_main_role' class='fnname'>get_main_role</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#97-101' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get main role.</p>
+</div><h4 id='method.get_sub_role' class="method"><span id='get_sub_role.v' class='invisible'><code>pub fn <a href='#method.get_sub_role' class='fnname'>get_sub_role</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#104-106' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get sub role.</p>
+</div><h4 id='method.get_owner' class="method"><span id='get_owner.v' class='invisible'><code>pub fn <a href='#method.get_owner' class='fnname'>get_owner</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../chunkwm/prelude/struct.Application.html" title="struct chunkwm::prelude::Application">Application</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#109-111' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get owner.</p>
+</div><h4 id='method.get_name' class="method"><span id='get_name.v' class='invisible'><code>pub fn <a href='#method.get_name' class='fnname'>get_name</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#114-120' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get name.</p>
+</div><h4 id='method.get_id' class="method"><span id='get_id.v' class='invisible'><code>pub fn <a href='#method.get_id' class='fnname'>get_id</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#123-125' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get id.</p>
+</div><h4 id='method.get_flags' class="method"><span id='get_flags.v' class='invisible'><code>pub fn <a href='#method.get_flags' class='fnname'>get_flags</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="../../chunkwm/prelude/enum.WindowFlag.html" title="enum chunkwm::prelude::WindowFlag">WindowFlag</a>&gt;, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#128-130' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get flags.</p>
+</div><h4 id='method.get_level' class="method"><span id='get_level.v' class='invisible'><code>pub fn <a href='#method.get_level' class='fnname'>get_level</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#133-135' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get level.</p>
+</div><h4 id='method.get_position' class="method"><span id='get_position.v' class='invisible'><code>pub fn <a href='#method.get_position' class='fnname'>get_position</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../core_graphics/geometry/struct.CGPoint.html" title="struct core_graphics::geometry::CGPoint">CGPoint</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#138-140' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get position.</p>
+</div><h4 id='method.get_size' class="method"><span id='get_size.v' class='invisible'><code>pub fn <a href='#method.get_size' class='fnname'>get_size</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../core_graphics/geometry/struct.CGSize.html" title="struct core_graphics::geometry::CGSize">CGSize</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#143-145' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get size.</p>
+</div><h4 id='method.is_minimized' class="method"><span id='is_minimized.v' class='invisible'><code>pub fn <a href='#method.is_minimized' class='fnname'>is_minimized</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#150-152' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether window is minimized.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.is_resizable' class="method"><span id='is_resizable.v' class='invisible'><code>pub fn <a href='#method.is_resizable' class='fnname'>is_resizable</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#157-159' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether window is resizable.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.is_movable' class="method"><span id='is_movable.v' class='invisible'><code>pub fn <a href='#method.is_movable' class='fnname'>is_movable</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#164-166' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether window is movable.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.is_fullscreen' class="method"><span id='is_fullscreen.v' class='invisible'><code>pub fn <a href='#method.is_fullscreen' class='fnname'>is_fullscreen</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#171-173' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether window is fullscreen.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.set_position' class="method"><span id='set_position.v' class='invisible'><code>pub fn <a href='#method.set_position' class='fnname'>set_position</a>(&amp;self, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#178-184' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Set the position of the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.set_size' class="method"><span id='set_size.v' class='invisible'><code>pub fn <a href='#method.set_size' class='fnname'>set_size</a>(&amp;self, width: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#189-195' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Set the size of the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.close' class="method"><span id='close.v' class='invisible'><code>pub fn <a href='#method.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#200-203' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Close the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.destroy' class="method"><span id='destroy.v' class='invisible'><code>pub fn <a href='#method.destroy' class='fnname'>destroy</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#208-211' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Destroy the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.is_standard' class="method"><span id='is_standard.v' class='invisible'><code>pub fn <a href='#method.is_standard' class='fnname'>is_standard</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#216-218' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether the window is standard.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.add_flag' class="method"><span id='add_flag.v' class='invisible'><code>pub fn <a href='#method.add_flag' class='fnname'>add_flag</a>(&amp;self, flag: <a class="enum" href="../../chunkwm/prelude/enum.WindowFlag.html" title="enum chunkwm::prelude::WindowFlag">WindowFlag</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#223-226' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Add a flag to the window.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.has_flag' class="method"><span id='has_flag.v' class='invisible'><code>pub fn <a href='#method.has_flag' class='fnname'>has_flag</a>(&amp;self, flag: <a class="enum" href="../../chunkwm/prelude/enum.WindowFlag.html" title="enum chunkwm::prelude::WindowFlag">WindowFlag</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#231-233' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Check whether the window has a flag.
+Needed features: <code>accessibility</code>.</p>
+</div><h4 id='method.remove_flag' class="method"><span id='remove_flag.v' class='invisible'><code>pub fn <a href='#method.remove_flag' class='fnname'>remove_flag</a>(&amp;self, flag: <a class="enum" href="../../chunkwm/prelude/enum.WindowFlag.html" title="enum chunkwm::prelude::WindowFlag">WindowFlag</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#238-241' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Remove a flag to from window.
+Needed features: <code>accessibility</code>.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#65' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#65' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#245-249' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#246-248' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Into%3CWindow%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a>&gt; for <a class="struct" href="../../chunkwm/struct.RawWindow.html" title="struct chunkwm::RawWindow">RawWindow</a></code><a href='#impl-Into%3CWindow%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#251-255' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#252-254' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 id='impl-From%3C%26%27a%20mut%20RawWindow%3E' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;&amp;'a mut <a class="struct" href="../../chunkwm/struct.RawWindow.html" title="struct chunkwm::RawWindow">RawWindow</a>&gt; for <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code><a href='#impl-From%3C%26%27a%20mut%20RawWindow%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#257-261' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(raw_window: &amp;mut <a class="struct" href="../../chunkwm/struct.RawWindow.html" title="struct chunkwm::RawWindow">RawWindow</a>) -&gt; <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#258-260' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 id='impl-From%3CWindowRef%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="type" href="../../chunkwm/prelude/type.WindowRef.html" title="type chunkwm::prelude::WindowRef">WindowRef</a>&gt; for <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code><a href='#impl-From%3CWindowRef%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#263-267' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-1' class="method"><span id='from.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(window_ref: <a class="type" href="../../chunkwm/prelude/type.WindowRef.html" title="type chunkwm::prelude::WindowRef">WindowRef</a>) -&gt; <a class="struct" href="../../chunkwm/prelude/struct.Window.html" title="struct chunkwm::prelude::Window">Window</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#264-266' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "chunkwm";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
