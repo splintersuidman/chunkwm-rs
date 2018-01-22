@@ -7,6 +7,8 @@ use std::fmt::{Display, Error, Formatter};
 use std::str::FromStr;
 use std::marker::PhantomData;
 
+/// The `LogLevel` defines how something should be logged for chunkwm.
+/// See the [chunkwm readme](https://github.com/koekeishiya/chunkwm#configuration).
 #[repr(C)]
 pub enum LogLevel {
     Debug = 0,
