@@ -135,6 +135,12 @@ macro_rules! create_c_bridge {
         use std::ffi;
         use std::mem::transmute;
 
+        #[repr(C)]
+        pub struct SubscriptionArray {
+            len: usize,
+            arr: *const Subscription,
+        }
+
         // Create a new handler and return it. In C/C++ a `void *` can be used.
         #[no_mangle]
         pub unsafe extern "C" fn chunkwm_rust_create_handler(api: &'static API) -> *mut $struct_ident {
@@ -158,9 +164,12 @@ macro_rules! create_c_bridge {
 
         //
         #[no_mangle]
-        pub unsafe extern "C" fn chunkwm_rust_subscribe_to_events() -> *const Subscription {
+        pub unsafe extern "C" fn chunkwm_rust_subscribe_to_events() -> SubscriptionArray {
             let subscriptions = $struct_ident::subscribe();
-            subscriptions.as_ptr()
+            SubscriptionArray {
+                len: subscriptions.len(),
+                arr: subscriptions.as_ptr(),
+            }
         }
 
         // Runs `shutdown` on the event handler.
