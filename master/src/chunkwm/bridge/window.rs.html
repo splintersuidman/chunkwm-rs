@@ -311,11 +311,9 @@
 <span id="265">265</span>
 <span id="266">266</span>
 <span id="267">267</span>
-<span id="268">268</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `window` module contains the window type and its implementations.</span>
 
-<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">application</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
@@ -385,7 +383,7 @@
     <span class="doccomment">/// Destroy the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">list_for_application</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">Application</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">list_for_application</span>(<span class="ident">application</span>: <span class="kw-2">&amp;</span><span class="ident">Application</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">window</span>: <span class="kw-2">&amp;</span>[<span class="ident">WindowRef</span>] <span class="op">=</span>
             <span class="kw">unsafe</span> { <span class="ident">window</span>::<span class="ident">window_list_for_application</span>(<span class="ident">application</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>) };
         <span class="kw">let</span> <span class="ident">window</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">WindowRef</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">window</span>.<span class="ident">to_vec</span>();
@@ -396,38 +394,38 @@
     }
 
     <span class="doccomment">/// Get the raw window pointer.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">get_window_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">WindowRef</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">get_window_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">WindowRef</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_null</span>() {
             <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="number">0</span>)
         } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">NullPointer</span>)
+            <span class="prelude-val">Err</span>(<span class="string">&quot;null pointer&quot;</span>)
         }
     }
 
     <span class="doccomment">/// Get element.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">AXUIElementRef</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">AXUIElementRef</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">element</span>) }
     }
 
     <span class="doccomment">/// Get main role.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_main_role</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_main_role</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">CFString</span>::<span class="ident">wrap_under_get_rule</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">main_role</span>).<span class="ident">to_string</span>())
         }
     }
 
     <span class="doccomment">/// Get sub role.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_sub_role</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_sub_role</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">CFString</span>::<span class="ident">wrap_under_get_rule</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">sub_role</span>).<span class="ident">to_string</span>()) }
     }
 
     <span class="doccomment">/// Get owner.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_owner</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Application</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_owner</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Application</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">Application</span>::<span class="ident">from</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">owner</span>)) }
     }
 
     <span class="doccomment">/// Get name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">ffi</span>::<span class="ident">CStr</span>::<span class="ident">from_ptr</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">name</span>)
                 .<span class="ident">to_string_lossy</span>()
@@ -436,84 +434,84 @@
     }
 
     <span class="doccomment">/// Get id.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">id</span>) }
     }
 
     <span class="doccomment">/// Get flags.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">WindowFlag</span><span class="op">&gt;</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">WindowFlag</span><span class="op">&gt;</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">WindowFlag</span>::<span class="ident">from</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">flags</span>)) }
     }
 
     <span class="doccomment">/// Get level.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_level</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_level</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">level</span>) }
     }
 
     <span class="doccomment">/// Get position.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_position</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CGPoint</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_position</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CGPoint</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">position</span>) }
     }
 
     <span class="doccomment">/// Get size.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CGSize</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CGSize</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>).<span class="ident">size</span>) }
     }
 
     <span class="doccomment">/// Check whether window is minimized.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_minimized</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_minimized</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">element</span>::<span class="ident">is_window_minimized</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>)) }
     }
 
     <span class="doccomment">/// Check whether window is resizable.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_resizable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_resizable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">element</span>::<span class="ident">is_window_resizable</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>)) }
     }
 
     <span class="doccomment">/// Check whether window is movable.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_movable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_movable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">element</span>::<span class="ident">is_window_movable</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>)) }
     }
 
     <span class="doccomment">/// Check whether window is fullscreen.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fullscreen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fullscreen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">element</span>::<span class="ident">is_window_fullscreen</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>)) }
     }
 
     <span class="doccomment">/// Set the position of the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_position</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x</span>: <span class="ident">f32</span>, <span class="ident">y</span>: <span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_position</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x</span>: <span class="ident">f32</span>, <span class="ident">y</span>: <span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">element</span>::<span class="ident">set_window_position</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>, <span class="ident">x</span>, <span class="ident">y</span>) } {
             <span class="prelude-val">Ok</span>(())
         } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">Internal</span>(<span class="string">&quot;could not run set_position successfully&quot;</span>))
+            <span class="prelude-val">Err</span>(<span class="string">&quot;could not run set_position successfully&quot;</span>)
         }
     }
 
     <span class="doccomment">/// Set the size of the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">f32</span>, <span class="ident">height</span>: <span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">f32</span>, <span class="ident">height</span>: <span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">element</span>::<span class="ident">set_window_size</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>, <span class="ident">width</span>, <span class="ident">height</span>) } {
             <span class="prelude-val">Ok</span>(())
         } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">Internal</span>(<span class="string">&quot;could not run set_size successfully&quot;</span>))
+            <span class="prelude-val">Err</span>(<span class="string">&quot;could not run set_size successfully&quot;</span>)
         }
     }
 
     <span class="doccomment">/// Close the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">element</span>::<span class="ident">close_window</span>(<span class="self">self</span>.<span class="ident">get_element</span>()<span class="question-mark">?</span>) };
         <span class="prelude-val">Ok</span>(())
     }
@@ -521,7 +519,7 @@
     <span class="doccomment">/// Destroy the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">window</span>::<span class="ident">destroy_window</span>(<span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>) };
         <span class="prelude-val">Ok</span>(())
     }
@@ -529,14 +527,14 @@
     <span class="doccomment">/// Check whether the window is standard.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_standard</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_standard</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">window</span>::<span class="ident">is_window_standard</span>(<span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>)) }
     }
 
     <span class="doccomment">/// Add a flag to the window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">window</span>::<span class="ident">add_flags</span>(<span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>, <span class="ident">flag</span> <span class="kw">as</span> <span class="ident">u32</span>) };
         <span class="prelude-val">Ok</span>(())
     }
@@ -544,14 +542,14 @@
     <span class="doccomment">/// Check whether the window has a flag.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>(<span class="ident">window</span>::<span class="ident">has_flags</span>(<span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>, <span class="ident">flag</span> <span class="kw">as</span> <span class="ident">u32</span>)) }
     }
 
     <span class="doccomment">/// Remove a flag to from window.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">remove_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">remove_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">WindowFlag</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">window</span>::<span class="ident">clear_flags</span>(<span class="self">self</span>.<span class="ident">get_window_ref</span>()<span class="question-mark">?</span>, <span class="ident">flag</span> <span class="kw">as</span> <span class="ident">u32</span>) };
         <span class="prelude-val">Ok</span>(())
     }

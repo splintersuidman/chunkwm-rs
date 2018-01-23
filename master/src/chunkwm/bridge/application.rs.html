@@ -142,11 +142,9 @@
 <span id="96">96</span>
 <span id="97">97</span>
 <span id="98">98</span>
-<span id="99">99</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `application` module contains the application type and its implementations.</span>
 
-<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
@@ -160,7 +158,7 @@
     <span class="doccomment">/// Get the focused application.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_focused</span>() <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Application</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_focused</span>() <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Application</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">application</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">application</span>::<span class="ident">get_focused_application</span>() };
         <span class="prelude-val">Ok</span>(<span class="ident">application</span>.<span class="ident">into</span>())
     }
@@ -169,7 +167,7 @@
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="comment">// TODO(splintah): ProcessFlags type?</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_processes</span>() <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_processes</span>() <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">applications</span>: <span class="kw-2">&amp;</span>[<span class="ident">ApplicationRef</span>] <span class="op">=</span>
             <span class="kw">unsafe</span> { <span class="ident">application</span>::<span class="ident">get_running_processes</span>(<span class="number">0</span>) };
         <span class="kw">let</span> <span class="ident">applications</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ApplicationRef</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">applications</span>.<span class="ident">to_vec</span>();
@@ -180,34 +178,34 @@
     }
 
     <span class="doccomment">/// Get the raw window pointer.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">get_application_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ApplicationRef</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">get_application_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ApplicationRef</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_null</span>() {
             <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="number">0</span>)
         } <span class="kw">else</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">NullPointer</span>)
+            <span class="prelude-val">Err</span>(<span class="string">&quot;null pointer&quot;</span>)
         }
     }
 
     <span class="doccomment">/// Destroy the application.</span>
     <span class="doccomment">/// Needed features: `accessibility`.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">application</span>::<span class="ident">destroy_application</span>(<span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>) };
         <span class="prelude-val">Ok</span>(())
     }
 
     <span class="doccomment">/// Get the application&#39;s element.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">AXUIElementRef</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">AXUIElementRef</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>).<span class="ident">element</span>) }
     }
 
     <span class="doccomment">/// Get the application&#39;s observer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_observer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RawObserver</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_observer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RawObserver</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>).<span class="ident">observer</span>) }
     }
 
     <span class="doccomment">/// Get the application&#39;s name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">ffi</span>::<span class="ident">CStr</span>::<span class="ident">from_ptr</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>).<span class="ident">name</span>)
                 .<span class="ident">to_string_lossy</span>()
@@ -216,12 +214,12 @@
     }
 
     <span class="doccomment">/// Get the application&#39;s pid.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_pid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_pid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">i32</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>).<span class="ident">pid</span>) }
     }
 
     <span class="doccomment">/// Get the application&#39;s process serial number.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_process_serial_number</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ProcessSerialNumber</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_process_serial_number</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ProcessSerialNumber</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="prelude-val">Ok</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">get_application_ref</span>()<span class="question-mark">?</span>).<span class="ident">process_serial_number</span>) }
     }
 }
