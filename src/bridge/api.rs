@@ -108,12 +108,14 @@ impl API {
 ///         Plugin { global_desktop_mode, bsp_spawn_left }
 ///     }
 ///
-///     fn handle(&mut self, _: Event) {
+///     fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> {
 ///         self.global_desktop_mode.set_value(&"bsp".to_owned());
 ///         assert_eq!(self.global_desktop_mode.get_value().unwrap(), "bsp".to_owned());
 ///
 ///         self.bsp_spawn_left.set_value(&NumericBool::from(false));
 ///         assert_eq!(self.bsp_spawn_left.get_value().unwrap().value, false);
+///
+///         Ok(())
 ///     }
 ///     // some methods omitted
 ///     # subscribe!();

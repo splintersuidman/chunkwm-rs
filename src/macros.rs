@@ -7,7 +7,7 @@
 /// pub struct Plugin;
 /// impl HandleEvent for Plugin {
 ///     # fn new(_: &'static API) -> Self { Plugin }
-///     # fn handle(&mut self, _: Event) {}
+///     # fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> { Ok(()) }
 ///     # fn shutdown(&self) {}
 ///     # subscribe_all!();
 ///     # version!("");
@@ -32,7 +32,7 @@ macro_rules! name {
 /// pub struct Plugin;
 /// impl HandleEvent for Plugin {
 ///     # fn new(_: &'static API) -> Self { Plugin }
-///     # fn handle(&mut self, _: Event) {}
+///     # fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> { Ok(()) }
 ///     # fn shutdown(&self) {}
 ///     # subscribe_all!();
 ///     # name!("");
@@ -57,7 +57,7 @@ macro_rules! version {
 /// pub struct Plugin;
 /// impl HandleEvent for Plugin {
 ///     # fn new(_: &'static API) -> Self { Plugin }
-///     # fn handle(&mut self, _: Event) {}
+///     # fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> { Ok(()) }
 ///     # fn shutdown(&self) {}
 ///     # name!("");
 ///     # version!("");
@@ -88,7 +88,7 @@ macro_rules! subscribe {
 /// pub struct Plugin;
 /// impl HandleEvent for Plugin {
 ///     # fn new(_: &'static API) -> Self { Plugin }
-///     # fn handle(&mut self, _: Event) {}
+///     # fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> { Ok(()) }
 ///     # fn shutdown(&self) {}
 ///     # name!("");
 ///     # version!("");
@@ -118,7 +118,7 @@ macro_rules! subscribe_all {
 /// impl HandleEvent for Plugin {
 ///     // methods omitted
 ///     # fn new(_: &'static API) -> Self { Plugin }
-///     # fn handle(&mut self, _: Event) {}
+///     # fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> { Ok(()) }
 ///     # fn shutdown(&self) {}
 ///     # name!("");
 ///     # version!("");
