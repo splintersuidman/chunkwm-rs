@@ -72,7 +72,7 @@ impl Window {
     #[cfg(feature = "accessibility")]
     pub fn list_for_application(application: &Application) -> Result<Vec<Window>, ChunkWMError> {
         let window: &[WindowRef] =
-            unsafe { window::window_list_for_application(application.get_application_ref()?) };
+            unsafe { window::window_list_for_application(application.application_ref()?) };
         let window: Vec<WindowRef> = window.to_vec();
         Ok(window
             .iter()
@@ -81,7 +81,7 @@ impl Window {
     }
 
     /// Get the raw window pointer.
-    pub unsafe fn get_window_ref(&self) -> Result<WindowRef, ChunkWMError> {
+    pub unsafe fn window_ref(&self) -> Result<WindowRef, ChunkWMError> {
         if !self.0.is_null() {
             Ok(self.0)
         } else {
@@ -90,94 +90,94 @@ impl Window {
     }
 
     /// Get element.
-    pub fn get_element(&self) -> Result<AXUIElementRef, ChunkWMError> {
-        unsafe { Ok((*self.get_window_ref()?).element) }
+    pub fn element(&self) -> Result<AXUIElementRef, ChunkWMError> {
+        unsafe { Ok((*self.window_ref()?).element) }
     }
 
     /// Get main role.
-    pub fn get_main_role(&self) -> Result<String, ChunkWMError> {
+    pub fn main_role(&self) -> Result<String, ChunkWMError> {
         unsafe {
-            Ok(CFString::wrap_under_get_rule((*self.get_window_ref()?).main_role).to_string())
+            Ok(CFString::wrap_under_get_rule((*self.window_ref()?).main_role).to_string())
         }
     }
 
     /// Get sub role.
-    pub fn get_sub_role(&self) -> Result<String, ChunkWMError> {
-        unsafe { Ok(CFString::wrap_under_get_rule((*self.get_window_ref()?).sub_role).to_string()) }
+    pub fn sub_role(&self) -> Result<String, ChunkWMError> {
+        unsafe { Ok(CFString::wrap_under_get_rule((*self.window_ref()?).sub_role).to_string()) }
     }
 
     /// Get owner.
-    pub fn get_owner(&self) -> Result<Application, ChunkWMError> {
-        unsafe { Ok(Application::from((*self.get_window_ref()?).owner)) }
+    pub fn owner(&self) -> Result<Application, ChunkWMError> {
+        unsafe { Ok(Application::from((*self.window_ref()?).owner)) }
     }
 
     /// Get name.
-    pub fn get_name(&self) -> Result<String, ChunkWMError> {
+    pub fn name(&self) -> Result<String, ChunkWMError> {
         unsafe {
-            Ok(ffi::CStr::from_ptr((*self.get_window_ref()?).name)
+            Ok(ffi::CStr::from_ptr((*self.window_ref()?).name)
                 .to_string_lossy()
                 .into_owned())
         }
     }
 
     /// Get id.
-    pub fn get_id(&self) -> Result<u32, ChunkWMError> {
-        unsafe { Ok((*self.get_window_ref()?).id) }
+    pub fn id(&self) -> Result<u32, ChunkWMError> {
+        unsafe { Ok((*self.window_ref()?).id) }
     }
 
     /// Get flags.
-    pub fn get_flags(&self) -> Result<Vec<WindowFlag>, ChunkWMError> {
-        unsafe { Ok(WindowFlag::from((*self.get_window_ref()?).flags)) }
+    pub fn flags(&self) -> Result<Vec<WindowFlag>, ChunkWMError> {
+        unsafe { Ok(WindowFlag::from((*self.window_ref()?).flags)) }
     }
 
     /// Get level.
-    pub fn get_level(&self) -> Result<u32, ChunkWMError> {
-        unsafe { Ok((*self.get_window_ref()?).level) }
+    pub fn level(&self) -> Result<u32, ChunkWMError> {
+        unsafe { Ok((*self.window_ref()?).level) }
     }
 
     /// Get position.
-    pub fn get_position(&self) -> Result<CGPoint, ChunkWMError> {
-        unsafe { Ok((*self.get_window_ref()?).position) }
+    pub fn position(&self) -> Result<CGPoint, ChunkWMError> {
+        unsafe { Ok((*self.window_ref()?).position) }
     }
 
     /// Get size.
-    pub fn get_size(&self) -> Result<CGSize, ChunkWMError> {
-        unsafe { Ok((*self.get_window_ref()?).size) }
+    pub fn size(&self) -> Result<CGSize, ChunkWMError> {
+        unsafe { Ok((*self.window_ref()?).size) }
     }
 
     /// Check whether window is minimized.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_minimized(&self) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(element::is_window_minimized(self.get_element()?)) }
+        unsafe { Ok(element::is_window_minimized(self.element()?)) }
     }
 
     /// Check whether window is resizable.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_resizable(&self) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(element::is_window_resizable(self.get_element()?)) }
+        unsafe { Ok(element::is_window_resizable(self.element()?)) }
     }
 
     /// Check whether window is movable.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_movable(&self) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(element::is_window_movable(self.get_element()?)) }
+        unsafe { Ok(element::is_window_movable(self.element()?)) }
     }
 
     /// Check whether window is fullscreen.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_fullscreen(&self) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(element::is_window_fullscreen(self.get_element()?)) }
+        unsafe { Ok(element::is_window_fullscreen(self.element()?)) }
     }
 
     /// Set the position of the window.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn set_position(&self, x: f32, y: f32) -> Result<(), ChunkWMError> {
-        if unsafe { element::set_window_position(self.get_element()?, x, y) } {
+        if unsafe { element::set_window_position(self.element()?, x, y) } {
             Ok(())
         } else {
             Err(ChunkWMError::Internal("could not run set_position successfully"))
@@ -188,7 +188,7 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn set_size(&self, width: f32, height: f32) -> Result<(), ChunkWMError> {
-        if unsafe { element::set_window_size(self.get_element()?, width, height) } {
+        if unsafe { element::set_window_size(self.element()?, width, height) } {
             Ok(())
         } else {
             Err(ChunkWMError::Internal("could not run set_size successfully"))
@@ -199,7 +199,7 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn close(&self) -> Result<(), ChunkWMError> {
-        unsafe { element::close_window(self.get_element()?) };
+        unsafe { element::close_window(self.element()?) };
         Ok(())
     }
 
@@ -207,7 +207,7 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn destroy(&self) -> Result<(), ChunkWMError> {
-        unsafe { window::destroy_window(self.get_window_ref()?) };
+        unsafe { window::destroy_window(self.window_ref()?) };
         Ok(())
     }
 
@@ -215,14 +215,14 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn is_standard(&self) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(window::is_window_standard(self.get_window_ref()?)) }
+        unsafe { Ok(window::is_window_standard(self.window_ref()?)) }
     }
 
     /// Add a flag to the window.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn add_flag(&self, flag: WindowFlag) -> Result<(), ChunkWMError> {
-        unsafe { window::add_flags(self.get_window_ref()?, flag as u32) };
+        unsafe { window::add_flags(self.window_ref()?, flag as u32) };
         Ok(())
     }
 
@@ -230,14 +230,14 @@ impl Window {
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn has_flag(&self, flag: WindowFlag) -> Result<bool, ChunkWMError> {
-        unsafe { Ok(window::has_flags(self.get_window_ref()?, flag as u32)) }
+        unsafe { Ok(window::has_flags(self.window_ref()?, flag as u32)) }
     }
 
     /// Remove a flag to from window.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn remove_flag(&self, flag: WindowFlag) -> Result<(), ChunkWMError> {
-        unsafe { window::clear_flags(self.get_window_ref()?, flag as u32) };
+        unsafe { window::clear_flags(self.window_ref()?, flag as u32) };
         Ok(())
     }
 }

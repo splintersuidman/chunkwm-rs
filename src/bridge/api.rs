@@ -110,10 +110,10 @@ impl API {
 ///
 ///     fn handle(&mut self, _: Event) -> Result<(), ChunkWMError> {
 ///         self.global_desktop_mode.set_value(&"bsp".to_owned());
-///         assert_eq!(self.global_desktop_mode.get_value().unwrap(), "bsp".to_owned());
+///         assert_eq!(self.global_desktop_mode.value().unwrap(), "bsp".to_owned());
 ///
 ///         self.bsp_spawn_left.set_value(&NumericBool::from(false));
-///         assert_eq!(self.bsp_spawn_left.get_value().unwrap().value, false);
+///         assert_eq!(self.bsp_spawn_left.value().unwrap().value, false);
 ///
 ///         Ok(())
 ///     }
@@ -130,7 +130,7 @@ pub struct CVar<T: FromStr + Display> {
     pub name: &'static str,
     /// The reference to the api.
     api: &'static API,
-    // `_value` is needed for the `T` type.
+    /// The marker to allow for generics.
     value_marker: PhantomData<T>,
 }
 
@@ -164,7 +164,7 @@ impl<T: FromStr + Display> CVar<T> {
     }
 
     /// Get the value of the `CVar`.
-    pub fn get_value(&mut self) -> Result<T, ChunkWMError> {
+    pub fn value(&mut self) -> Result<T, ChunkWMError> {
         match self.api.get_cvar::<T>(self.name) {
             Err(_) => Err(ChunkWMError::ParseError("could not get CVar")),
             Ok(v) => Ok(v),
