@@ -45,3 +45,9 @@ impl Into<Payload> for RawPayload {
         Payload(&mut self)
     }
 }
+
+impl From<PayloadRef> for Payload {
+    fn from(payload_ref: PayloadRef) -> Payload {
+        Payload(payload_ref)
+    }
+}

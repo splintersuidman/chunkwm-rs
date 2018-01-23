@@ -184,7 +184,7 @@ macro_rules! create_c_bridge {
         pub unsafe extern "C" fn chunkwm_rust_send_event_with_application(
             ptr: *mut $struct_ident,
             event: *const c_char,
-            application: RawApplication,
+            application: ApplicationRef,
         ) {
             let _handler = &mut *ptr;
             let application: Box<Application> = Box::new(application.into());
@@ -227,7 +227,7 @@ macro_rules! create_c_bridge {
         pub unsafe extern "C" fn chunkwm_rust_send_event_with_window(
             ptr: *mut $struct_ident,
             event: *const c_char,
-            window: RawWindow,
+            window: WindowRef,
         ) {
             let _handler = &mut *ptr;
             let window: Box<Window> = Box::new(window.into());
@@ -311,7 +311,7 @@ macro_rules! create_c_bridge {
         #[no_mangle]
         pub unsafe extern "C" fn chunkwm_rust_send_event_with_daemon_command(
             ptr: *mut $struct_ident,
-            payload: RawPayload,
+            payload: PayloadRef,
         ) {
             let _handler = &mut *ptr;
             let payload: Payload = payload.into();
