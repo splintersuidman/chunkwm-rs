@@ -41,6 +41,7 @@ pub enum Event {
     WindowResized(Box<Window>),
     WindowMinimized(Box<Window>),
     WindowDeminimized(Box<Window>),
+    WindowTitleChanged(Box<Window>),
     // TODO(splintah): add WindowTitleChanged.
     DisplayAdded(DisplayID),
     DisplayRemoved(DisplayID),

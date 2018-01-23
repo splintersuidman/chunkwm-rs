@@ -262,6 +262,10 @@ macro_rules! create_c_bridge {
                     _handler.handle(Event::WindowDeminimized(window))
                         .unwrap_or_else(|e| eprintln!("{}", e))
                 }
+                "chunkwm_export_window_title_changed" => {
+                    _handler.handle(Event::WindowTitleChanged(window))
+                        .unwrap_or_else(|e| eprintln!("{}", e))
+                }
                 _ => {
                     _handler.handle(Event::Other(event))
                         .unwrap_or_else(|e| eprintln!("{}", e))
