@@ -154,9 +154,11 @@
 <span id="108">108</span>
 <span id="109">109</span>
 <span id="110">110</span>
+<span id="111">111</span>
 </pre><pre class="rust ">
-<span class="doccomment">//! This module contains types and traits for event handling.</span>
+<span class="doccomment">//! The `event` module contains types and traits for event handling.</span>
 
+<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">api</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">application</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">payload</span>::<span class="kw-2">*</span>;
@@ -177,7 +179,7 @@
     <span class="doccomment">/// Subscribe to events.</span>
     <span class="kw">fn</span> <span class="ident">subscribe</span>() <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">Subscription</span>];
     <span class="doccomment">/// Handle an `Event`.</span>
-    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">event</span>: <span class="ident">Event</span>);
+    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">event</span>: <span class="ident">Event</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span>;
     <span class="doccomment">/// Is run when the plugin has been stopped.</span>
     <span class="kw">fn</span> <span class="ident">shutdown</span>(<span class="kw-2">&amp;</span><span class="self">self</span>);
 }
@@ -208,7 +210,7 @@
     <span class="ident">Other</span>(<span class="ident">String</span>),
 }
 
-<span class="doccomment">/// The `Subscription` enum is used to subscribe to `ChunkWM` events.</span>
+<span class="doccomment">/// The `Subscription` enum is used to subscribe to chunkwm events.</span>
 <span class="comment">// NOTE(splintah): order must be the same as the C version.</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Subscription</span> {

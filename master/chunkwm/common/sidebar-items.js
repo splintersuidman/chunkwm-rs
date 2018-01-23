@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["accessibility","The `common` module contains functions from the `ChunkWM` API."],["border","The border module contains a wrapper for the C methods."]]});
+initSidebarItems({"mod":[["accessibility","The `accessibility` module contains functions that do something with applications, windows, et cetera."],["border","The `border` module contains a wrapper for the C methods that handle borders."]]});

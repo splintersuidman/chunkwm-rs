@@ -133,15 +133,24 @@
 <span id="87">87</span>
 <span id="88">88</span>
 <span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_int</span>, <span class="ident">c_ulong</span>};
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">base</span>::<span class="ident">CFTypeRef</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFStringRef</span>;
 
+<span class="doccomment">/// The reference to UI elements.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AXUIElementRef</span> <span class="op">=</span> <span class="ident">CFTypeRef</span>;
+<span class="doccomment">/// An error type. This is not often used in Rust code.</span>
 <span class="comment">// NOTE(splintah): sizeof(AXError) == 4, docs list signed values.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AXError</span> <span class="op">=</span> <span class="ident">i32</span>;
+<span class="doccomment">/// The process identifier type.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PID</span> <span class="op">=</span> <span class="ident">c_int</span>;
 
 <span class="doccomment">/// The raw observer.</span>
@@ -182,6 +191,7 @@
     <span class="kw">pub</span> <span class="ident">process_serial_number</span>: <span class="ident">ProcessSerialNumber</span>,
 }
 
+<span class="doccomment">/// A reference to an `Application`.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ApplicationRef</span> <span class="op">=</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">RawApplication</span>;
 
 <span class="doccomment">/// The raw window representation. This is used in the C/C++ plugin, and shouldn&#39;t really be</span>
@@ -211,6 +221,7 @@
     <span class="kw">pub</span> <span class="ident">size</span>: <span class="ident">CGSize</span>,
 }
 
+<span class="doccomment">/// A reference to a `Window`.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">WindowRef</span> <span class="op">=</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">RawWindow</span>;
 
 <span class="doccomment">/// The raw payload representation. This is used in the C/C++ plugin, and shouldn&#39;t really be</span>
@@ -222,6 +233,7 @@
     <span class="kw">pub</span> <span class="ident">message</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
 }
 
+<span class="doccomment">/// A reference to a `Payload`.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PayloadRef</span> <span class="op">=</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">RawPayload</span>;
 </pre>
 </section>

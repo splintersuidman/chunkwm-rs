@@ -44,11 +44,23 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">1</span>
-<span id="2">2</span>
-<span id="3">3</span>
-<span id="4">4</span>
+    <section id='main' class="content"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
 </pre><pre class="rust ">
+<span class="doccomment">//! The `common` module contains some functions chunkwm contains for working with applications,</span>
+<span class="doccomment">//! windows, borders, et cetera.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! **Warning**: these functions are `unsafe`, to use a safe(r) wrapper, use the methods defined on</span>
+<span class="doccomment">//! `Application` and `Window`.</span>
+
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">accessibility</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;border&quot;</span>)]</span>
