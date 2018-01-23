@@ -379,15 +379,6 @@
 <span id="333">333</span>
 <span id="334">334</span>
 <span id="335">335</span>
-<span id="336">336</span>
-<span id="337">337</span>
-<span id="338">338</span>
-<span id="339">339</span>
-<span id="340">340</span>
-<span id="341">341</span>
-<span id="342">342</span>
-<span id="343">343</span>
-<span id="344">344</span>
 </pre><pre class="rust ">
 <span class="doccomment">/// A macro to specify the plugin&#39;s name.</span>
 <span class="doccomment">///</span>
@@ -526,12 +517,6 @@
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>;
 
-        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-        <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SubscriptionArray</span> {
-            <span class="ident">len</span>: <span class="ident">usize</span>,
-            <span class="ident">arr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span>,
-        }
-
         <span class="comment">// Create a new handler and return it. In C/C++ a `void *` can be used.</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
         <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_create_handler</span>(<span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span> {
@@ -555,12 +540,9 @@
 
         <span class="comment">//</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
-        <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_subscribe_to_events</span>() <span class="op">-&gt;</span> <span class="ident">SubscriptionArray</span> {
+        <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_subscribe_to_events</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span> {
             <span class="kw">let</span> <span class="ident">subscriptions</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>::<span class="ident">subscribe</span>();
-            <span class="ident">SubscriptionArray</span> {
-                <span class="ident">len</span>: <span class="ident">subscriptions</span>.<span class="ident">len</span>(),
-                <span class="ident">arr</span>: <span class="ident">subscriptions</span>.<span class="ident">as_ptr</span>(),
-            }
+            <span class="ident">subscriptions</span>.<span class="ident">as_ptr</span>()
         }
 
         <span class="comment">// Runs `shutdown` on the event handler.</span>
