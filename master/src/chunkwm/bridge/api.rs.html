@@ -276,16 +276,27 @@
 <span id="230">230</span>
 <span id="231">231</span>
 <span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a</span>
 <span class="doccomment">//! handle to a specific `CVar`.</span>
 
+<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_void</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::{<span class="ident">CStr</span>, <span class="ident">CString</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>::{<span class="ident">Display</span>, <span class="ident">Error</span>, <span class="ident">Formatter</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">FromStr</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>;
 
+<span class="doccomment">/// The `LogLevel` defines how something should be logged for chunkwm.</span>
+<span class="doccomment">/// See the [chunkwm readme](https://github.com/koekeishiya/chunkwm#configuration).</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">LogLevel</span> {
     <span class="ident">Debug</span> <span class="op">=</span> <span class="number">0</span>,
@@ -410,7 +421,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromStr</span> <span class="op">+</span> <span class="ident">Display</span><span class="op">&gt;</span> <span class="ident">CVar</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Create a new `CVar` handle without a value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">api</span>.<span class="ident">get_cvar</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">name</span>);
         <span class="kw">match</span> <span class="ident">value</span> {
             <span class="prelude-val">Ok</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">CVar</span> {
@@ -418,7 +429,7 @@
                 <span class="ident">api</span>: <span class="ident">api</span>,
                 <span class="ident">value_marker</span>: <span class="ident">PhantomData</span>::<span class="ident">default</span>(),
             }),
-            <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="string">&quot;could not find cvar&quot;</span>),
+            <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">CVarNotFound</span>(<span class="ident">name</span>)),
         }
     }
 
@@ -438,15 +449,20 @@
     }
 
     <span class="doccomment">/// Get the value of the `CVar`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_value</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">FromStr</span><span class="op">&gt;</span>::<span class="prelude-val">Err</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">api</span>.<span class="ident">get_cvar</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">name</span>)<span class="question-mark">?</span>;
-        <span class="prelude-val">Ok</span>(<span class="ident">value</span>)
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_value</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">api</span>.<span class="ident">get_cvar</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">name</span>) {
+            <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">ParseError</span>(<span class="string">&quot;could not get CVar&quot;</span>)),
+            <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">v</span>),
+        }
     }
 }
 
 <span class="doccomment">/// The `NumericBool` is often used in a chunkwm config. It is a boolean type that is either 0 or</span>
 <span class="doccomment">/// 1 (false or true respectively).</span>
 <span class="doccomment">/// This struct allows you to create a `CVar` that is a numeric bool, and easily get its value.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// When a `NumericBool` is formatted using `Display` (i.e. `println!(&quot;{}&quot;, numeric_bool)`), it</span>
+<span class="doccomment">/// prints the `u8` value. To print the `bool` value, use `println!(&quot;{}&quot;, numeric_bool.value)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Example</span>
 <span class="doccomment">/// ```rust</span>
@@ -505,7 +521,7 @@
         <span class="kw">match</span> <span class="ident">s</span> {
             <span class="string">&quot;0&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">NumericBool</span>::<span class="ident">from</span>(<span class="bool-val">false</span>)),
             <span class="string">&quot;1&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">NumericBool</span>::<span class="ident">from</span>(<span class="bool-val">true</span>)),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="string">&quot;could not &quot;</span>),
+            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="string">&quot;could not convert string to NumericBool&quot;</span>),
         }
     }
 }
