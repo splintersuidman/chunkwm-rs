@@ -17,8 +17,9 @@ fn main() {
             .warnings(false)
             .flag("-objc")
             .flag("-Wno-deprecated-declarations")
-            .file("./chunkwm-lib/accessibility/element.cpp")
             .file("./chunkwm-lib/accessibility/application.mm")
+            .file("./chunkwm-lib/accessibility/display.mm")
+            .file("./chunkwm-lib/accessibility/element.cpp")
             .file("./chunkwm-lib/accessibility/window.cpp")
             .compile("accessibility");
     }

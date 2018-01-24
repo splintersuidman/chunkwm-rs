@@ -1,7 +1,9 @@
 use core_graphics::geometry::{CGPoint, CGSize};
-use std::os::raw::{c_char, c_int, c_ulong};
+use core_graphics::display::CGDirectDisplayID;
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
+use std::os::raw::{c_char, c_int, c_uint, c_ulong, c_float};
+use display::SpaceType;
 
 /// The reference to UI elements.
 pub type AXUIElementRef = CFTypeRef;
@@ -49,7 +51,7 @@ pub struct RawApplication {
     pub process_serial_number: ProcessSerialNumber,
 }
 
-/// A reference to an `Application`.
+/// A reference to an `RawApplication`.
 pub type ApplicationRef = *mut RawApplication;
 
 /// The raw window representation. This is used in the C/C++ plugin, and shouldn't really be
@@ -79,7 +81,7 @@ pub struct RawWindow {
     pub size: CGSize,
 }
 
-/// A reference to a `Window`.
+/// A reference to a `RawWindow`.
 pub type WindowRef = *mut RawWindow;
 
 /// The raw payload representation. This is used in the C/C++ plugin, and shouldn't really be
@@ -91,5 +93,35 @@ pub struct RawPayload {
     pub message: *const c_char,
 }
 
-/// A reference to a `Payload`.
+/// A reference to a `RawPayload`.
 pub type PayloadRef = *mut RawPayload;
+
+
+/// The raw `Display`.
+#[repr(C)]
+pub struct RawDisplay {
+	pub display_ref: CFStringRef,
+	pub id: CGDirectDisplayID,
+	pub arrangement: c_uint,
+	pub x: c_float,
+	pub y: c_float,
+	pub width: c_float,
+	pub height: c_float,
+}
+
+/// A reference to a `RawDisplay`.
+pub type DisplayRef = *mut RawDisplay;
+
+pub type CGSSpaceID = c_int;
+pub type CGSSpaceType = SpaceType;
+
+/// The raw `Space`.
+#[repr(C)]
+pub struct RawSpace {
+	pub space_ref: CFStringRef,
+	pub id: CGSSpaceID,
+	pub space_type: CGSSpaceType,
+}
+
+/// A reference to a `RawSpace`.
+pub type SpaceRef = *mut RawSpace;
