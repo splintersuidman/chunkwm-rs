@@ -407,10 +407,10 @@
 <span class="doccomment">///</span>
 <span class="doccomment">///     fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; {</span>
 <span class="doccomment">///         self.global_desktop_mode.set_value(&amp;&quot;bsp&quot;.to_owned());</span>
-<span class="doccomment">///         assert_eq!(self.global_desktop_mode.get_value().unwrap(), &quot;bsp&quot;.to_owned());</span>
+<span class="doccomment">///         assert_eq!(self.global_desktop_mode.value().unwrap(), &quot;bsp&quot;.to_owned());</span>
 <span class="doccomment">///</span>
 <span class="doccomment">///         self.bsp_spawn_left.set_value(&amp;NumericBool::from(false));</span>
-<span class="doccomment">///         assert_eq!(self.bsp_spawn_left.get_value().unwrap().value, false);</span>
+<span class="doccomment">///         assert_eq!(self.bsp_spawn_left.value().unwrap().value, false);</span>
 <span class="doccomment">///</span>
 <span class="doccomment">///         Ok(())</span>
 <span class="doccomment">///     }</span>
@@ -427,7 +427,7 @@
     <span class="kw">pub</span> <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
     <span class="doccomment">/// The reference to the api.</span>
     <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>,
-    <span class="comment">// `_value` is needed for the `T` type.</span>
+    <span class="doccomment">/// The marker to allow for generics.</span>
     <span class="ident">value_marker</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
 }
 
@@ -461,7 +461,7 @@
     }
 
     <span class="doccomment">/// Get the value of the `CVar`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_value</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">api</span>.<span class="ident">get_cvar</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">name</span>) {
             <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ChunkWMError</span>::<span class="ident">ParseError</span>(<span class="string">&quot;could not get CVar&quot;</span>)),
             <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">v</span>),
