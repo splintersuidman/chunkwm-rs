@@ -143,7 +143,9 @@ macro_rules! create_c_bridge {
 
         // Create a new handler and return it. In C/C++ a `void *` can be used.
         #[no_mangle]
-        pub unsafe extern "C" fn chunkwm_rust_create_handler(api: &'static API) -> *mut $struct_ident {
+        pub unsafe extern "C" fn chunkwm_rust_create_handler(
+            api: &'static API
+        ) -> *mut $struct_ident {
             let _handler = transmute(Box::new($struct_ident::new(&api)));
             _handler
         }
@@ -180,78 +182,75 @@ macro_rules! create_c_bridge {
         }
 
         #[no_mangle]
-        pub unsafe extern "C" fn chunkwm_rust_send_event(handler_ptr: *mut $struct_ident, event: *const c_char, data: *mut c_void) -> bool {
+        pub unsafe extern "C" fn chunkwm_rust_send_event(
+            handler_ptr: *mut $struct_ident,
+            event: *const c_char,
+            data: *mut c_void,
+        ) -> bool {
             let _handler = &mut *handler_ptr;
             let event = ffi::CStr::from_ptr(event).to_string_lossy().into_owned();
 
-            let handled: Result<(), ChunkWMError> = match event.as_str() {
-                "chunkwm_export_application_launched" => {
-                    _handler.handle(Event::ApplicationLaunched(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_application_terminated" => {
-                    _handler.handle(Event::ApplicationTerminated(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_application_activated" => {
-                    _handler.handle(Event::ApplicationActivated(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_application_deactivated" => {
-                    _handler.handle(Event::ApplicationDeactivated(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_application_hidden" => {
-                    _handler.handle(Event::ApplicationHidden(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_application_unhidden" => {
-                    _handler.handle(Event::ApplicationUnhidden(Box::new((data as ApplicationRef).into())))
-                }
-                "chunkwm_export_window_created" => {
-                    _handler.handle(Event::WindowCreated(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_destroyed" => {
-                    _handler.handle(Event::WindowDestroyed(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_focused" => {
-                    _handler.handle(Event::WindowFocused(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_moved" => {
-                    _handler.handle(Event::WindowMoved(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_resized" => {
-                    _handler.handle(Event::WindowResized(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_minimized" => {
-                    _handler.handle(Event::WindowMinimized(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_deminimized" => {
-                    _handler.handle(Event::WindowDeminimized(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_window_title_changed" => {
-                    _handler.handle(Event::WindowTitleChanged(Box::new((data as WindowRef).into())))
-                }
-                "chunkwm_export_display_added" => {
-                    _handler.handle(Event::DisplayAdded(*(data as *mut DisplayID)))
-                }
-                "chunkwm_export_display_removed" => {
-                    _handler.handle(Event::DisplayRemoved(*(data as *mut DisplayID)))
-                }
-                "chunkwm_export_display_moved" => {
-                    _handler.handle(Event::DisplayMoved(*(data as *mut DisplayID)))
-                }
-                "chunkwm_export_display_resized" => {
-                    _handler.handle(Event::DisplayResized(*(data as *mut DisplayID)))
-                }
-                "chunkwm_export_display_changed" => {
-                    _handler.handle(Event::DisplayChanged)
-                }
-                "chunkwm_export_space_changed" => {
-                    _handler.handle(Event::SpaceChanged)
-                }
-                "chunkwm_daemon_command" => {
-                    _handler.handle(Event::DaemonCommand((data as PayloadRef).into()))
-                }
-                _ => {
-                    _handler.handle(Event::Other(event))
-                }
-            };
+            let handled: Result<(), ChunkWMError> =
+                match event.as_str() {
+                    "chunkwm_export_application_launched" => _handler.handle(
+                        Event::ApplicationLaunched(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_application_terminated" => _handler.handle(
+                        Event::ApplicationTerminated(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_application_activated" => _handler.handle(
+                        Event::ApplicationActivated(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_application_deactivated" => _handler.handle(
+                        Event::ApplicationDeactivated(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_application_hidden" => _handler.handle(
+                        Event::ApplicationHidden(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_application_unhidden" => _handler.handle(
+                        Event::ApplicationUnhidden(Box::new((data as ApplicationRef).into())),
+                    ),
+                    "chunkwm_export_window_created" => {
+                        _handler.handle(Event::WindowCreated(Box::new((data as WindowRef).into())))
+                    }
+                    "chunkwm_export_window_destroyed" => _handler
+                        .handle(Event::WindowDestroyed(Box::new((data as WindowRef).into()))),
+                    "chunkwm_export_window_focused" => {
+                        _handler.handle(Event::WindowFocused(Box::new((data as WindowRef).into())))
+                    }
+                    "chunkwm_export_window_moved" => {
+                        _handler.handle(Event::WindowMoved(Box::new((data as WindowRef).into())))
+                    }
+                    "chunkwm_export_window_resized" => {
+                        _handler.handle(Event::WindowResized(Box::new((data as WindowRef).into())))
+                    }
+                    "chunkwm_export_window_minimized" => _handler
+                        .handle(Event::WindowMinimized(Box::new((data as WindowRef).into()))),
+                    "chunkwm_export_window_deminimized" => _handler.handle(
+                        Event::WindowDeminimized(Box::new((data as WindowRef).into())),
+                    ),
+                    "chunkwm_export_window_title_changed" => _handler.handle(
+                        Event::WindowTitleChanged(Box::new((data as WindowRef).into())),
+                    ),
+                    "chunkwm_export_display_added" => {
+                        _handler.handle(Event::DisplayAdded(*(data as *mut DisplayID)))
+                    }
+                    "chunkwm_export_display_removed" => {
+                        _handler.handle(Event::DisplayRemoved(*(data as *mut DisplayID)))
+                    }
+                    "chunkwm_export_display_moved" => {
+                        _handler.handle(Event::DisplayMoved(*(data as *mut DisplayID)))
+                    }
+                    "chunkwm_export_display_resized" => {
+                        _handler.handle(Event::DisplayResized(*(data as *mut DisplayID)))
+                    }
+                    "chunkwm_export_display_changed" => _handler.handle(Event::DisplayChanged),
+                    "chunkwm_export_space_changed" => _handler.handle(Event::SpaceChanged),
+                    "chunkwm_daemon_command" => {
+                        _handler.handle(Event::DaemonCommand((data as PayloadRef).into()))
+                    }
+                    _ => _handler.handle(Event::Other(event)),
+                };
 
             match handled {
                 Ok(_) => true,

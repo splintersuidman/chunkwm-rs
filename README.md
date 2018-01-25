@@ -39,10 +39,6 @@ chunkwm = { git = "https://github.com/splintah/chunkwm-rs", features = ["border"
 
 You can, of course, only use the features you're interested in.
 
-## TODO / Contributing
-I want to add the functions the chunkwm api provides to the Rust plugin, but that takes some time.
-Contributions are very welcome!
-
 [Rust plugin template]: https://github.com/splintah/chunkwm-rs-template
 [chunkwm]: https://github.com/koekeishiya/chunkwm
 [travis]: https://travis-ci.org/splintah/chunkwm-rs
