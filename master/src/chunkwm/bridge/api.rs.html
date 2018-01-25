@@ -10,8 +10,11 @@
     <title>api.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <script src="../../../storage.js"></script>
     
 
     
@@ -33,6 +36,11 @@
         
     </nav>
 
+    <button id="theme-picker">
+        <img src="../../../brush.svg" width="18" alt="Pick another theme!">
+        <div id="theme-choices"></div>
+    </button>
+    <script src="../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -284,6 +292,8 @@
 <span id="238">238</span>
 <span id="239">239</span>
 <span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a</span>
 <span class="doccomment">//! handle to a specific `CVar`.</span>
@@ -395,12 +405,14 @@
 <span class="doccomment">///         Plugin { global_desktop_mode, bsp_spawn_left }</span>
 <span class="doccomment">///     }</span>
 <span class="doccomment">///</span>
-<span class="doccomment">///     fn handle(&amp;mut self, _: Event) {</span>
+<span class="doccomment">///     fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; {</span>
 <span class="doccomment">///         self.global_desktop_mode.set_value(&amp;&quot;bsp&quot;.to_owned());</span>
 <span class="doccomment">///         assert_eq!(self.global_desktop_mode.get_value().unwrap(), &quot;bsp&quot;.to_owned());</span>
 <span class="doccomment">///</span>
 <span class="doccomment">///         self.bsp_spawn_left.set_value(&amp;NumericBool::from(false));</span>
 <span class="doccomment">///         assert_eq!(self.bsp_spawn_left.get_value().unwrap().value, false);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///         Ok(())</span>
 <span class="doccomment">///     }</span>
 <span class="doccomment">///     // some methods omitted</span>
 <span class="doccomment">///     # subscribe!();</span>

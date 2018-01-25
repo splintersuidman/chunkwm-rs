@@ -10,8 +10,11 @@
     <title>macros.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,11 @@
         
     </nav>
 
+    <button id="theme-picker">
+        <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        <div id="theme-choices"></div>
+    </button>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -379,6 +387,19 @@
 <span id="333">333</span>
 <span id="334">334</span>
 <span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
 </pre><pre class="rust ">
 <span class="doccomment">/// A macro to specify the plugin&#39;s name.</span>
 <span class="doccomment">///</span>
@@ -389,7 +410,7 @@
 <span class="doccomment">/// pub struct Plugin;</span>
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
 <span class="doccomment">///     # fn new(_: &amp;&#39;static API) -&gt; Self { Plugin }</span>
-<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) {}</span>
+<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; { Ok(()) }</span>
 <span class="doccomment">///     # fn shutdown(&amp;self) {}</span>
 <span class="doccomment">///     # subscribe_all!();</span>
 <span class="doccomment">///     # version!(&quot;&quot;);</span>
@@ -414,7 +435,7 @@
 <span class="doccomment">/// pub struct Plugin;</span>
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
 <span class="doccomment">///     # fn new(_: &amp;&#39;static API) -&gt; Self { Plugin }</span>
-<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) {}</span>
+<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; { Ok(()) }</span>
 <span class="doccomment">///     # fn shutdown(&amp;self) {}</span>
 <span class="doccomment">///     # subscribe_all!();</span>
 <span class="doccomment">///     # name!(&quot;&quot;);</span>
@@ -439,7 +460,7 @@
 <span class="doccomment">/// pub struct Plugin;</span>
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
 <span class="doccomment">///     # fn new(_: &amp;&#39;static API) -&gt; Self { Plugin }</span>
-<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) {}</span>
+<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; { Ok(()) }</span>
 <span class="doccomment">///     # fn shutdown(&amp;self) {}</span>
 <span class="doccomment">///     # name!(&quot;&quot;);</span>
 <span class="doccomment">///     # version!(&quot;&quot;);</span>
@@ -470,7 +491,7 @@
 <span class="doccomment">/// pub struct Plugin;</span>
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
 <span class="doccomment">///     # fn new(_: &amp;&#39;static API) -&gt; Self { Plugin }</span>
-<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) {}</span>
+<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; { Ok(()) }</span>
 <span class="doccomment">///     # fn shutdown(&amp;self) {}</span>
 <span class="doccomment">///     # name!(&quot;&quot;);</span>
 <span class="doccomment">///     # version!(&quot;&quot;);</span>
@@ -500,7 +521,7 @@
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
 <span class="doccomment">///     // methods omitted</span>
 <span class="doccomment">///     # fn new(_: &amp;&#39;static API) -&gt; Self { Plugin }</span>
-<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) {}</span>
+<span class="doccomment">///     # fn handle(&amp;mut self, _: Event) -&gt; Result&lt;(), ChunkWMError&gt; { Ok(()) }</span>
 <span class="doccomment">///     # fn shutdown(&amp;self) {}</span>
 <span class="doccomment">///     # name!(&quot;&quot;);</span>
 <span class="doccomment">///     # version!(&quot;&quot;);</span>
@@ -516,6 +537,12 @@
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>;
+
+        <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+        <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SubscriptionArray</span> {
+            <span class="ident">len</span>: <span class="ident">usize</span>,
+            <span class="ident">arr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span>,
+        }
 
         <span class="comment">// Create a new handler and return it. In C/C++ a `void *` can be used.</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
@@ -540,9 +567,12 @@
 
         <span class="comment">//</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
-        <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_subscribe_to_events</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span> {
+        <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_subscribe_to_events</span>() <span class="op">-&gt;</span> <span class="ident">SubscriptionArray</span> {
             <span class="kw">let</span> <span class="ident">subscriptions</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>::<span class="ident">subscribe</span>();
-            <span class="ident">subscriptions</span>.<span class="ident">as_ptr</span>()
+            <span class="ident">SubscriptionArray</span> {
+                <span class="ident">len</span>: <span class="ident">subscriptions</span>.<span class="ident">len</span>(),
+                <span class="ident">arr</span>: <span class="ident">subscriptions</span>.<span class="ident">as_ptr</span>(),
+            }
         }
 
         <span class="comment">// Runs `shutdown` on the event handler.</span>
@@ -557,7 +587,7 @@
         <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_send_event_with_application</span>(
             <span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>,
             <span class="ident">event</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
-            <span class="ident">application</span>: <span class="ident">RawApplication</span>,
+            <span class="ident">application</span>: <span class="ident">ApplicationRef</span>,
         ) {
             <span class="kw">let</span> <span class="ident">_handler</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>;
             <span class="kw">let</span> <span class="ident">application</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">application</span>.<span class="ident">into</span>());
@@ -600,7 +630,7 @@
         <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_send_event_with_window</span>(
             <span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>,
             <span class="ident">event</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
-            <span class="ident">window</span>: <span class="ident">RawWindow</span>,
+            <span class="ident">window</span>: <span class="ident">WindowRef</span>,
         ) {
             <span class="kw">let</span> <span class="ident">_handler</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>;
             <span class="kw">let</span> <span class="ident">window</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">window</span>.<span class="ident">into</span>());
@@ -633,6 +663,10 @@
                 }
                 <span class="string">&quot;chunkwm_export_window_deminimized&quot;</span> <span class="op">=&gt;</span> {
                     <span class="ident">_handler</span>.<span class="ident">handle</span>(<span class="ident">Event</span>::<span class="ident">WindowDeminimized</span>(<span class="ident">window</span>))
+                        .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">e</span>))
+                }
+                <span class="string">&quot;chunkwm_export_window_title_changed&quot;</span> <span class="op">=&gt;</span> {
+                    <span class="ident">_handler</span>.<span class="ident">handle</span>(<span class="ident">Event</span>::<span class="ident">WindowTitleChanged</span>(<span class="ident">window</span>))
                         .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">e</span>))
                 }
                 _ <span class="op">=&gt;</span> {
@@ -680,7 +714,7 @@
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
         <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_rust_send_event_with_daemon_command</span>(
             <span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>,
-            <span class="ident">payload</span>: <span class="ident">RawPayload</span>,
+            <span class="ident">payload</span>: <span class="ident">PayloadRef</span>,
         ) {
             <span class="kw">let</span> <span class="ident">_handler</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">ptr</span>;
             <span class="kw">let</span> <span class="ident">payload</span>: <span class="ident">Payload</span> <span class="op">=</span> <span class="ident">payload</span>.<span class="ident">into</span>();

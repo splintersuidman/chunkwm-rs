@@ -10,8 +10,11 @@
     <title>event.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <script src="../../../storage.js"></script>
     
 
     
@@ -33,6 +36,11 @@
         
     </nav>
 
+    <button id="theme-picker">
+        <img src="../../../brush.svg" width="18" alt="Pick another theme!">
+        <div id="theme-choices"></div>
+    </button>
+    <script src="../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -155,6 +163,7 @@
 <span id="109">109</span>
 <span id="110">110</span>
 <span id="111">111</span>
+<span id="112">112</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `event` module contains types and traits for event handling.</span>
 
@@ -199,6 +208,7 @@
     <span class="ident">WindowResized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
     <span class="ident">WindowMinimized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
     <span class="ident">WindowDeminimized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
+    <span class="ident">WindowTitleChanged</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
     <span class="comment">// TODO(splintah): add WindowTitleChanged.</span>
     <span class="ident">DisplayAdded</span>(<span class="ident">DisplayID</span>),
     <span class="ident">DisplayRemoved</span>(<span class="ident">DisplayID</span>),

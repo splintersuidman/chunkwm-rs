@@ -10,8 +10,11 @@
     <title>chunkwm::create_c_bridge - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../dark.css">
+    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
+    <script src="../storage.js"></script>
     
 
     
@@ -33,6 +36,11 @@
         <p class='location'><a href='index.html'>chunkwm</a></p><script>window.sidebarCurrent = {name: 'create_c_bridge', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
+    <button id="theme-picker">
+        <img src="../brush.svg" width="18" alt="Pick another theme!">
+        <div id="theme-choices"></div>
+    </button>
+    <script src="../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,7 +57,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/chunkwm/macros.rs.html#130-335' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/chunkwm/macros.rs.html#130-348' title='goto source code'>[src]</a></span></h1>
 <pre class="rust macro">
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">create_c_bridge</span> {
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> { ... };
