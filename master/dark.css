@@ -112,10 +112,13 @@ pre {
 }
 .content .highlighted a, .content .highlighted span { color: #eee !important; }
 .content .highlighted.trait { background-color: #013191; }
+.content .highlighted.mod,
+.content .highlighted.externcrate { background-color: #afc6e4; }
 .content .highlighted.mod { background-color: #803a1b; }
 .content .highlighted.externcrate { background-color: #396bac; }
 .content .highlighted.enum { background-color: #5b4e68; }
 .content .highlighted.struct { background-color: #194e9f; }
+.content .highlighted.union { background-color: #b7bd49; }
 .content .highlighted.fn,
 .content .highlighted.method,
 .content .highlighted.tymethod { background-color: #4950ed; }
@@ -197,7 +200,7 @@ a.test-arrow {
 
 #help dt {
 	border-color: #bfbfbf;
-	background: #fff;
+	background: rgba(0,0,0,0);
 	color: black;
 }
 
@@ -352,7 +355,7 @@ pre.ignore:hover, .information:hover + pre.ignore {
 }
 
 kbd {
-	color: #444d56;
+	color: #000;
 	background-color: #fafbfc;
 	border-color: #d1d5da;
 	border-bottom-color: #c6cbd1;
@@ -364,21 +367,25 @@ kbd {
 	background: #f0f0f0;
 }
 
+#theme-picker:hover, #theme-picker:focus {
+	border-color: #ffb900;
+}
+
 #theme-choices {
 	border-color: #e0e0e0;
 	background-color: #353535;
 }
 
-#theme-choices > div {
-	border-top: #e0e0e0;
+#theme-choices > button:not(:first-child) {
+	border-top-color: #e0e0e0;
 }
 
-#theme-choices > div:hover {
+#theme-choices > button:hover, #theme-choices > button:focus {
 	background-color: #444;
 }
 
 @media (max-width: 700px) {
 	#theme-picker {
-		background: #353535;
+		background: #f0f0f0;
 	}
 }

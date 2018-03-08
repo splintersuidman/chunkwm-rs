@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["add_flags",""],["clear_flags",""],["construct_window",""],["copy_window",""],["destroy_window",""],["has_flags",""],["is_window_standard",""],["window_has_role",""],["window_list_for_application",""]]});

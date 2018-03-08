@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Payload","The `Payload` struct."]]});

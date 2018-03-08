@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/Users/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.36/src/unix/bsd/mod.rs`.">
+    <meta name="description" content="Source to the Rust file `/Users/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.39/src/unix/bsd/mod.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>mod.rs.html -- source</title>
@@ -36,10 +36,12 @@
         
     </nav>
 
-    <button id="theme-picker">
-        <img src="../../../../brush.svg" width="18" alt="Pick another theme!">
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
         <div id="theme-choices"></div>
-    </button>
+    </div>
     <script src="../../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
@@ -600,6 +602,15 @@
 <span id="546">546</span>
 <span id="547">547</span>
 <span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">dox</span>::{<span class="ident">mem</span>, <span class="prelude-ty">Option</span>};
 
@@ -786,6 +797,9 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IP_MULTICAST_TTL</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">10</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IP_MULTICAST_LOOP</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">11</span>;
 
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IPV6_UNICAST_HOPS</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">4</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IPV6_MULTICAST_IF</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">9</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IPV6_MULTICAST_HOPS</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">10</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IPV6_MULTICAST_LOOP</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">11</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IPV6_V6ONLY</span>: ::<span class="ident">c_int</span> <span class="op">=</span> <span class="number">27</span>;
 
@@ -988,6 +1002,10 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getpwent</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">passwd</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setpwent</span>();
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">endpwent</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setgrent</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">endgrent</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getgrent</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">group</span>;
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getprogname</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">c_char</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setprogname</span>(<span class="ident">name</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">c_char</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getloadavg</span>(<span class="ident">loadavg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">c_double</span>, <span class="ident">nelem</span>: ::<span class="ident">c_int</span>) <span class="op">-&gt;</span> ::<span class="ident">c_int</span>;
@@ -1000,12 +1018,14 @@
 
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>, <span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;glob$INODE64&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>, <span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;__glob30&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;freebsd&quot;</span>, <span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;glob@FBSD_1.0&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">glob</span>(<span class="ident">pattern</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">c_char</span>,
                 <span class="ident">flags</span>: ::<span class="ident">c_int</span>,
                 <span class="ident">errfunc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">extern</span> <span class="kw">fn</span>(<span class="ident">epath</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">c_char</span>,
                                           <span class="ident">errno</span>: ::<span class="ident">c_int</span>) <span class="op">-&gt;</span> ::<span class="ident">c_int</span><span class="op">&gt;</span>,
                 <span class="ident">pglob</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">glob_t</span>) <span class="op">-&gt;</span> ::<span class="ident">c_int</span>;
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;netbsd&quot;</span>, <span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;__globfree30&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;freebsd&quot;</span>, <span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;globfree@FBSD_1.0&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">globfree</span>(<span class="ident">pglob</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">glob_t</span>);
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">posix_madvise</span>(<span class="ident">addr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">c_void</span>, <span class="ident">len</span>: ::<span class="ident">size_t</span>, <span class="ident">advice</span>: ::<span class="ident">c_int</span>)

@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["DockOrientation","The way the dock is oriented."],["SpaceType","The space type."]],"struct":[["Display","The `Display` struct."],["Space","The `Space` struct."]]});

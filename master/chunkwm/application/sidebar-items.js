@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Application","The `Application` struct."]]});

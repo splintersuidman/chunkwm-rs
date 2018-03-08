@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Event","The `Event` enum allows for easy pattern matching on events."],["Subscription","The `Subscription` enum is used to subscribe to chunkwm events."]],"trait":[["HandleEvent","The `HandleEvent` trait should be implemented on your Plugin struct."]],"type":[["DisplayID","The display identifier."]]});

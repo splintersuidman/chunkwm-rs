@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["accessibility","The `accessibility` module contains functions that do something with applications, windows, displays, et cetera."],["border","The `border` module contains a wrapper for the C methods that handle borders."]]});
