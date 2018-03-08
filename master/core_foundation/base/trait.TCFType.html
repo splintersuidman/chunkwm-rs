@@ -10,8 +10,11 @@
     <title>core_foundation::base::TCFType - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait TCFType</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.as_concrete_TypeRef">as_concrete_TypeRef</a><a href="#tymethod.wrap_under_create_rule">wrap_under_create_rule</a><a href="#tymethod.type_id">type_id</a><a href="#tymethod.as_CFTypeRef">as_CFTypeRef</a><a href="#tymethod.wrap_under_get_rule">wrap_under_get_rule</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.as_CFType">as_CFType</a><a href="#method.retain_count">retain_count</a><a href="#method.type_of">type_of</a><a href="#method.show">show</a><a href="#method.instance_of">instance_of</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>core_foundation</a>::<wbr><a href='index.html'>base</a></p><script>window.sidebarCurrent = {name: 'TCFType', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -72,11 +82,11 @@ associated Core Foundation type: e.g. for <code>CFType</code> this is <code>CFTy
             <div class='methods'>
         <h3 id='tymethod.as_concrete_TypeRef' class='method'><span id='as_concrete_TypeRef.v' class='invisible'><code>fn <a href='#tymethod.as_concrete_TypeRef' class='fnname'>as_concrete_TypeRef</a>(&amp;self) -&gt; ConcreteTypeRef</code></span></h3><div class='docblock'><p>Returns the object as its concrete TypeRef.</p>
 </div><h3 id='tymethod.wrap_under_create_rule' class='method'><span id='wrap_under_create_rule.v' class='invisible'><code>unsafe fn <a href='#tymethod.wrap_under_create_rule' class='fnname'>wrap_under_create_rule</a>(obj: ConcreteTypeRef) -&gt; Self</code></span></h3><div class='docblock'><p>Returns an instance of the object, wrapping the underlying <code>CFTypeRef</code> subclass. Use this
-when following Core Foundation&#39;s &quot;Create Rule&quot;. The reference count is <em>not</em> bumped.</p>
+when following Core Foundation's &quot;Create Rule&quot;. The reference count is <em>not</em> bumped.</p>
 </div><h3 id='tymethod.type_id' class='method'><span id='type_id.v' class='invisible'><code>fn <a href='#tymethod.type_id' class='fnname'>type_id</a>() -&gt; <a class="type" href="../../core_foundation_sys/base/type.CFTypeID.html" title="type core_foundation_sys::base::CFTypeID">CFTypeID</a></code></span></h3><div class='docblock'><p>Returns the type ID for this class.</p>
 </div><h3 id='tymethod.as_CFTypeRef' class='method'><span id='as_CFTypeRef.v' class='invisible'><code>fn <a href='#tymethod.as_CFTypeRef' class='fnname'>as_CFTypeRef</a>(&amp;self) -&gt; <a class="type" href="../../core_foundation_sys/base/type.CFTypeRef.html" title="type core_foundation_sys::base::CFTypeRef">CFTypeRef</a></code></span></h3><div class='docblock'><p>Returns the object as a raw <code>CFTypeRef</code>. The reference count is not adjusted.</p>
 </div><h3 id='tymethod.wrap_under_get_rule' class='method'><span id='wrap_under_get_rule.v' class='invisible'><code>unsafe fn <a href='#tymethod.wrap_under_get_rule' class='fnname'>wrap_under_get_rule</a>(reference: ConcreteTypeRef) -&gt; Self</code></span></h3><div class='docblock'><p>Returns an instance of the object, wrapping the underlying <code>CFTypeRef</code> subclass. Use this
-when following Core Foundation&#39;s &quot;Get Rule&quot;. The reference count <em>is</em> bumped.</p>
+when following Core Foundation's &quot;Get Rule&quot;. The reference count <em>is</em> bumped.</p>
 </div></div>
             <h2 id='provided-methods' class='small-section-header'>
               Provided Methods<a href='#provided-methods' class='anchor'></a>
@@ -112,7 +122,7 @@ whether the return value of this method is greater than zero.</p>
 <li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/lib.rs.html#20-50' title='goto source code'>[src]</a></div><code>impl TCFType&lt;<a class="type" href="../../core_foundation_sys/runloop/type.CFRunLoopObserverRef.html" title="type core_foundation_sys::runloop::CFRunLoopObserverRef">CFRunLoopObserverRef</a>&gt; for <a class="struct" href="../../core_foundation/runloop/struct.CFRunLoopObserver.html" title="struct core_foundation::runloop::CFRunLoopObserver">CFRunLoopObserver</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/lib.rs.html#20-50' title='goto source code'>[src]</a></div><code>impl TCFType&lt;<a class="type" href="../../core_foundation_sys/timezone/type.CFTimeZoneRef.html" title="type core_foundation_sys::timezone::CFTimeZoneRef">CFTimeZoneRef</a>&gt; for <a class="struct" href="../../core_foundation/timezone/struct.CFTimeZone.html" title="struct core_foundation::timezone::CFTimeZone">CFTimeZone</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/lib.rs.html#20-50' title='goto source code'>[src]</a></div><code>impl TCFType&lt;<a class="type" href="../../core_foundation_sys/uuid/type.CFUUIDRef.html" title="type core_foundation_sys::uuid::CFUUIDRef">CFUUIDRef</a>&gt; for <a class="struct" href="../../core_foundation/uuid/struct.CFUUID.html" title="struct core_foundation::uuid::CFUUID">CFUUID</a></code></li>
-</ul><script type="text/javascript" async
+</ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../../implementors/core_foundation/base/trait.TCFType.js">
                  </script></section>
     <section id='search' class="content hidden"></section>
@@ -127,20 +137,22 @@ whether the return value of this method is greater than zero.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

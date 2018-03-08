@@ -10,8 +10,11 @@
     <title>core_graphics::context::CGContext - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -30,9 +33,16 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct CGContext</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.type_id">type_id</a><a href="#method.create_bitmap_context">create_bitmap_context</a><a href="#method.data">data</a><a href="#method.width">width</a><a href="#method.height">height</a><a href="#method.bytes_per_row">bytes_per_row</a><a href="#method.set_rgb_fill_color">set_rgb_fill_color</a><a href="#method.set_allows_font_smoothing">set_allows_font_smoothing</a><a href="#method.set_font_smoothing_style">set_font_smoothing_style</a><a href="#method.set_should_smooth_fonts">set_should_smooth_fonts</a><a href="#method.set_allows_antialiasing">set_allows_antialiasing</a><a href="#method.set_should_antialias">set_should_antialias</a><a href="#method.set_allows_font_subpixel_quantization">set_allows_font_subpixel_quantization</a><a href="#method.set_should_subpixel_quantize_fonts">set_should_subpixel_quantize_fonts</a><a href="#method.set_allows_font_subpixel_positioning">set_allows_font_subpixel_positioning</a><a href="#method.set_should_subpixel_position_fonts">set_should_subpixel_position_fonts</a><a href="#method.set_text_drawing_mode">set_text_drawing_mode</a><a href="#method.fill_rect">fill_rect</a><a href="#method.draw_image">draw_image</a><a href="#method.create_image">create_image</a><a href="#method.set_font">set_font</a><a href="#method.set_font_size">set_font_size</a><a href="#method.set_text_matrix">set_text_matrix</a><a href="#method.show_glyphs_at_positions">show_glyphs_at_positions</a></div><a class="sidebar-title" href="#deref-methods">Methods from Deref&lt;Target=CGContextRef&gt;</a><div class="sidebar-links"></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a><a href="#impl-Clone">Clone</a><a href="#impl-Deref">Deref</a><a href="#impl-DerefMut">DerefMut</a><a href="#impl-Borrow%3CCGContextRef%3E">Borrow&lt;CGContextRef&gt;</a><a href="#impl-AsRef%3CCGContextRef%3E">AsRef&lt;CGContextRef&gt;</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>context</a></p><script>window.sidebarCurrent = {name: 'CGContext', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct CGContext</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.type_id">type_id</a><a href="#method.create_bitmap_context">create_bitmap_context</a><a href="#method.data">data</a><a href="#method.width">width</a><a href="#method.height">height</a><a href="#method.bytes_per_row">bytes_per_row</a><a href="#method.set_rgb_fill_color">set_rgb_fill_color</a><a href="#method.set_allows_font_smoothing">set_allows_font_smoothing</a><a href="#method.set_font_smoothing_style">set_font_smoothing_style</a><a href="#method.set_should_smooth_fonts">set_should_smooth_fonts</a><a href="#method.set_allows_antialiasing">set_allows_antialiasing</a><a href="#method.set_should_antialias">set_should_antialias</a><a href="#method.set_allows_font_subpixel_quantization">set_allows_font_subpixel_quantization</a><a href="#method.set_should_subpixel_quantize_fonts">set_should_subpixel_quantize_fonts</a><a href="#method.set_allows_font_subpixel_positioning">set_allows_font_subpixel_positioning</a><a href="#method.set_should_subpixel_position_fonts">set_should_subpixel_position_fonts</a><a href="#method.set_text_drawing_mode">set_text_drawing_mode</a><a href="#method.fill_rect">fill_rect</a><a href="#method.draw_image">draw_image</a><a href="#method.create_image">create_image</a><a href="#method.set_font">set_font</a><a href="#method.set_font_size">set_font_size</a><a href="#method.set_text_matrix">set_text_matrix</a><a href="#method.show_glyphs_at_positions">show_glyphs_at_positions</a></div><a class="sidebar-title" href="#deref-methods">Methods from Deref&lt;Target=CGContextRef&gt;</a><div class="sidebar-links"></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a><a href="#impl-Clone">Clone</a><a href="#impl-Deref">Deref</a><a href="#impl-DerefMut">DerefMut</a><a href="#impl-Borrow%3CCGContextRef%3E">Borrow&lt;CGContextRef&gt;</a><a href="#impl-AsRef%3CCGContextRef%3E">AsRef&lt;CGContextRef&gt;</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">!Send</a><a href="#impl-Sync">!Sync</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>context</a></p><script>window.sidebarCurrent = {name: 'CGContext', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -57,7 +67,7 @@
                 <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#44-212' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.type_id' class="method"><span id='type_id.v' class='invisible'><code>pub fn <a href='#method.type_id' class='fnname'>type_id</a>() -&gt; <a class="type" href="../../core_foundation_sys/base/type.CFTypeID.html" title="type core_foundation_sys::base::CFTypeID">CFTypeID</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#45-49' title='goto source code'>[src]</a></span></h4>
 <h4 id='method.create_bitmap_context' class="method"><span id='create_bitmap_context.v' class='invisible'><code>pub fn <a href='#method.create_bitmap_context' class='fnname'>create_bitmap_context</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="enum" href="../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;width: <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;height: <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;bits_per_component: <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;bytes_per_row: <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;space: &amp;<a class="struct" href="../../core_graphics/color_space/struct.CGColorSpace.html" title="struct core_graphics::color_space::CGColorSpace">CGColorSpace</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;bitmap_info: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><br>) -&gt; <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#51-70' title='goto source code'>[src]</a></span></h4>
-<h4 id='method.data' class="method"><span id='data.v' class='invisible'><code>pub fn <a href='#method.data' class='fnname'>data</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#72-78' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.data' class="method"><div class="important-traits"><div class='tooltip'>ⓘ<span class='tooltiptext'>Important traits for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span></div><div class="content hidden"><h3 class="important">Important traits for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></h3><code class="content"><span class="where fmt-newline">impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html" title="trait std::io::Write">Write</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span><span class="where fmt-newline">impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span></code></div></div><span id='data.v' class='invisible'><code>pub fn <a href='#method.data' class='fnname'>data</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#72-78' title='goto source code'>[src]</a></span></h4>
 <h4 id='method.width' class="method"><span id='width.v' class='invisible'><code>pub fn <a href='#method.width' class='fnname'>width</a>(&amp;self) -&gt; <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#80-84' title='goto source code'>[src]</a></span></h4>
 <h4 id='method.height' class="method"><span id='height.v' class='invisible'><code>pub fn <a href='#method.height' class='fnname'>height</a>(&amp;self) -&gt; <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#86-90' title='goto source code'>[src]</a></span></h4>
 <h4 id='method.bytes_per_row' class="method"><span id='bytes_per_row.v' class='invisible'><code>pub fn <a href='#method.bytes_per_row' class='fnname'>bytes_per_row</a>(&amp;self) -&gt; <a class="type" href="../../libc/type.size_t.html" title="type libc::size_t">size_t</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/context.rs.html#92-96' title='goto source code'>[src]</a></span></h4>
@@ -83,6 +93,7 @@
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
+            <div id='implementations-list'>
         <h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'></span></h3>
 <div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
 <div class='docblock'><p>Executes the destructor for this type. <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop">Read more</a></p>
@@ -105,7 +116,14 @@
 </div></div><h3 id='impl-AsRef%3CCGContextRef%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../core_graphics/context/struct.CGContextRef.html" title="struct core_graphics::context::CGContextRef">CGContextRef</a>&gt; for <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code><a href='#impl-AsRef%3CCGContextRef%3E' class='anchor'></a></span><span class='out-of-band'></span></h3>
 <div class='impl-items'><h4 id='method.as_ref' class="method"><span id='as_ref.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref' class='fnname'>as_ref</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../core_graphics/context/struct.CGContextRef.html" title="struct core_graphics::context::CGContextRef">CGContextRef</a></code></span></h4>
 <div class='docblock'><p>Performs the conversion.</p>
-</div></div></section>
+</div></div></div>
+            <h2 id='synthetic-implementations' class='small-section-header'>
+              Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+            </h2>
+            <div id='synthetic-implementations-list'>
+        <h3 id='impl-Send' class='impl'><span class='in-band'><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code><a href='#impl-Send' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../core_graphics/context/struct.CGContext.html" title="struct core_graphics::context::CGContext">CGContext</a></code><a href='#impl-Sync' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -118,20 +136,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

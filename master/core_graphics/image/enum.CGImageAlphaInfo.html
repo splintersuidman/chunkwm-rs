@@ -10,8 +10,11 @@
     <title>core_graphics::image::CGImageAlphaInfo - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -30,9 +33,16 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Enum CGImageAlphaInfo</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.CGImageAlphaNone">CGImageAlphaNone</a><a href="#variant.CGImageAlphaPremultipliedLast">CGImageAlphaPremultipliedLast</a><a href="#variant.CGImageAlphaPremultipliedFirst">CGImageAlphaPremultipliedFirst</a><a href="#variant.CGImageAlphaLast">CGImageAlphaLast</a><a href="#variant.CGImageAlphaFirst">CGImageAlphaFirst</a><a href="#variant.CGImageAlphaNoneSkipLast">CGImageAlphaNoneSkipLast</a><a href="#variant.CGImageAlphaNoneSkipFirst">CGImageAlphaNoneSkipFirst</a><a href="#variant.CGImageAlphaOnly">CGImageAlphaOnly</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>image</a></p><script>window.sidebarCurrent = {name: 'CGImageAlphaInfo', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Enum CGImageAlphaInfo</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.CGImageAlphaNone">CGImageAlphaNone</a><a href="#variant.CGImageAlphaPremultipliedLast">CGImageAlphaPremultipliedLast</a><a href="#variant.CGImageAlphaPremultipliedFirst">CGImageAlphaPremultipliedFirst</a><a href="#variant.CGImageAlphaLast">CGImageAlphaLast</a><a href="#variant.CGImageAlphaFirst">CGImageAlphaFirst</a><a href="#variant.CGImageAlphaNoneSkipLast">CGImageAlphaNoneSkipLast</a><a href="#variant.CGImageAlphaNoneSkipFirst">CGImageAlphaNoneSkipFirst</a><a href="#variant.CGImageAlphaOnly">CGImageAlphaOnly</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>image</a></p><script>window.sidebarCurrent = {name: 'CGImageAlphaInfo', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -62,7 +72,19 @@
     CGImageAlphaOnly,
 }</pre><h2 id='variants' class='variants small-section-header'>
                    Variants<a href='#variants' class='anchor'></a></h2>
-<span id="variant.CGImageAlphaNone" class="variant small-section-header"><a href="#variant.CGImageAlphaNone" class="anchor field"></a><span id='CGImageAlphaNone.v' class='invisible'><code>CGImageAlphaNone</code></span></span><span id="variant.CGImageAlphaPremultipliedLast" class="variant small-section-header"><a href="#variant.CGImageAlphaPremultipliedLast" class="anchor field"></a><span id='CGImageAlphaPremultipliedLast.v' class='invisible'><code>CGImageAlphaPremultipliedLast</code></span></span><span id="variant.CGImageAlphaPremultipliedFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaPremultipliedFirst" class="anchor field"></a><span id='CGImageAlphaPremultipliedFirst.v' class='invisible'><code>CGImageAlphaPremultipliedFirst</code></span></span><span id="variant.CGImageAlphaLast" class="variant small-section-header"><a href="#variant.CGImageAlphaLast" class="anchor field"></a><span id='CGImageAlphaLast.v' class='invisible'><code>CGImageAlphaLast</code></span></span><span id="variant.CGImageAlphaFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaFirst" class="anchor field"></a><span id='CGImageAlphaFirst.v' class='invisible'><code>CGImageAlphaFirst</code></span></span><span id="variant.CGImageAlphaNoneSkipLast" class="variant small-section-header"><a href="#variant.CGImageAlphaNoneSkipLast" class="anchor field"></a><span id='CGImageAlphaNoneSkipLast.v' class='invisible'><code>CGImageAlphaNoneSkipLast</code></span></span><span id="variant.CGImageAlphaNoneSkipFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaNoneSkipFirst" class="anchor field"></a><span id='CGImageAlphaNoneSkipFirst.v' class='invisible'><code>CGImageAlphaNoneSkipFirst</code></span></span><span id="variant.CGImageAlphaOnly" class="variant small-section-header"><a href="#variant.CGImageAlphaOnly" class="anchor field"></a><span id='CGImageAlphaOnly.v' class='invisible'><code>CGImageAlphaOnly</code></span></span></section>
+<span id="variant.CGImageAlphaNone" class="variant small-section-header"><a href="#variant.CGImageAlphaNone" class="anchor field"></a><span id='CGImageAlphaNone.v' class='invisible'><code>CGImageAlphaNone</code></span></span><span id="variant.CGImageAlphaPremultipliedLast" class="variant small-section-header"><a href="#variant.CGImageAlphaPremultipliedLast" class="anchor field"></a><span id='CGImageAlphaPremultipliedLast.v' class='invisible'><code>CGImageAlphaPremultipliedLast</code></span></span><span id="variant.CGImageAlphaPremultipliedFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaPremultipliedFirst" class="anchor field"></a><span id='CGImageAlphaPremultipliedFirst.v' class='invisible'><code>CGImageAlphaPremultipliedFirst</code></span></span><span id="variant.CGImageAlphaLast" class="variant small-section-header"><a href="#variant.CGImageAlphaLast" class="anchor field"></a><span id='CGImageAlphaLast.v' class='invisible'><code>CGImageAlphaLast</code></span></span><span id="variant.CGImageAlphaFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaFirst" class="anchor field"></a><span id='CGImageAlphaFirst.v' class='invisible'><code>CGImageAlphaFirst</code></span></span><span id="variant.CGImageAlphaNoneSkipLast" class="variant small-section-header"><a href="#variant.CGImageAlphaNoneSkipLast" class="anchor field"></a><span id='CGImageAlphaNoneSkipLast.v' class='invisible'><code>CGImageAlphaNoneSkipLast</code></span></span><span id="variant.CGImageAlphaNoneSkipFirst" class="variant small-section-header"><a href="#variant.CGImageAlphaNoneSkipFirst" class="anchor field"></a><span id='CGImageAlphaNoneSkipFirst.v' class='invisible'><code>CGImageAlphaNoneSkipFirst</code></span></span><span id="variant.CGImageAlphaOnly" class="variant small-section-header"><a href="#variant.CGImageAlphaOnly" class="anchor field"></a><span id='CGImageAlphaOnly.v' class='invisible'><code>CGImageAlphaOnly</code></span></span>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+            <div id='implementations-list'>
+        </div>
+            <h2 id='synthetic-implementations' class='small-section-header'>
+              Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+            </h2>
+            <div id='synthetic-implementations-list'>
+        <h3 id='impl-Send' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="enum" href="../../core_graphics/image/enum.CGImageAlphaInfo.html" title="enum core_graphics::image::CGImageAlphaInfo">CGImageAlphaInfo</a></code><a href='#impl-Send' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="enum" href="../../core_graphics/image/enum.CGImageAlphaInfo.html" title="enum core_graphics::image::CGImageAlphaInfo">CGImageAlphaInfo</a></code><a href='#impl-Sync' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -75,20 +97,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

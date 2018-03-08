@@ -10,8 +10,11 @@
     <title>core_graphics::event::EventField - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -30,9 +33,16 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct EventField</p><div class="sidebar-elems"><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>event</a></p><script>window.sidebarCurrent = {name: 'EventField', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct EventField</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>event</a></p><script>window.sidebarCurrent = {name: 'EventField', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -51,7 +61,6 @@
                    </a>
                </span><a class='srclink' href='../../src/core_graphics/event.rs.html#136' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct EventField;</pre><div class='docblock'><p>Constants used as keys to access specialized fields in low-level events.</p>
-
 <p><a href="https://developer.apple.com/documentation/coregraphics/cgeventfield">Ref</a></p>
 </div>
                     <h2 id='methods' class='small-section-header'>
@@ -101,7 +110,7 @@ should be ignored by the Inkwell subsystem.</p>
 <div class='docblock'><pre class="rust ">
 <span class="ident">MOUSE_EVENT_SUB_TYPE</span>: <span class="ident">CGEventField</span> <span class="op">=</span> <span class="number">7</span></pre>
 <p>Key to access an integer field that encodes the mouse event subtype as
-a `kCFNumberIntType&#39;.</p>
+a `kCFNumberIntType'.</p>
 </div><h4 id='associatedconstant.KEYBOARD_EVENT_AUTOREPEAT' class="associatedconstant"><span id='KEYBOARD_EVENT_AUTOREPEAT.v' class='invisible'><code>pub const <a href='#associatedconstant.KEYBOARD_EVENT_AUTOREPEAT' class="constant"><b>KEYBOARD_EVENT_AUTOREPEAT</b></a>: <a class="type" href="../../core_graphics/event/type.CGEventField.html" title="type core_graphics::event::CGEventField">CGEventField</a></code></span></h4>
 <div class='docblock'><pre class="rust ">
 <span class="ident">KEYBOARD_EVENT_AUTOREPEAT</span>: <span class="ident">CGEventField</span> <span class="op">=</span> <span class="number">8</span></pre>
@@ -138,7 +147,7 @@ represents a line-based or pixel-based change in vertical position
 since the last scrolling event from a Mighty Mouse scroller or a
 single-wheel mouse scroller. The scrolling data uses a fixed-point
 16.16 signed integer format. If this key is passed to
-`CGEventGetDoubleValueField&#39;, the fixed-point value is converted to a
+`CGEventGetDoubleValueField', the fixed-point value is converted to a
 double value.</p>
 </div><h4 id='associatedconstant.SCROLL_WHEEL_EVENT_FIXED_POINT_DELTA_AXIS_2' class="associatedconstant"><span id='SCROLL_WHEEL_EVENT_FIXED_POINT_DELTA_AXIS_2.v' class='invisible'><code>pub const <a href='#associatedconstant.SCROLL_WHEEL_EVENT_FIXED_POINT_DELTA_AXIS_2' class="constant"><b>SCROLL_WHEEL_EVENT_FIXED_POINT_DELTA_AXIS_2</b></a>: <a class="type" href="../../core_graphics/event/type.CGEventField.html" title="type core_graphics::event::CGEventField">CGEventField</a></code></span></h4>
 <div class='docblock'><pre class="rust ">
@@ -147,7 +156,7 @@ double value.</p>
 represents a line-based or pixel-based change in horizontal position
 since the last scrolling event from a Mighty Mouse scroller. The
 scrolling data uses a fixed-point 16.16 signed integer format. If this
-key is passed to `CGEventGetDoubleValueField&#39;, the fixed-point value is
+key is passed to `CGEventGetDoubleValueField', the fixed-point value is
 converted to a double value.</p>
 </div><h4 id='associatedconstant.SCROLL_WHEEL_EVENT_POINT_DELTA_AXIS_1' class="associatedconstant"><span id='SCROLL_WHEEL_EVENT_POINT_DELTA_AXIS_1.v' class='invisible'><code>pub const <a href='#associatedconstant.SCROLL_WHEEL_EVENT_POINT_DELTA_AXIS_1' class="constant"><b>SCROLL_WHEEL_EVENT_POINT_DELTA_AXIS_1</b></a>: <a class="type" href="../../core_graphics/event/type.CGEventField.html" title="type core_graphics::event::CGEventField">CGEventField</a></code></span></h4>
 <div class='docblock'><pre class="rust ">
@@ -333,7 +342,19 @@ is line-based.</p>
 </div><h4 id='associatedconstant.MOUSE_EVENT_WINDOW_UNDER_MOUSE_POINTER_THAT_CAN_HANDLE_THIS_EVENT' class="associatedconstant"><span id='MOUSE_EVENT_WINDOW_UNDER_MOUSE_POINTER_THAT_CAN_HANDLE_THIS_EVENT.v' class='invisible'><code>pub const <a href='#associatedconstant.MOUSE_EVENT_WINDOW_UNDER_MOUSE_POINTER_THAT_CAN_HANDLE_THIS_EVENT' class="constant"><b>MOUSE_EVENT_WINDOW_UNDER_MOUSE_POINTER_THAT_CAN_HANDLE_THIS_EVENT</b></a>: <a class="type" href="../../core_graphics/event/type.CGEventField.html" title="type core_graphics::event::CGEventField">CGEventField</a></code></span></h4>
 <div class='docblock'><pre class="rust ">
 <span class="ident">MOUSE_EVENT_WINDOW_UNDER_MOUSE_POINTER_THAT_CAN_HANDLE_THIS_EVENT</span>: <span class="ident">CGEventField</span> <span class="op">=</span> <span class="number">92</span></pre>
-</div></div></section>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+            <div id='implementations-list'>
+        </div>
+            <h2 id='synthetic-implementations' class='small-section-header'>
+              Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+            </h2>
+            <div id='synthetic-implementations-list'>
+        <h3 id='impl-Send' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../core_graphics/event/struct.EventField.html" title="struct core_graphics::event::EventField">EventField</a></code><a href='#impl-Send' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../core_graphics/event/struct.EventField.html" title="struct core_graphics::event::EventField">EventField</a></code><a href='#impl-Sync' class='anchor'></a></span><span class='out-of-band'></span></h3>
+<div class='impl-items'></div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -346,20 +367,22 @@ is line-based.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
