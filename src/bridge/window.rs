@@ -5,15 +5,13 @@ use application::*;
 use raw::*;
 use std::ffi;
 use core_graphics::geometry::{CGPoint, CGSize};
-use core_foundation::base::{CFTypeRef, TCFType};
+use core_foundation::base::TCFType;
 use core_foundation::string::CFString;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::element;
 #[cfg(feature = "accessibility")]
 use common::accessibility::window;
-
-type AXUIElementRef = CFTypeRef;
 
 /// The flags on a `Window`.
 #[derive(Debug)]
