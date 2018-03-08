@@ -141,7 +141,7 @@ impl<T: FromStr + Display> CVar<T> {
         match value {
             Ok(_) => Ok(CVar {
                 name,
-                api: api,
+                api,
                 value_marker: PhantomData::default(),
             }),
             Err(_) => Err(ChunkWMError::CVarNotFound(name)),
@@ -153,7 +153,7 @@ impl<T: FromStr + Display> CVar<T> {
         api.create_cvar(name, value);
         CVar {
             name,
-            api: api,
+            api,
             value_marker: PhantomData::default(),
         }
     }
