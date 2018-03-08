@@ -27,7 +27,6 @@ pub enum SpaceType {
     /// Space is a fullscreen application.
     Fullscreen,
     /// Space is handled by sytem.
-    ///
     System,
     Unknown,
 }
