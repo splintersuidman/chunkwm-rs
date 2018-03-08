@@ -10,11 +10,8 @@
     <title>core_graphics::display::CGDisplay - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
@@ -36,13 +33,6 @@
         <p class='location'>Struct CGDisplay</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.id">id</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.main">main</a><a href="#method.bounds">bounds</a><a href="#method.display_mode">display_mode</a><a href="#method.image">image</a><a href="#method.screenshot">screenshot</a><a href="#method.screenshot_from_windows">screenshot_from_windows</a><a href="#method.window_list_info">window_list_info</a><a href="#method.is_active">is_active</a><a href="#method.is_always_in_mirror_set">is_always_in_mirror_set</a><a href="#method.is_asleep">is_asleep</a><a href="#method.is_builtin">is_builtin</a><a href="#method.is_in_hw_mirror_set">is_in_hw_mirror_set</a><a href="#method.is_in_mirror_set">is_in_mirror_set</a><a href="#method.is_main">is_main</a><a href="#method.is_online">is_online</a><a href="#method.uses_open_gl_acceleration">uses_open_gl_acceleration</a><a href="#method.is_stereo">is_stereo</a><a href="#method.mirrors_display">mirrors_display</a><a href="#method.primary_display">primary_display</a><a href="#method.rotation">rotation</a><a href="#method.screen_size">screen_size</a><a href="#method.serial_number">serial_number</a><a href="#method.unit_number">unit_number</a><a href="#method.vendor_number">vendor_number</a><a href="#method.model_number">model_number</a><a href="#method.pixels_high">pixels_high</a><a href="#method.pixels_wide">pixels_wide</a><a href="#method.active_displays">active_displays</a><a href="#method.active_display_count">active_display_count</a><a href="#method.hide_cursor">hide_cursor</a><a href="#method.show_cursor">show_cursor</a><a href="#method.move_cursor_to_point">move_cursor_to_point</a><a href="#method.warp_mouse_cursor_position">warp_mouse_cursor_position</a><a href="#method.associate_mouse_and_mouse_cursor_position">associate_mouse_and_mouse_cursor_position</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Copy">Copy</a><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>display</a></p><script>window.sidebarCurrent = {name: 'CGDisplay', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -78,7 +68,7 @@
 </div><h4 id='method.bounds' class="method"><span id='bounds.v' class='invisible'><code>pub fn <a href='#method.bounds' class='fnname'>bounds</a>(&amp;self) -&gt; <a class="struct" href="../../core_graphics/geometry/struct.CGRect.html" title="struct core_graphics::geometry::CGRect">CGRect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#78-80' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns the bounds of a display in the global display coordinate space.</p>
 </div><h4 id='method.display_mode' class="method"><span id='display_mode.v' class='invisible'><code>pub fn <a href='#method.display_mode' class='fnname'>display_mode</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../core_graphics/display/struct.CGDisplayMode.html" title="struct core_graphics::display::CGDisplayMode">CGDisplayMode</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#84-93' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Returns information about a display's current configuration.</p>
+<div class='docblock'><p>Returns information about a display&#39;s current configuration.</p>
 </div><h4 id='method.image' class="method"><span id='image.v' class='invisible'><code>pub fn <a href='#method.image' class='fnname'>image</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../core_graphics/image/struct.CGImage.html" title="struct core_graphics::image::CGImage">CGImage</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#97-106' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns an image containing the contents of the specified display.</p>
 </div><h4 id='method.screenshot' class="method"><span id='screenshot.v' class='invisible'><code>pub fn <a href='#method.screenshot' class='fnname'>screenshot</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;bounds: <a class="struct" href="../../core_graphics/geometry/struct.CGRect.html" title="struct core_graphics::geometry::CGRect">CGRect</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;list_option: <a class="type" href="../../core_graphics/display/type.CGWindowListOption.html" title="type core_graphics::display::CGWindowListOption">CGWindowListOption</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;window_id: <a class="type" href="../../core_graphics/display/type.CGWindowID.html" title="type core_graphics::display::CGWindowID">CGWindowID</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;image_option: <a class="type" href="../../core_graphics/display/type.CGWindowImageOption.html" title="type core_graphics::display::CGWindowImageOption">CGWindowImageOption</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../core_graphics/image/struct.CGImage.html" title="struct core_graphics::image::CGImage">CGImage</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#111-125' title='goto source code'>[src]</a></span></h4>
@@ -129,7 +119,7 @@ display.</p>
 </div><h4 id='method.unit_number' class="method"><span id='unit_number.v' class='invisible'><code>pub fn <a href='#method.unit_number' class='fnname'>unit_number</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#262-264' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns the logical unit number of a display.</p>
 </div><h4 id='method.vendor_number' class="method"><span id='vendor_number.v' class='invisible'><code>pub fn <a href='#method.vendor_number' class='fnname'>vendor_number</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#268-270' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Returns the vendor number of the specified display's monitor.</p>
+<div class='docblock'><p>Returns the vendor number of the specified display&#39;s monitor.</p>
 </div><h4 id='method.model_number' class="method"><span id='model_number.v' class='invisible'><code>pub fn <a href='#method.model_number' class='fnname'>model_number</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#274-276' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns the model number of a display monitor.</p>
 </div><h4 id='method.pixels_high' class="method"><span id='pixels_high.v' class='invisible'><code>pub fn <a href='#method.pixels_high' class='fnname'>pixels_high</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/display.rs.html#280-282' title='goto source code'>[src]</a></span></h4>
@@ -179,22 +169,20 @@ in the foreground.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt><kbd>?</kbd></dt>
+                    <dt>?</dt>
                     <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
+                    <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
+                    <dt>↹</dt>
                     <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
+                    <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 
