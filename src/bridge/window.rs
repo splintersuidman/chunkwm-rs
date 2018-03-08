@@ -94,9 +94,7 @@ impl Window {
 
     /// Get main role.
     pub fn main_role(&self) -> Result<String, ChunkWMError> {
-        unsafe {
-            Ok(CFString::wrap_under_get_rule((*self.window_ref()?).main_role).to_string())
-        }
+        unsafe { Ok(CFString::wrap_under_get_rule((*self.window_ref()?).main_role).to_string()) }
     }
 
     /// Get sub role.
@@ -178,7 +176,9 @@ impl Window {
         if unsafe { element::set_window_position(self.element()?, x, y) } {
             Ok(())
         } else {
-            Err(ChunkWMError::Internal("could not run set_position successfully"))
+            Err(ChunkWMError::Internal(
+                "could not run set_position successfully",
+            ))
         }
     }
 
@@ -189,7 +189,9 @@ impl Window {
         if unsafe { element::set_window_size(self.element()?, width, height) } {
             Ok(())
         } else {
-            Err(ChunkWMError::Internal("could not run set_size successfully"))
+            Err(ChunkWMError::Internal(
+                "could not run set_size successfully",
+            ))
         }
     }
 

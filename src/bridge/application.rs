@@ -24,8 +24,7 @@ impl Application {
     // TODO(splintah): ProcessFlags type?
     #[cfg(feature = "accessibility")]
     pub fn processes() -> Result<Vec<Application>, ChunkWMError> {
-        let applications: &[ApplicationRef] =
-            unsafe { application::get_running_processes(0) };
+        let applications: &[ApplicationRef] = unsafe { application::get_running_processes(0) };
         let applications: Vec<ApplicationRef> = applications.to_vec();
         Ok(applications
             .iter()

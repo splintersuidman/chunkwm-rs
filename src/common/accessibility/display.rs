@@ -1,5 +1,5 @@
 use raw::*;
-use core_graphics::display::{CGDirectDisplayID, CGRect, CGSize, CGPoint};
+use core_graphics::display::{CGDirectDisplayID, CGPoint, CGRect, CGSize};
 use core_foundation::string::CFStringRef;
 use std::os::raw::{c_int, c_uint};
 use display::*;
@@ -58,13 +58,22 @@ extern "C" {
     pub fn is_display_changing_spaces(display_ref: CFStringRef) -> bool;
 
     #[link_name = "\u{1}_axlib_cgsspaceid_to_desktop_id"]
-    pub fn cgsspaceid_to_desktop_id(space_id: CGSSpaceID, out_arrangement: *mut c_uint, out_desktop_id: *mut c_uint) -> bool;
+    pub fn cgsspaceid_to_desktop_id(
+        space_id: CGSSpaceID,
+        out_arrangement: *mut c_uint,
+        out_desktop_id: *mut c_uint,
+    ) -> bool;
 
     #[link_name = "\u{1}_axlib_cgsspaceid_from_desktop_id"]
-    pub fn cgsspaceid_from_desktop_id(desktop_id: c_uint, out_arrangement: *mut c_uint, out_desktop_id: *mut c_uint) -> bool;
+    pub fn cgsspaceid_from_desktop_id(
+        desktop_id: c_uint,
+        out_arrangement: *mut c_uint,
+        out_desktop_id: *mut c_uint,
+    ) -> bool;
 
     #[link_name = "\u{1}_axlib_spaces_for_display_with_count"]
-    pub fn spaces_for_display_with_count(display_ref: CFStringRef, count: *mut c_int) -> *mut c_int;
+    pub fn spaces_for_display_with_count(display_ref: CFStringRef, count: *mut c_int)
+        -> *mut c_int;
 
     #[link_name = "\u{1}_axlib_spaces_for_display"]
     pub fn spaces_for_display(display_ref: CFStringRef) -> *mut SpaceRef;

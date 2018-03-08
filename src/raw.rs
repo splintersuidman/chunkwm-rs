@@ -2,7 +2,7 @@ use core_graphics::geometry::{CGPoint, CGSize};
 use core_graphics::display::CGDirectDisplayID;
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
-use std::os::raw::{c_char, c_int, c_uint, c_ulong, c_float};
+use std::os::raw::{c_char, c_float, c_int, c_uint, c_ulong};
 use display::SpaceType;
 
 /// The reference to UI elements.
@@ -96,17 +96,16 @@ pub struct RawPayload {
 /// A reference to a `RawPayload`.
 pub type PayloadRef = *mut RawPayload;
 
-
 /// The raw `Display`.
 #[repr(C)]
 pub struct RawDisplay {
-	pub display_ref: CFStringRef,
-	pub id: CGDirectDisplayID,
-	pub arrangement: c_uint,
-	pub x: c_float,
-	pub y: c_float,
-	pub width: c_float,
-	pub height: c_float,
+    pub display_ref: CFStringRef,
+    pub id: CGDirectDisplayID,
+    pub arrangement: c_uint,
+    pub x: c_float,
+    pub y: c_float,
+    pub width: c_float,
+    pub height: c_float,
 }
 
 /// A reference to a `RawDisplay`.
@@ -118,9 +117,9 @@ pub type CGSSpaceType = SpaceType;
 /// The raw `Space`.
 #[repr(C)]
 pub struct RawSpace {
-	pub space_ref: CFStringRef,
-	pub id: CGSSpaceID,
-	pub space_type: CGSSpaceType,
+    pub space_ref: CFStringRef,
+    pub id: CGSSpaceID,
+    pub space_type: CGSSpaceType,
 }
 
 /// A reference to a `RawSpace`.
