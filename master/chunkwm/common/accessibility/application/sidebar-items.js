@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["construct_application",""],["destroy_application",""],["get_focused_application",""],["get_running_processes",""]]});
