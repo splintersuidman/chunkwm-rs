@@ -199,6 +199,19 @@
 <span id="143">143</span>
 <span id="144">144</span>
 <span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
@@ -215,6 +228,8 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginVoidFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>();
 <span class="doccomment">/// The function type used for the plugin&#39;s main function.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginMainFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">node</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">data</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+<span class="doccomment">/// The function type used for initialising and getting the plugin.</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ChunkWMPlugin</span>;
 
 <span class="doccomment">/// The raw type `ChunkWM` uses for a plugin.</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
@@ -225,6 +240,17 @@
     <span class="kw">pub</span> <span class="ident">subscriptions</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span>,
     <span class="kw">pub</span> <span class="ident">subscription_count</span>: <span class="ident">c_uint</span>,
 }
+
+<span class="doccomment">/// The raw `plugin_details` type `ChunkWM` uses for getting information about a plugin.</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChunkWMPluginDetails</span> {
+    <span class="kw">pub</span> <span class="ident">api_version</span>: <span class="ident">c_int</span>,
+    <span class="kw">pub</span> <span class="ident">file_name</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+    <span class="kw">pub</span> <span class="ident">plugin_name</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+    <span class="kw">pub</span> <span class="ident">plugin_version</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+    <span class="kw">pub</span> <span class="ident">initialize</span>: <span class="ident">PluginFunc</span>,
+}
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">ChunkWMPluginDetails</span> {}
 
 <span class="doccomment">/// The reference to UI elements.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AXUIElementRef</span> <span class="op">=</span> <span class="ident">CFTypeRef</span>;
