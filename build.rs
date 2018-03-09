@@ -6,7 +6,7 @@ fn main() {
         cc::Build::new()
             .warnings(false)
             .flag("-objc")
-            .flag("-Wno-shadow-ivar")
+            .flag("-w")
             .file("./chunkwm-lib/border/border.mm")
             .compile("border");
     }
@@ -16,7 +16,7 @@ fn main() {
         cc::Build::new()
             .warnings(false)
             .flag("-objc")
-            .flag("-Wno-deprecated-declarations")
+            .flag("-w")
             .file("./chunkwm-lib/accessibility/application.mm")
             .file("./chunkwm-lib/accessibility/display.mm")
             .file("./chunkwm-lib/accessibility/element.cpp")
