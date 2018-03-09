@@ -162,10 +162,6 @@
 <span id="106">106</span>
 <span id="107">107</span>
 <span id="108">108</span>
-<span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `event` module contains types and traits for event handling.</span>
 
@@ -183,10 +179,6 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HandleEvent</span> {
     <span class="doccomment">/// Create a new instance of `Self`. This is run at the plugin&#39;s startup.</span>
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="self">Self</span>;
-    <span class="doccomment">/// Specify the plugin&#39;s name.</span>
-    <span class="kw">fn</span> <span class="ident">name</span>() <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>;
-    <span class="doccomment">/// Specify the version&#39;s name.</span>
-    <span class="kw">fn</span> <span class="ident">version</span>() <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>;
     <span class="doccomment">/// Subscribe to events.</span>
     <span class="kw">fn</span> <span class="ident">subscribe</span>() <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">Subscription</span>];
     <span class="doccomment">/// Handle an `Event`.</span>
