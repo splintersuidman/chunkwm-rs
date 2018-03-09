@@ -13,6 +13,8 @@ pub type PluginBoolFunc = extern "C" fn(api: API) -> bool;
 pub type PluginVoidFunc = extern "C" fn();
 /// The function type used for the plugin's main function.
 pub type PluginMainFunc = extern "C" fn(node: *const c_char, data: *mut c_void) -> bool;
+/// The function type used for initialising and getting the plugin.
+pub type PluginFunc = extern "C" fn() -> *mut ChunkWMPlugin;
 
 /// The raw type `ChunkWM` uses for a plugin.
 #[repr(C)]
@@ -23,6 +25,17 @@ pub struct ChunkWMPlugin {
     pub subscriptions: *const Subscription,
     pub subscription_count: c_uint,
 }
+
+/// The raw `plugin_details` type `ChunkWM` uses for getting information about a plugin.
+#[repr(C)]
+pub struct ChunkWMPluginDetails {
+    pub api_version: c_int,
+    pub file_name: *const u8,
+    pub plugin_name: *const u8,
+    pub plugin_version: *const u8,
+    pub initialize: PluginFunc,
+}
+unsafe impl Sync for ChunkWMPluginDetails {}
 
 /// The reference to UI elements.
 pub type AXUIElementRef = CFTypeRef;
