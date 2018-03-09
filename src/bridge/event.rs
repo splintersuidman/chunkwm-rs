@@ -14,10 +14,6 @@ pub type DisplayID = CGDirectDisplayID;
 pub trait HandleEvent {
     /// Create a new instance of `Self`. This is run at the plugin's startup.
     fn new(api: API) -> Self;
-    /// Specify the plugin's name.
-    fn name() -> &'static str;
-    /// Specify the version's name.
-    fn version() -> &'static str;
     /// Subscribe to events.
     fn subscribe() -> &'static [Subscription];
     /// Handle an `Event`.
