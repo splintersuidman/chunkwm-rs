@@ -120,8 +120,6 @@ impl API {
 ///     }
 ///     // some methods omitted
 ///     # subscribe!();
-///     # name!("");
-///     # version!("");
 ///     # fn shutdown(&self) {}
 /// }
 /// # fn main() {}
