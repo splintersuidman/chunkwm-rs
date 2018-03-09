@@ -4,6 +4,8 @@ use ChunkWMError;
 use core_graphics::display::CGDirectDisplayID;
 use core_foundation::string::CFStringRef;
 use raw::*;
+#[cfg(feature = "accessibility")]
+use bridge::window::Window;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::display;
