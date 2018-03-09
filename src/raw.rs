@@ -2,8 +2,27 @@ use core_graphics::geometry::{CGPoint, CGSize};
 use core_graphics::display::CGDirectDisplayID;
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
-use std::os::raw::{c_char, c_float, c_int, c_uint, c_ulong};
+use std::os::raw::{c_char, c_float, c_int, c_uint, c_ulong, c_void};
 use display::SpaceType;
+use bridge::event::Subscription;
+use bridge::api::API;
+
+/// The function type used for the plugin's init function.
+pub type PluginBoolFunc = extern "C" fn(api: API) -> bool;
+/// The function type used for the plugin's deinit function.
+pub type PluginVoidFunc = extern "C" fn();
+/// The function type used for the plugin's main function.
+pub type PluginMainFunc = extern "C" fn(node: *const c_char, data: *mut c_void) -> bool;
+
+/// The raw type `ChunkWM` uses for a plugin.
+#[repr(C)]
+pub struct ChunkWMPlugin {
+    pub init: PluginBoolFunc,
+    pub deinit: PluginVoidFunc,
+    pub run: PluginMainFunc,
+    pub subscriptions: *const Subscription,
+    pub subscription_count: c_uint,
+}
 
 /// The reference to UI elements.
 pub type AXUIElementRef = CFTypeRef;

@@ -22,6 +22,7 @@ pub enum LogLevel {
 ///
 /// You can keep the `API` in your event handler struct, but you can also use
 /// [`CVar`](./struct.CVar.html) to create handles to these `CVar`s.
+#[derive(Clone, Copy)]
 #[repr(C)]
 pub struct API {
     _update_cvar: unsafe extern "C" fn(*const c_char, *const c_char),
@@ -102,9 +103,9 @@ impl API {
 /// }
 ///
 /// impl HandleEvent for Plugin {
-///     fn new(api: &'static API) -> Plugin {
-///         let global_desktop_mode = CVar::new("global_desktop_mode", &api).unwrap();
-///         let bsp_spawn_left = CVar::new("bsp_spawn_left", &api).unwrap();
+///     fn new(api: API) -> Plugin {
+///         let global_desktop_mode = CVar::new("global_desktop_mode", api).unwrap();
+///         let bsp_spawn_left = CVar::new("bsp_spawn_left", api).unwrap();
 ///         Plugin { global_desktop_mode, bsp_spawn_left }
 ///     }
 ///
@@ -129,14 +130,16 @@ pub struct CVar<T: FromStr + Display> {
     /// The `CVar`'s name.
     pub name: &'static str,
     /// The reference to the api.
-    api: &'static API,
+    /// **NOTE**: the api is taken by value, but since it only contains function pointers, cloning
+    /// isn't that bad on performance.
+    api: API,
     /// The marker to allow for generics.
     value_marker: PhantomData<T>,
 }
 
 impl<T: FromStr + Display> CVar<T> {
     /// Create a new `CVar` handle without a value.
-    pub fn new(name: &'static str, api: &'static API) -> Result<Self, ChunkWMError> {
+    pub fn new(name: &'static str, api: API) -> Result<Self, ChunkWMError> {
         let value = api.get_cvar::<T>(name);
         match value {
             Ok(_) => Ok(CVar {
@@ -149,7 +152,7 @@ impl<T: FromStr + Display> CVar<T> {
     }
 
     /// Create a new `CVar` handle with a value. The given value will be set.
-    pub fn with_value(name: &'static str, value: &T, api: &'static API) -> Self {
+    pub fn with_value(name: &'static str, value: &T, api: API) -> Self {
         api.create_cvar(name, value);
         CVar {
             name,

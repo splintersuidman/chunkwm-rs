@@ -24,6 +24,22 @@ You then have to compile it as a `cdylib`, and use the `plugin.cpp` file from th
 
 If you want to get the `Makefile` template and a small Rust library template, see the [Rust plugin template](https://github.com/splintah/chunkwm-rs-template).
 
+### Versioning
+
+The versioning of this crate is as follows, with versions in the format of `MAJOR.MINOR.PATH`:
+
+- The major version corresponds to the major version of chunkwm;
+- the minor version corresponds to the minor version of chunkwm;
+- the patch version is the patch version of this particular crate, and thus isn't based on chunkwm's
+  versioning.
+
+You should be able to specify the version in `Cargo.toml` (replacing "MARJOR.MINOR.PATCH" with the desired version, of course):
+
+```toml
+[dependencies]
+chunkwm = { git = "https://github.com/splintah/chunkwm-rs", version = "MAJOR.MINOR.PATCH" }
+```
+
 ## Documentation
 
 You can view the documentation at [https://splintah.github.io/chunkwm-rs/master/chunkwm/][docs].
