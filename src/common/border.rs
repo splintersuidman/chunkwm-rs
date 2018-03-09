@@ -30,6 +30,8 @@ extern "C" {
     fn update_border_window_rect(border: BorderWindowRef, x: c_int, y: c_int, w: c_int, h: c_int);
     #[link_name = "\u{1}_update_border_window_color"]
     fn update_border_window_color(border: BorderWindowRef, color: c_uint);
+    #[link_name = "\u{1}_update_border_window_width"]
+    fn update_border_window_width(border: BorderWindowRef, width: c_int);
     #[link_name = "\u{1}_destroy_border_window"]
     fn destroy_border_window(border: BorderWindowRef);
 }
@@ -65,11 +67,24 @@ impl Border {
 
     /// Set the border color. The color format is 0xRRGGBBAA.
     ///
-    /// # Warning: do not use (yet).
+    /// # Warning: (maybe) do not use (yet).
     /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
     pub fn set_color(&self, color: u32) -> Result<(), ChunkWMError> {
         if !self.0.is_null() {
             unsafe { update_border_window_color(self.0, color) }
+            Ok(())
+        } else {
+            Err(ChunkWMError::NullPointer)
+        }
+    }
+
+    /// Set the border width.
+    ///
+    /// # Warning: (maybe) do not use (yet).
+    /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
+    pub fn set_width(&self, width: i32) -> Result<(), ChunkWMError> {
+        if !self.0.is_null() {
+            unsafe { update_border_window_width(self.0, width) }
             Ok(())
         } else {
             Err(ChunkWMError::NullPointer)
@@ -111,6 +126,12 @@ mod tests {
     // fn update_border_color() {
     //     let border = Border::new(0, 0, 100, 100, 5, 5, 0xFF0000FF);
     //     assert!(border.set_color(0x00FF00FF).is_ok());
+    // }
+
+    // #[test]
+    // fn update_width() {
+    //     let border = Border::new(0, 0, 100, 100, 5, 5, 0xFF0000FF);
+    //     assert!(border.set_width(10).is_ok())
     // }
 
     #[test]

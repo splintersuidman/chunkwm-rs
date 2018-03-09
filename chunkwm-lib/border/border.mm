@@ -9,6 +9,9 @@ extern "C" void update_border_window_rect(border_window *Border, int X, int Y, i
 extern "C" void update_border_window_color(border_window *Border, unsigned Color) {
     UpdateBorderWindowColor(Border, Color);
 }
+extern "C" void update_border_window_width(border_window *Border, int BorderWidth) {
+    UpdateBorderWindowWidth(Border, BorderWidth);
+}
 extern "C" void destroy_border_window(border_window *Border) {
     DestroyBorderWindow(Border);
 }
