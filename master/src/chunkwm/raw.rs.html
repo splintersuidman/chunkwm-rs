@@ -180,13 +180,51 @@
 <span id="124">124</span>
 <span id="125">125</span>
 <span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">base</span>::<span class="ident">CFTypeRef</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFStringRef</span>;
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_float</span>, <span class="ident">c_int</span>, <span class="ident">c_uint</span>, <span class="ident">c_ulong</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_float</span>, <span class="ident">c_int</span>, <span class="ident">c_uint</span>, <span class="ident">c_ulong</span>, <span class="ident">c_void</span>};
 <span class="kw">use</span> <span class="ident">display</span>::<span class="ident">SpaceType</span>;
+<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">event</span>::<span class="ident">Subscription</span>;
+<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">api</span>::<span class="ident">API</span>;
+
+<span class="doccomment">/// The function type used for the plugin&#39;s init function.</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginBoolFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+<span class="doccomment">/// The function type used for the plugin&#39;s deinit function.</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginVoidFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>();
+<span class="doccomment">/// The function type used for the plugin&#39;s main function.</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginMainFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">node</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">data</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+
+<span class="doccomment">/// The raw type `ChunkWM` uses for a plugin.</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChunkWMPlugin</span> {
+    <span class="kw">pub</span> <span class="ident">init</span>: <span class="ident">PluginBoolFunc</span>,
+    <span class="kw">pub</span> <span class="ident">deinit</span>: <span class="ident">PluginVoidFunc</span>,
+    <span class="kw">pub</span> <span class="ident">run</span>: <span class="ident">PluginMainFunc</span>,
+    <span class="kw">pub</span> <span class="ident">subscriptions</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">Subscription</span>,
+    <span class="kw">pub</span> <span class="ident">subscription_count</span>: <span class="ident">c_uint</span>,
+}
 
 <span class="doccomment">/// The reference to UI elements.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AXUIElementRef</span> <span class="op">=</span> <span class="ident">CFTypeRef</span>;

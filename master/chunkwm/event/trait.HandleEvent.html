@@ -61,7 +61,7 @@
                    </a>
                </span><a class='srclink' href='../../src/chunkwm/bridge/event.rs.html#14-27' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait HandleEvent {
-    fn <a href='#tymethod.new' class='fnname'>new</a>(api: &amp;'static <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self;
+    fn <a href='#tymethod.new' class='fnname'>new</a>(api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self;
 <div class='item-spacer'></div>    fn <a href='#tymethod.name' class='fnname'>name</a>() -&gt; &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.version' class='fnname'>version</a>() -&gt; &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.subscribe' class='fnname'>subscribe</a>() -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'static [</a><a class="enum" href="../../chunkwm/event/enum.Subscription.html" title="enum chunkwm::event::Subscription">Subscription</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>;
@@ -73,7 +73,7 @@
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#tymethod.new' class='fnname'>new</a>(api: &amp;'static <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Create a new instance of <code>Self</code>. This is run at the plugin's startup.</p>
+        <h3 id='tymethod.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#tymethod.new' class='fnname'>new</a>(api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Create a new instance of <code>Self</code>. This is run at the plugin's startup.</p>
 </div><h3 id='tymethod.name' class='method'><span id='name.v' class='invisible'><code>fn <a href='#tymethod.name' class='fnname'>name</a>() -&gt; &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h3><div class='docblock'><p>Specify the plugin's name.</p>
 </div><h3 id='tymethod.version' class='method'><span id='version.v' class='invisible'><code>fn <a href='#tymethod.version' class='fnname'>version</a>() -&gt; &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h3><div class='docblock'><p>Specify the version's name.</p>
 </div><h3 id='tymethod.subscribe' class='method'><span id='subscribe.v' class='invisible'><code>fn <a href='#tymethod.subscribe' class='fnname'>subscribe</a>() -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'static [</a><a class="enum" href="../../chunkwm/event/enum.Subscription.html" title="enum chunkwm::event::Subscription">Subscription</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span></h3><div class='docblock'><p>Subscribe to events.</p>

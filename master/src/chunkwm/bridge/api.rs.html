@@ -296,6 +296,9 @@
 <span id="240">240</span>
 <span id="241">241</span>
 <span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a</span>
 <span class="doccomment">//! handle to a specific `CVar`.</span>
@@ -321,6 +324,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// You can keep the `API` in your event handler struct, but you can also use</span>
 <span class="doccomment">/// [`CVar`](./struct.CVar.html) to create handles to these `CVar`s.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">API</span> {
     <span class="ident">_update_cvar</span>: <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>),
@@ -401,9 +405,9 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// impl HandleEvent for Plugin {</span>
-<span class="doccomment">///     fn new(api: &amp;&#39;static API) -&gt; Plugin {</span>
-<span class="doccomment">///         let global_desktop_mode = CVar::new(&quot;global_desktop_mode&quot;, &amp;api).unwrap();</span>
-<span class="doccomment">///         let bsp_spawn_left = CVar::new(&quot;bsp_spawn_left&quot;, &amp;api).unwrap();</span>
+<span class="doccomment">///     fn new(api: API) -&gt; Plugin {</span>
+<span class="doccomment">///         let global_desktop_mode = CVar::new(&quot;global_desktop_mode&quot;, api).unwrap();</span>
+<span class="doccomment">///         let bsp_spawn_left = CVar::new(&quot;bsp_spawn_left&quot;, api).unwrap();</span>
 <span class="doccomment">///         Plugin { global_desktop_mode, bsp_spawn_left }</span>
 <span class="doccomment">///     }</span>
 <span class="doccomment">///</span>
@@ -428,14 +432,16 @@
     <span class="doccomment">/// The `CVar`&#39;s name.</span>
     <span class="kw">pub</span> <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
     <span class="doccomment">/// The reference to the api.</span>
-    <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>,
+    <span class="doccomment">/// **NOTE**: the api is taken by value, but since it only contains function pointers, cloning</span>
+    <span class="doccomment">/// isn&#39;t that bad on performance.</span>
+    <span class="ident">api</span>: <span class="ident">API</span>,
     <span class="doccomment">/// The marker to allow for generics.</span>
     <span class="ident">value_marker</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromStr</span> <span class="op">+</span> <span class="ident">Display</span><span class="op">&gt;</span> <span class="ident">CVar</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Create a new `CVar` handle without a value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">api</span>.<span class="ident">get_cvar</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">name</span>);
         <span class="kw">match</span> <span class="ident">value</span> {
             <span class="prelude-val">Ok</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">CVar</span> {
@@ -448,7 +454,7 @@
     }
 
     <span class="doccomment">/// Create a new `CVar` handle with a value. The given value will be set.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_value</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, <span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_value</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, <span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="ident">api</span>.<span class="ident">create_cvar</span>(<span class="ident">name</span>, <span class="ident">value</span>);
         <span class="ident">CVar</span> {
             <span class="ident">name</span>,

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `WindowRef` type in crate `chunkwm`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, WindowRef">
+    <meta name="description" content="API documentation for the Rust `PluginBoolFunc` type in crate `chunkwm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, PluginBoolFunc">
 
-    <title>chunkwm::raw::WindowRef - Rust</title>
+    <title>chunkwm::raw::PluginBoolFunc - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
@@ -33,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Type Definition WindowRef</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-From%3CWindowRef%3E">From&lt;WindowRef&gt;</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'WindowRef', ty: 'type', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Type Definition PluginBoolFunc</p><div class="sidebar-elems"><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'PluginBoolFunc', ty: 'type', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -55,26 +55,13 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Type Definition <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a>::<wbr><a class="type" href=''>WindowRef</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Type Definition <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a>::<wbr><a class="type" href=''>PluginBoolFunc</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/chunkwm/raw.rs.html#104' title='goto source code'>[src]</a></span></h1>
-<pre class='rust typedef'>type WindowRef = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../../chunkwm/raw/struct.RawWindow.html" title="struct chunkwm::raw::RawWindow">RawWindow</a>;</pre><div class='docblock'><p>A reference to a <code>RawWindow</code>.</p>
-</div>
-            <h2 id='implementations' class='small-section-header'>
-              Trait Implementations<a href='#implementations' class='anchor'></a>
-            </h2>
-            <div id='implementations-list'>
-        <h3 id='impl-From%3CWindowRef%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="type" href="../../chunkwm/raw/type.WindowRef.html" title="type chunkwm::raw::WindowRef">WindowRef</a>&gt; for <a class="struct" href="../../chunkwm/window/struct.Window.html" title="struct chunkwm::window::Window">Window</a></code><a href='#impl-From%3CWindowRef%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#264-268' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(window_ref: <a class="type" href="../../chunkwm/raw/type.WindowRef.html" title="type chunkwm::raw::WindowRef">WindowRef</a>) -&gt; <a class="struct" href="../../chunkwm/window/struct.Window.html" title="struct chunkwm::window::Window">Window</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#265-267' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Performs the conversion.</p>
-</div></div></div>
-            <h2 id='synthetic-implementations' class='small-section-header'>
-              Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
-            </h2>
-            <div id='synthetic-implementations-list'>
-        </div></section>
+               </span><a class='srclink' href='../../src/chunkwm/raw.rs.html#11' title='goto source code'>[src]</a></span></h1>
+<pre class='rust typedef'>type PluginBoolFunc = extern &quot;C&quot; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.fn.html">fn</a>(api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;</pre><div class='docblock'><p>The function type used for the plugin's init function.</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

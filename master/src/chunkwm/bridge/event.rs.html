@@ -182,7 +182,7 @@
 <span class="doccomment">/// The `HandleEvent` trait should be implemented on your Plugin struct.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HandleEvent</span> {
     <span class="doccomment">/// Create a new instance of `Self`. This is run at the plugin&#39;s startup.</span>
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">api</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="self">Self</span>;
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="self">Self</span>;
     <span class="doccomment">/// Specify the plugin&#39;s name.</span>
     <span class="kw">fn</span> <span class="ident">name</span>() <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>;
     <span class="doccomment">/// Specify the version&#39;s name.</span>
