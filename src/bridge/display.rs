@@ -102,7 +102,7 @@ pub struct Space(SpaceRef);
 
 impl Space {
     /// Get the raw `SpaceRef`.
-    pub fn space_ref(&self) -> Result<SpaceRef, ChunkWMError> {
+    pub unsafe fn space_ref(&self) -> Result<SpaceRef, ChunkWMError> {
         if !self.0.is_null() {
             Ok(self.0)
         } else {

@@ -10,7 +10,7 @@ use std::os::raw::c_void;
 pub struct Payload(PayloadRef);
 
 impl Payload {
-    pub fn payload_ref(&self) -> Result<PayloadRef, ChunkWMError> {
+    pub unsafe fn payload_ref(&self) -> Result<PayloadRef, ChunkWMError> {
         if !self.0.is_null() {
             Ok(self.0)
         } else {
