@@ -3,6 +3,8 @@
 use ChunkWMError;
 use raw::*;
 use std::ffi;
+use std::os::raw::c_void;
+
 #[cfg(feature = "accessibility")]
 use common::accessibility::application;
 
@@ -94,5 +96,11 @@ impl<'a> From<&'a mut RawApplication> for Application {
 impl Into<Application> for RawApplication {
     fn into(mut self) -> Application {
         Application(&mut self)
+    }
+}
+
+impl From<*mut c_void> for Application {
+    fn from(application_ref: *mut c_void) -> Application {
+        Application(application_ref as ApplicationRef)
     }
 }

@@ -3,6 +3,7 @@
 use ChunkWMError;
 use raw::*;
 use std::ffi;
+use std::os::raw::c_void;
 
 /// The `Payload` struct.
 #[derive(Debug)]
@@ -49,5 +50,11 @@ impl Into<Payload> for RawPayload {
 impl From<PayloadRef> for Payload {
     fn from(payload_ref: PayloadRef) -> Payload {
         Payload(payload_ref)
+    }
+}
+
+impl From<*mut c_void> for Payload {
+    fn from(payload_ref: *mut c_void) -> Payload {
+        Payload(payload_ref as PayloadRef)
     }
 }

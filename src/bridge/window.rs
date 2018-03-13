@@ -4,6 +4,7 @@ use ChunkWMError;
 use application::*;
 use raw::*;
 use std::ffi;
+use std::os::raw::c_void;
 use core_graphics::geometry::{CGPoint, CGSize};
 use core_foundation::base::TCFType;
 use core_foundation::string::CFString;
@@ -264,5 +265,11 @@ impl<'a> From<&'a mut RawWindow> for Window {
 impl From<WindowRef> for Window {
     fn from(window_ref: WindowRef) -> Window {
         Window(window_ref)
+    }
+}
+
+impl From<*mut c_void> for Window {
+    fn from(window_ref: *mut c_void) -> Window {
+        Window(window_ref as WindowRef)
     }
 }
