@@ -322,6 +322,13 @@
 <span id="266">266</span>
 <span id="267">267</span>
 <span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `window` module contains the window type and its implementations.</span>
 
@@ -329,6 +336,7 @@
 <span class="kw">use</span> <span class="ident">application</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>;
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">base</span>::<span class="ident">TCFType</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFString</span>;
@@ -589,6 +597,12 @@
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">WindowRef</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Window</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">window_ref</span>: <span class="ident">WindowRef</span>) <span class="op">-&gt;</span> <span class="ident">Window</span> {
         <span class="ident">Window</span>(<span class="ident">window_ref</span>)
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Window</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">window_ref</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">Window</span> {
+        <span class="ident">Window</span>(<span class="ident">window_ref</span> <span class="kw">as</span> <span class="ident">WindowRef</span>)
     }
 }
 </pre>

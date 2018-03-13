@@ -161,7 +161,6 @@
 <span id="105">105</span>
 <span id="106">106</span>
 <span id="107">107</span>
-<span id="108">108</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `event` module contains types and traits for event handling.</span>
 
@@ -189,21 +188,20 @@
 
 <span class="doccomment">/// The `Event` enum allows for easy pattern matching on events.</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Event</span> {
-    <span class="ident">ApplicationLaunched</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">ApplicationTerminated</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">ApplicationActivated</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">ApplicationDeactivated</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">ApplicationHidden</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">ApplicationUnhidden</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>),
-    <span class="ident">WindowCreated</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowDestroyed</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowFocused</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowMoved</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowResized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowMinimized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowDeminimized</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="ident">WindowTitleChanged</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Window</span><span class="op">&gt;</span>),
-    <span class="comment">// TODO(splintah): add WindowTitleChanged.</span>
+    <span class="ident">ApplicationLaunched</span>(<span class="ident">Application</span>),
+    <span class="ident">ApplicationTerminated</span>(<span class="ident">Application</span>),
+    <span class="ident">ApplicationActivated</span>(<span class="ident">Application</span>),
+    <span class="ident">ApplicationDeactivated</span>(<span class="ident">Application</span>),
+    <span class="ident">ApplicationHidden</span>(<span class="ident">Application</span>),
+    <span class="ident">ApplicationUnhidden</span>(<span class="ident">Application</span>),
+    <span class="ident">WindowCreated</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowDestroyed</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowFocused</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowMoved</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowResized</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowMinimized</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowDeminimized</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowTitleChanged</span>(<span class="ident">Window</span>),
     <span class="ident">DisplayAdded</span>(<span class="ident">DisplayID</span>),
     <span class="ident">DisplayRemoved</span>(<span class="ident">DisplayID</span>),
     <span class="ident">DisplayMoved</span>(<span class="ident">DisplayID</span>),
