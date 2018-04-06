@@ -10,10 +10,11 @@
     <title>display.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle">
     <script src="../../../storage.js"></script>
     
 
@@ -207,11 +208,11 @@
 <span class="doccomment">//! The `display` module contains functions for handling displays and spaces.</span>
 
 <span class="kw">use</span> <span class="ident">ChunkWMError</span>;
-<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
-<span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFStringRef</span>;
-<span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">window</span>::<span class="ident">Window</span>;
+<span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFStringRef</span>;
+<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
+<span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">common</span>::<span class="ident">accessibility</span>::<span class="ident">display</span>;

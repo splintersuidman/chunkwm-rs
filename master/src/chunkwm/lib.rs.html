@@ -10,10 +10,11 @@
     <title>lib.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -202,7 +203,7 @@
 <span class="doccomment">//! - The major version corresponds to the major version of chunkwm;</span>
 <span class="doccomment">//! - the minor version corresponds to the minor version of chunkwm;</span>
 <span class="doccomment">//! - the patch version is the patch version of this particular crate, and thus isn&#39;t based on chunkwm&#39;s</span>
-  <span class="doccomment">//! versioning.</span>
+<span class="doccomment">//! versioning.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! You should be able to specify the version in `Cargo.toml` (replacing &quot;MARJOR.MINOR.PATCH&quot; with the desired version, of course):</span>
 <span class="doccomment">//!</span>
@@ -253,8 +254,8 @@
     <span class="ident">Internal</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>),
 }
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">error</span>::<span class="ident">Error</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">ChunkWMError</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;ChunkWMError: {:?}&quot;</span>, <span class="self">self</span>)
@@ -265,9 +266,9 @@
     <span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
             <span class="ident">ChunkWMError</span>::<span class="ident">NullPointer</span> <span class="op">=&gt;</span> <span class="string">&quot;The raw pointer is outlived.&quot;</span>,
-            <span class="ident">ChunkWMError</span>::<span class="ident">CVarNotFound</span>(_) <span class="op">=&gt;</span> <span class="string">&quot;A `CVar` cannot be found.&quot;</span>,
-            <span class="ident">ChunkWMError</span>::<span class="ident">ParseError</span>(_) <span class="op">=&gt;</span> <span class="string">&quot;Something could not be parsed from a string.&quot;</span>,
-            <span class="ident">ChunkWMError</span>::<span class="ident">Internal</span>(_) <span class="op">=&gt;</span> <span class="string">&quot;An error occured in a chunkwm function.&quot;</span>,
+            <span class="ident">ChunkWMError</span>::<span class="ident">CVarNotFound</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="string">&quot;A `CVar` cannot be found.&quot;</span>,
+            <span class="ident">ChunkWMError</span>::<span class="ident">ParseError</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="string">&quot;Something could not be parsed from a string.&quot;</span>,
+            <span class="ident">ChunkWMError</span>::<span class="ident">Internal</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="string">&quot;An error occured in a chunkwm function.&quot;</span>,
         }
     }
 }

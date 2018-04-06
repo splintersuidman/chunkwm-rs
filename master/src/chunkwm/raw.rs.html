@@ -10,10 +10,11 @@
     <title>raw.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -213,14 +214,14 @@
 <span id="157">157</span>
 <span id="158">158</span>
 </pre><pre class="rust ">
-<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
-<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
+<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">api</span>::<span class="ident">API</span>;
+<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">event</span>::<span class="ident">Subscription</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">base</span>::<span class="ident">CFTypeRef</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFStringRef</span>;
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_float</span>, <span class="ident">c_int</span>, <span class="ident">c_uint</span>, <span class="ident">c_ulong</span>, <span class="ident">c_void</span>};
+<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
+<span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">geometry</span>::{<span class="ident">CGPoint</span>, <span class="ident">CGSize</span>};
 <span class="kw">use</span> <span class="ident">display</span>::<span class="ident">SpaceType</span>;
-<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">event</span>::<span class="ident">Subscription</span>;
-<span class="kw">use</span> <span class="ident">bridge</span>::<span class="ident">api</span>::<span class="ident">API</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_float</span>, <span class="ident">c_int</span>, <span class="ident">c_uint</span>, <span class="ident">c_ulong</span>, <span class="ident">c_void</span>};
 
 <span class="doccomment">/// The function type used for the plugin&#39;s init function.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PluginBoolFunc</span> <span class="op">=</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span>(<span class="ident">api</span>: <span class="ident">API</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
