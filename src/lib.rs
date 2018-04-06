@@ -31,7 +31,7 @@
 //! - The major version corresponds to the major version of chunkwm;
 //! - the minor version corresponds to the minor version of chunkwm;
 //! - the patch version is the patch version of this particular crate, and thus isn't based on chunkwm's
-  //! versioning.
+//! versioning.
 //!
 //! You should be able to specify the version in `Cargo.toml` (replacing "MARJOR.MINOR.PATCH" with the desired version, of course):
 //!
@@ -82,8 +82,8 @@ pub enum ChunkWMError {
     Internal(&'static str),
 }
 
-use std::fmt;
 use std::error::Error;
+use std::fmt;
 impl fmt::Display for ChunkWMError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "ChunkWMError: {:?}", self)

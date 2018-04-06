@@ -4,7 +4,7 @@
 pub use ChunkWMError;
 pub use api::*;
 pub use application::*;
-pub use window::*;
 pub use event::*;
 pub use payload::*;
 pub use raw::*;
+pub use window::*;

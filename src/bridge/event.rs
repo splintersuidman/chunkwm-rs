@@ -3,9 +3,9 @@
 use ChunkWMError;
 use api::*;
 use application::*;
+use core_graphics::display::CGDirectDisplayID;
 use payload::*;
 use window::*;
-use core_graphics::display::CGDirectDisplayID;
 
 /// The display identifier.
 pub type DisplayID = CGDirectDisplayID;

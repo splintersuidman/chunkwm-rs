@@ -1,8 +1,8 @@
-use raw::*;
-use core_graphics::display::{CGDirectDisplayID, CGPoint, CGRect, CGSize};
 use core_foundation::string::CFStringRef;
-use std::os::raw::{c_int, c_uint};
+use core_graphics::display::{CGDirectDisplayID, CGPoint, CGRect, CGSize};
 use display::*;
+use raw::*;
+use std::os::raw::{c_int, c_uint};
 
 #[link(name = "Carbon", kind = "framework")]
 extern "C" {

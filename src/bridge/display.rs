@@ -1,11 +1,11 @@
 //! The `display` module contains functions for handling displays and spaces.
 
 use ChunkWMError;
-use core_graphics::display::CGDirectDisplayID;
-use core_foundation::string::CFStringRef;
-use raw::*;
 #[cfg(feature = "accessibility")]
 use bridge::window::Window;
+use core_foundation::string::CFStringRef;
+use core_graphics::display::CGDirectDisplayID;
+use raw::*;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::display;

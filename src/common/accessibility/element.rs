@@ -1,8 +1,8 @@
-use core_graphics::geometry::{CGPoint, CGSize};
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
-use std::os::raw::{c_char, c_float};
+use core_graphics::geometry::{CGPoint, CGSize};
 use raw::*;
+use std::os::raw::{c_char, c_float};
 
 #[link(name = "Carbon", kind = "framework")]
 extern "C" {

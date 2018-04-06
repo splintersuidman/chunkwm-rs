@@ -1,11 +1,11 @@
-use core_graphics::geometry::{CGPoint, CGSize};
-use core_graphics::display::CGDirectDisplayID;
+use bridge::api::API;
+use bridge::event::Subscription;
 use core_foundation::base::CFTypeRef;
 use core_foundation::string::CFStringRef;
-use std::os::raw::{c_char, c_float, c_int, c_uint, c_ulong, c_void};
+use core_graphics::display::CGDirectDisplayID;
+use core_graphics::geometry::{CGPoint, CGSize};
 use display::SpaceType;
-use bridge::event::Subscription;
-use bridge::api::API;
+use std::os::raw::{c_char, c_float, c_int, c_uint, c_ulong, c_void};
 
 /// The function type used for the plugin's init function.
 pub type PluginBoolFunc = extern "C" fn(api: API) -> bool;

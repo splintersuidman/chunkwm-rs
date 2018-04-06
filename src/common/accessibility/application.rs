@@ -1,5 +1,5 @@
-use std::os::raw::c_char;
 use raw::*;
+use std::os::raw::c_char;
 
 #[repr(C)]
 struct ApplicationArray {
