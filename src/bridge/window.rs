@@ -2,12 +2,12 @@
 
 use ChunkWMError;
 use application::*;
+use core_foundation::base::TCFType;
+use core_foundation::string::CFString;
+use core_graphics::geometry::{CGPoint, CGSize};
 use raw::*;
 use std::ffi;
 use std::os::raw::c_void;
-use core_graphics::geometry::{CGPoint, CGSize};
-use core_foundation::base::TCFType;
-use core_foundation::string::CFString;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::element;
@@ -66,7 +66,7 @@ impl WindowFlag {
 pub struct Window(WindowRef);
 
 impl Window {
-    /// Destroy the window.
+    /// Get a list of windows for an application.
     /// Needed features: `accessibility`.
     #[cfg(feature = "accessibility")]
     pub fn list_for_application(application: &Application) -> Result<Vec<Window>, ChunkWMError> {
