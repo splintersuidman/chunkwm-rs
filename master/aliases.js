@@ -1,0 +1,9 @@
+var ALIASES = {};
+ALIASES['bitflags'] = {};
+ALIASES['chunkwm'] = {};
+ALIASES['core_foundation'] = {};
+ALIASES['core_foundation_sys'] = {};
+ALIASES['core_graphics'] = {};
+ALIASES['foreign_types'] = {};
+ALIASES['foreign_types_shared'] = {};
+ALIASES['libc'] = {};
