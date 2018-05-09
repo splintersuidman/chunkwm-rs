@@ -10,11 +10,10 @@
     <title>chunkwm::prelude::CVar - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -34,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct CVar</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.name">name</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.with_value">with_value</a><a href="#method.set_value">set_value</a><a href="#method.value">value</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'CVar', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct CVar</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.name">name</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.with_value">with_value</a><a href="#method.set_value">set_value</a><a href="#method.value">value</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'CVar', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -55,14 +54,16 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="struct" href=''>CVar</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="struct" href=''>CVar</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#127-136' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct CVar&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt; {
+               </span><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#127-136' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CVar&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt; {
     pub name: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     // some fields omitted
-}</pre></div><div class='docblock'><p>The <code>CVar</code> struct allows you to easily create a handle to <code>CVars</code>, that might be updated. You
+}</pre><div class='docblock'><p>The <code>CVar</code> struct allows you to easily create a handle to <code>CVars</code>, that might be updated. You
 can use all types that implement <code>Display</code> and <code>FromStr</code> as value type for the <code>CVar</code>. You can
 therefore easily implement your own <code>CVar</code> compatible types.</p>
 <h2 id="example" class="section-header"><a href="#example">Example</a></h2>
@@ -79,7 +80,7 @@ therefore easily implement your own <code>CVar</code> compatible types.</p>
         <span class="ident">Plugin</span> { <span class="ident">global_desktop_mode</span>, <span class="ident">bsp_spawn_left</span> }
     }
 
-    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="ident">Event</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, _: <span class="ident">Event</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">global_desktop_mode</span>.<span class="ident">set_value</span>(<span class="kw-2">&amp;</span><span class="string">&quot;bsp&quot;</span>.<span class="ident">to_owned</span>());
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">global_desktop_mode</span>.<span class="ident">value</span>().<span class="ident">unwrap</span>(), <span class="string">&quot;bsp&quot;</span>.<span class="ident">to_owned</span>());
 
@@ -100,21 +101,16 @@ therefore easily implement your own <code>CVar</code> compatible types.</p>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt; <a class="struct" href="../../chunkwm/api/struct.CVar.html" title="struct chunkwm::api::CVar">CVar</a>&lt;T&gt;</code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#138-174' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(name: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, <a class="enum" href="../../chunkwm/enum.ChunkWMError.html" title="enum chunkwm::ChunkWMError">ChunkWMError</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#140-150' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Create a new <code>CVar</code> handle without a value.</p>
-</div><h4 id='method.with_value' class="method"><span id='with_value.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.with_value' class='fnname'>with_value</a>(name: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T, api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#153-160' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Create a new <code>CVar</code> handle with a value. The given value will be set.</p>
-</div><h4 id='method.set_value' class="method"><span id='set_value.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.set_value' class='fnname'>set_value</a>(&amp;mut self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#163-165' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Set the value of the <code>CVar</code>.</p>
-</div><h4 id='method.value' class="method"><span id='value.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.value' class='fnname'>value</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="../../chunkwm/enum.ChunkWMError.html" title="enum chunkwm::ChunkWMError">ChunkWMError</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#168-173' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Get the value of the <code>CVar</code>.</p>
-</div></div>
-            <h2 id='implementations' class='small-section-header'>
-              Trait Implementations<a href='#implementations' class='anchor'></a>
-            </h2>
-            <div id='implementations-list'>
-        </div>
-                <h2 id='synthetic-implementations' class='small-section-header'>
-                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
-                </h2>
-                <div id='synthetic-implementations-list'>
-            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../chunkwm/api/struct.CVar.html" title="struct chunkwm::api::CVar">CVar</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>,&nbsp;</span></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../chunkwm/api/struct.CVar.html" title="struct chunkwm::api::CVar">CVar</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a>,&nbsp;</span></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html" title="trait core::str::FromStr">FromStr</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a>&gt; <a class="struct" href="../../chunkwm/api/struct.CVar.html" title="struct chunkwm::api::CVar">CVar</a>&lt;T&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#138-174' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(name: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, <a class="enum" href="../../chunkwm/enum.ChunkWMError.html" title="enum chunkwm::ChunkWMError">ChunkWMError</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#140-150' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Create a new <code>CVar</code> handle without a value.</p>
+</div><h4 id='method.with_value' class="method"><span id='with_value.v' class='invisible'><code>pub fn <a href='#method.with_value' class='fnname'>with_value</a>(name: &amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T, api: <a class="struct" href="../../chunkwm/api/struct.API.html" title="struct chunkwm::api::API">API</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#153-160' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Create a new <code>CVar</code> handle with a value. The given value will be set.</p>
+</div><h4 id='method.set_value' class="method"><span id='set_value.v' class='invisible'><code>pub fn <a href='#method.set_value' class='fnname'>set_value</a>(&amp;mut self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#163-165' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Set the value of the <code>CVar</code>.</p>
+</div><h4 id='method.value' class="method"><span id='value.v' class='invisible'><code>pub fn <a href='#method.value' class='fnname'>value</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="enum" href="../../chunkwm/enum.ChunkWMError.html" title="enum chunkwm::ChunkWMError">ChunkWMError</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/api.rs.html#168-173' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get the value of the <code>CVar</code>.</p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

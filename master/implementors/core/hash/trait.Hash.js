@@ -1,5 +1,5 @@
 (function() {var implementors = {};
-implementors["core_graphics"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a> for <a class=\"struct\" href=\"core_graphics/event/struct.CGEventFlags.html\" title=\"struct core_graphics::event::CGEventFlags\">CGEventFlags</a>",synthetic:false,types:["core_graphics::event::CGEventFlags"]},];
+implementors["core_graphics"] = ["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a> for <a class=\"struct\" href=\"core_graphics/event/struct.CGEventFlags.html\" title=\"struct core_graphics::event::CGEventFlags\">CGEventFlags</a>",];
 
             if (window.register_implementors) {
                 window.register_implementors(implementors);

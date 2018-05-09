@@ -10,11 +10,10 @@
     <title>core_foundation::propertylist::CFPropertyListSubClass - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -55,13 +54,15 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>core_foundation</a>::<wbr><a href='index.html'>propertylist</a>::<wbr><a class="trait" href=''>CFPropertyListSubClass</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>core_foundation</a>::<wbr><a href='index.html'>propertylist</a>::<wbr><a class="trait" href=''>CFPropertyListSubClass</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#65-72' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait CFPropertyListSubClass&lt;Raw&gt;: <a class="trait" href="../../core_foundation/base/trait.TCFType.html" title="trait core_foundation::base::TCFType">TCFType</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const Raw</a>&gt; {
+               </span><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#65-72' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait CFPropertyListSubClass&lt;Raw&gt;: <a class="trait" href="../../core_foundation/base/trait.TCFType.html" title="trait core_foundation::base::TCFType">TCFType</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const Raw</a>&gt; {
     fn <a href='#method.to_CFPropertyList' class='fnname'>to_CFPropertyList</a>(&amp;self) -&gt; <a class="struct" href="../../core_foundation/propertylist/struct.CFPropertyList.html" title="struct core_foundation::propertylist::CFPropertyList">CFPropertyList</a> { ... }
-}</pre></div><div class='docblock'><p>Trait for all subclasses of <a href="struct.CFPropertyList.html"><code>CFPropertyList</code></a>.</p>
+}</pre><div class='docblock'><p>Trait for all subclasses of <a href="struct.CFPropertyList.html"><code>CFPropertyList</code></a>.</p>
 </div>
             <h2 id='provided-methods' class='small-section-header'>
               Provided Methods<a href='#provided-methods' class='anchor'></a>
@@ -73,14 +74,14 @@
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/data/struct.__CFData.html" title="struct core_foundation_sys::data::__CFData">__CFData</a>&gt; for <a class="struct" href="../../core_foundation/data/struct.CFData.html" title="struct core_foundation::data::CFData">CFData</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#74' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/string/struct.__CFString.html" title="struct core_foundation_sys::string::__CFString">__CFString</a>&gt; for <a class="struct" href="../../core_foundation/string/struct.CFString.html" title="struct core_foundation::string::CFString">CFString</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#75' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/array/struct.__CFArray.html" title="struct core_foundation_sys::array::__CFArray">__CFArray</a>&gt; for <a class="struct" href="../../core_foundation/array/struct.CFArray.html" title="struct core_foundation::array::CFArray">CFArray</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#76' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/dictionary/struct.__CFDictionary.html" title="struct core_foundation_sys::dictionary::__CFDictionary">__CFDictionary</a>&gt; for <a class="struct" href="../../core_foundation/dictionary/struct.CFDictionary.html" title="struct core_foundation::dictionary::CFDictionary">CFDictionary</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#77' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/date/struct.__CFDate.html" title="struct core_foundation_sys::date::__CFDate">__CFDate</a>&gt; for <a class="struct" href="../../core_foundation/date/struct.CFDate.html" title="struct core_foundation::date::CFDate">CFDate</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#78' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/number/struct.__CFBoolean.html" title="struct core_foundation_sys::number::__CFBoolean">__CFBoolean</a>&gt; for <a class="struct" href="../../core_foundation/boolean/struct.CFBoolean.html" title="struct core_foundation::boolean::CFBoolean">CFBoolean</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#79' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-<li><table class='table-display'><tbody><tr><td><code>impl CFPropertyListSubClass&lt;<a class="enum" href="../../core_foundation_sys/number/enum.__CFNumber.html" title="enum core_foundation_sys::number::__CFNumber">__CFNumber</a>&gt; for <a class="struct" href="../../core_foundation/number/struct.CFNumber.html" title="struct core_foundation::number::CFNumber">CFNumber</a></code><td><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#80' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
-</ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
+    <li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#74' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/data/struct.__CFData.html" title="struct core_foundation_sys::data::__CFData">__CFData</a>&gt; for <a class="struct" href="../../core_foundation/data/struct.CFData.html" title="struct core_foundation::data::CFData">CFData</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#75' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/string/struct.__CFString.html" title="struct core_foundation_sys::string::__CFString">__CFString</a>&gt; for <a class="struct" href="../../core_foundation/string/struct.CFString.html" title="struct core_foundation::string::CFString">CFString</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#76' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/array/struct.__CFArray.html" title="struct core_foundation_sys::array::__CFArray">__CFArray</a>&gt; for <a class="struct" href="../../core_foundation/array/struct.CFArray.html" title="struct core_foundation::array::CFArray">CFArray</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#77' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/dictionary/struct.__CFDictionary.html" title="struct core_foundation_sys::dictionary::__CFDictionary">__CFDictionary</a>&gt; for <a class="struct" href="../../core_foundation/dictionary/struct.CFDictionary.html" title="struct core_foundation::dictionary::CFDictionary">CFDictionary</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#78' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/date/struct.__CFDate.html" title="struct core_foundation_sys::date::__CFDate">__CFDate</a>&gt; for <a class="struct" href="../../core_foundation/date/struct.CFDate.html" title="struct core_foundation::date::CFDate">CFDate</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#79' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="struct" href="../../core_foundation_sys/number/struct.__CFBoolean.html" title="struct core_foundation_sys::number::__CFBoolean">__CFBoolean</a>&gt; for <a class="struct" href="../../core_foundation/boolean/struct.CFBoolean.html" title="struct core_foundation::boolean::CFBoolean">CFBoolean</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/core_foundation/propertylist.rs.html#80' title='goto source code'>[src]</a></div><code>impl CFPropertyListSubClass&lt;<a class="enum" href="../../core_foundation_sys/number/enum.__CFNumber.html" title="enum core_foundation_sys::number::__CFNumber">__CFNumber</a>&gt; for <a class="struct" href="../../core_foundation/number/struct.CFNumber.html" title="struct core_foundation::number::CFNumber">CFNumber</a></code></li>
+</ul><script type="text/javascript" async
                          src="../../implementors/core_foundation/propertylist/trait.CFPropertyListSubClass.js">
                  </script></section>
     <section id='search' class="content hidden"></section>

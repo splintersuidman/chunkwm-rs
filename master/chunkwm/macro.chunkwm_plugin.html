@@ -10,11 +10,10 @@
     <title>chunkwm::chunkwm_plugin - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../dark.css">
-    <link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
     <script src="../storage.js"></script>
     
 
@@ -34,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <div class="sidebar-elems"><p class='location'><a href='index.html'>chunkwm</a></p><script>window.sidebarCurrent = {name: 'chunkwm_plugin', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'><a href='index.html'>chunkwm</a></p><script>window.sidebarCurrent = {name: 'chunkwm_plugin', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <div class="theme-picker">
@@ -55,11 +54,13 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Macro <a href='index.html'>chunkwm</a>::<wbr><a class="macro" href=''>chunkwm_plugin</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Macro <a href='index.html'>chunkwm</a>::<wbr><a class="macro" href=''>chunkwm_plugin</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/chunkwm/macros.rs.html#87-251' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class="rust macro">
+               </span><a class='srclink' href='../src/chunkwm/macros.rs.html#87-251' title='goto source code'>[src]</a></span></h1>
+<pre class="rust macro">
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">chunkwm_plugin</span> {
     {
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>:<span class="ident">ident</span>,
@@ -68,7 +69,7 @@
         <span class="ident">version</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_version</span>:<span class="ident">expr</span>
     } <span class="op">=&gt;</span> { ... };
 }</pre>
-</div><div class='docblock'><p>The macro that exports the functions and values <code>ChunkWM</code> uses.</p>
+<div class='docblock'><p>The macro that exports the functions and values <code>ChunkWM</code> uses.</p>
 <p><strong>NOTE</strong>: the file name, plugin name and plugin version <strong>must</strong></p>
 <ul>
 <li>be a byte literal, you can achieve this using <code>b&quot;string&quot;</code>;</li>

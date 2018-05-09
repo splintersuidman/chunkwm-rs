@@ -10,11 +10,10 @@
     <title>chunkwm::prelude::WindowFlag - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -34,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Enum WindowFlag</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.InitMinimized">InitMinimized</a><a href="#variant.Movable">Movable</a><a href="#variant.Resizable">Resizable</a><a href="#variant.Minimized">Minimized</a><a href="#variant.Float">Float</a><a href="#variant.Sticky">Sticky</a><a href="#variant.Invalid">Invalid</a><a href="#variant.ForeTile">ForeTile</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.from">from</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'WindowFlag', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Enum WindowFlag</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.InitMinimized">InitMinimized</a><a href="#variant.Movable">Movable</a><a href="#variant.Resizable">Resizable</a><a href="#variant.Minimized">Minimized</a><a href="#variant.Float">Float</a><a href="#variant.Sticky">Sticky</a><a href="#variant.Invalid">Invalid</a><a href="#variant.ForeTile">ForeTile</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.from">from</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'WindowFlag', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -55,11 +54,13 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="enum" href=''>WindowFlag</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>prelude</a>::<wbr><a class="enum" href=''>WindowFlag</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#19-28' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust enum'>pub enum WindowFlag {
+               </span><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#19-28' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum WindowFlag {
     InitMinimized,
     Movable,
     Resizable,
@@ -68,26 +69,24 @@
     Sticky,
     Invalid,
     ForeTile,
-}</pre></div><div class='docblock'><p>The flags on a <code>Window</code>.</p>
+}</pre><div class='docblock'><p>The flags on a <code>Window</code>.</p>
 </div><h2 id='variants' class='variants small-section-header'>
                    Variants<a href='#variants' class='anchor'></a></h2>
 <span id="variant.InitMinimized" class="variant small-section-header"><a href="#variant.InitMinimized" class="anchor field"></a><span id='InitMinimized.v' class='invisible'><code>InitMinimized</code></span></span><span id="variant.Movable" class="variant small-section-header"><a href="#variant.Movable" class="anchor field"></a><span id='Movable.v' class='invisible'><code>Movable</code></span></span><span id="variant.Resizable" class="variant small-section-header"><a href="#variant.Resizable" class="anchor field"></a><span id='Resizable.v' class='invisible'><code>Resizable</code></span></span><span id="variant.Minimized" class="variant small-section-header"><a href="#variant.Minimized" class="anchor field"></a><span id='Minimized.v' class='invisible'><code>Minimized</code></span></span><span id="variant.Float" class="variant small-section-header"><a href="#variant.Float" class="anchor field"></a><span id='Float.v' class='invisible'><code>Float</code></span></span><span id="variant.Sticky" class="variant small-section-header"><a href="#variant.Sticky" class="anchor field"></a><span id='Sticky.v' class='invisible'><code>Sticky</code></span></span><span id="variant.Invalid" class="variant small-section-header"><a href="#variant.Invalid" class="anchor field"></a><span id='Invalid.v' class='invisible'><code>Invalid</code></span></span><span id="variant.ForeTile" class="variant small-section-header"><a href="#variant.ForeTile" class="anchor field"></a><span id='ForeTile.v' class='invisible'><code>ForeTile</code></span></span>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#30-62' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.from' class='fnname'>from</a>(flag: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#32-61' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Create a <code>Vec</code> of <code>WindowFlag</code>s from a <code>u32</code>.</p>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#30-62' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>pub fn <a href='#method.from' class='fnname'>from</a>(flag: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#32-61' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Create a <code>Vec</code> of <code>WindowFlag</code>s from a <code>u32</code>.</p>
 </div></div>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-            <div id='implementations-list'>
-        <h3 id='impl-Debug' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl-Debug' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#18' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#18' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
-</div></div></div>
-                <h2 id='synthetic-implementations' class='small-section-header'>
-                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
-                </h2>
-                <div id='synthetic-implementations-list'>
-            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../chunkwm/window/enum.WindowFlag.html" title="enum chunkwm::window::WindowFlag">WindowFlag</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#18' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/window.rs.html#18' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

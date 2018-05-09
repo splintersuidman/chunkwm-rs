@@ -10,11 +10,10 @@
     <title>core_graphics::private::CGSSurface - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -34,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct CGSSurface</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.from_ids">from_ids</a><a href="#method.id">id</a><a href="#method.set_shape">set_shape</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>private</a></p><script>window.sidebarCurrent = {name: 'CGSSurface', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct CGSSurface</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.from_ids">from_ids</a><a href="#method.id">id</a><a href="#method.set_shape">set_shape</a></div></div><p class='location'><a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>private</a></p><script>window.sidebarCurrent = {name: 'CGSSurface', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -55,26 +54,22 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>private</a>::<wbr><a class="struct" href=''>CGSSurface</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>core_graphics</a>::<wbr><a href='index.html'>private</a>::<wbr><a class="struct" href=''>CGSSurface</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/core_graphics/private.rs.html#57-61' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct CGSSurface { /* fields omitted */ }</pre></div><div class='docblock'><p>This should always be memory-safe; the window server rejects any invalid surface IDs.</p>
+               </span><a class='srclink' href='../../src/core_graphics/private.rs.html#57-61' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CGSSurface { /* fields omitted */ }</pre><div class='docblock'><p>This should always be memory-safe; the window server rejects any invalid surface IDs.</p>
 </div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#63-87' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.from_ids' class="method"><span id='from_ids.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.from_ids' class='fnname'>from_ids</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;context_id: <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;window_number: <a class="type" href="../../libc/type.c_int.html" title="type libc::c_int">c_int</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;surface_id: <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a><br>) -&gt; <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#65-71' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><h4 id='method.id' class="method"><span id='id.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.id' class='fnname'>id</a>(&amp;self) -&gt; <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#74-76' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><h4 id='method.set_shape' class="method"><span id='set_shape.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.set_shape' class='fnname'>set_shape</a>(&amp;self, region: &amp;<a class="struct" href="../../core_graphics/private/struct.CGSRegion.html" title="struct core_graphics::private::CGSRegion">CGSRegion</a>)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#79-86' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
-            <h2 id='implementations' class='small-section-header'>
-              Trait Implementations<a href='#implementations' class='anchor'></a>
-            </h2>
-            <div id='implementations-list'>
-        </div>
-                <h2 id='synthetic-implementations' class='small-section-header'>
-                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
-                </h2>
-                <div id='synthetic-implementations-list'>
-            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#63-87' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_ids' class="method"><span id='from_ids.v' class='invisible'><code>pub fn <a href='#method.from_ids' class='fnname'>from_ids</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;context_id: <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;window_number: <a class="type" href="../../libc/type.c_int.html" title="type libc::c_int">c_int</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;surface_id: <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a><br>) -&gt; <a class="struct" href="../../core_graphics/private/struct.CGSSurface.html" title="struct core_graphics::private::CGSSurface">CGSSurface</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#65-71' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.id' class="method"><span id='id.v' class='invisible'><code>pub fn <a href='#method.id' class='fnname'>id</a>(&amp;self) -&gt; <a class="type" href="../../libc/type.c_uint.html" title="type libc::c_uint">c_uint</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#74-76' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.set_shape' class="method"><span id='set_shape.v' class='invisible'><code>pub fn <a href='#method.set_shape' class='fnname'>set_shape</a>(&amp;self, region: &amp;<a class="struct" href="../../core_graphics/private/struct.CGSRegion.html" title="struct core_graphics::private::CGSRegion">CGSRegion</a>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/core_graphics/private.rs.html#79-86' title='goto source code'>[src]</a></span></h4>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

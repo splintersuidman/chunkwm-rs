@@ -10,11 +10,10 @@
     <title>chunkwm::raw::RawApplication - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
-          id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -34,7 +33,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct RawApplication</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.element">element</a><a href="#structfield.observer">observer</a><a href="#structfield.name">name</a><a href="#structfield.pid">pid</a><a href="#structfield.process_serial_number">process_serial_number</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-From%3C%26%27a%20mut%20RawApplication%3E">From&lt;&amp;&#39;a mut RawApplication&gt;</a><a href="#impl-Into%3CApplication%3E">Into&lt;Application&gt;</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">!Send</a><a href="#impl-Sync">!Sync</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'RawApplication', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+        <p class='location'>Struct RawApplication</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.element">element</a><a href="#structfield.observer">observer</a><a href="#structfield.name">name</a><a href="#structfield.pid">pid</a><a href="#structfield.process_serial_number">process_serial_number</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-From%3C%26%27a%20mut%20RawApplication%3E">From&lt;&amp;&#39;a mut RawApplication&gt;</a><a href="#impl-Into%3CApplication%3E">Into&lt;Application&gt;</a></div></div><p class='location'><a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'RawApplication', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -55,18 +54,20 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a>::<wbr><a class="struct" href=''>RawApplication</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>chunkwm</a>::<wbr><a href='index.html'>raw</a>::<wbr><a class="struct" href=''>RawApplication</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/chunkwm/raw.rs.html#73-84' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'><div class="docblock attributes">#[repr(C)]
+               </span><a class='srclink' href='../../src/chunkwm/raw.rs.html#73-84' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C)]
 </div>pub struct RawApplication {
     pub element: <a class="type" href="../../chunkwm/raw/type.AXUIElementRef.html" title="type chunkwm::raw::AXUIElementRef">AXUIElementRef</a>,
     pub observer: <a class="struct" href="../../chunkwm/raw/struct.RawObserver.html" title="struct chunkwm::raw::RawObserver">RawObserver</a>,
     pub name: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="type" href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html" title="type std::os::raw::c_char">c_char</a>,
     pub pid: <a class="type" href="../../chunkwm/raw/type.PID.html" title="type chunkwm::raw::PID">PID</a>,
     pub process_serial_number: <a class="struct" href="../../chunkwm/raw/struct.ProcessSerialNumber.html" title="struct chunkwm::raw::ProcessSerialNumber">ProcessSerialNumber</a>,
-}</pre></div><div class='docblock'><p>The raw application representation. This is used in the C/C++ plugin, and shouldn't really be
+}</pre><div class='docblock'><p>The raw application representation. This is used in the C/C++ plugin, and shouldn't really be
 necessary for you to use in your Rust code.</p>
 </div><h2 id='fields' class='fields small-section-header'>
                        Fields<a href='#fields' class='anchor'></a></h2><span id="structfield.element" class="structfield small-section-header">
@@ -96,15 +97,13 @@ necessary for you to use in your Rust code.</p>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-            <div id='implementations-list'>
-        <h3 id='impl-From%3C%26%27a%20mut%20RawApplication%3E' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;&amp;'a mut <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a>&gt; for <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code><a href='#impl-From%3C%26%27a%20mut%20RawApplication%3E' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#90-94' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(raw_app: &amp;mut <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a>) -&gt; <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#91-93' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs the conversion.</p>
-</div></div><h3 id='impl-Into%3CApplication%3E' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a>&gt; for <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a></code><a href='#impl-Into%3CApplication%3E' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#96-100' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#97-99' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs the conversion.</p>
-</div></div></div>
-                <h2 id='synthetic-implementations' class='small-section-header'>
-                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
-                </h2>
-                <div id='synthetic-implementations-list'>
-            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section>
+        <h3 id='impl-From%3C%26%27a%20mut%20RawApplication%3E' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;&amp;'a mut <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a>&gt; for <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code><a href='#impl-From%3C%26%27a%20mut%20RawApplication%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#90-94' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(raw_app: &amp;mut <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a>) -&gt; <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#91-93' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 id='impl-Into%3CApplication%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a>&gt; for <a class="struct" href="../../chunkwm/raw/struct.RawApplication.html" title="struct chunkwm::raw::RawApplication">RawApplication</a></code><a href='#impl-Into%3CApplication%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#96-100' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="struct" href="../../chunkwm/application/struct.Application.html" title="struct chunkwm::application::Application">Application</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/chunkwm/bridge/application.rs.html#97-99' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
