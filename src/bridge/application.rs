@@ -1,9 +1,9 @@
 //! The `application` module contains the application type and its implementations.
 
-use ChunkWMError;
 use raw::*;
 use std::ffi;
 use std::os::raw::c_void;
+use ChunkWMError;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::application;
@@ -34,7 +34,7 @@ impl Application {
             .collect())
     }
 
-    /// Get the raw window pointer.
+    /// Get the raw application pointer.
     pub unsafe fn application_ref(&self) -> Result<ApplicationRef, ChunkWMError> {
         if !self.0.is_null() {
             Ok(self.0)
