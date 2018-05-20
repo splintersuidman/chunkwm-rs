@@ -107,10 +107,10 @@
 </pre><pre class="rust ">
 <span class="doccomment">//! The `application` module contains the application type and its implementations.</span>
 
-<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>;
+<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">common</span>::<span class="ident">accessibility</span>::<span class="ident">application</span>;
@@ -141,7 +141,7 @@
             .<span class="ident">collect</span>())
     }
 
-    <span class="doccomment">/// Get the raw window pointer.</span>
+    <span class="doccomment">/// Get the raw application pointer.</span>
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">application_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ApplicationRef</span>, <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_null</span>() {
             <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="number">0</span>)

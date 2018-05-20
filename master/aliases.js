@@ -3,6 +3,7 @@ ALIASES['bitflags'] = {};
 ALIASES['bitflags'] = {};
 ALIASES['chunkwm'] = {};
 ALIASES['chunkwm'] = {};
+ALIASES['chunkwm'] = {};
 ALIASES['core_foundation'] = {};
 ALIASES['core_foundation'] = {};
 ALIASES['core_foundation_sys'] = {};
