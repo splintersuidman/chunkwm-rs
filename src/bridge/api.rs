@@ -1,12 +1,12 @@
 //! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a
 //! handle to a specific `CVar`.
 
-use ChunkWMError;
 use std::ffi::{CStr, CString};
 use std::fmt::{Display, Error, Formatter};
 use std::marker::PhantomData;
 use std::os::raw::{c_char, c_void};
 use std::str::FromStr;
+use ChunkWMError;
 
 /// The `LogLevel` defines how something should be logged for chunkwm.
 /// See the [chunkwm readme](https://github.com/koekeishiya/chunkwm#configuration).

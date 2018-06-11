@@ -1,11 +1,11 @@
 //! The `event` module contains types and traits for event handling.
 
-use ChunkWMError;
 use api::*;
 use application::*;
 use core_graphics::display::CGDirectDisplayID;
 use payload::*;
 use window::*;
+use ChunkWMError;
 
 /// The display identifier.
 pub type DisplayID = CGDirectDisplayID;
@@ -37,6 +37,7 @@ pub enum Event {
     WindowResized(Window),
     WindowMinimized(Window),
     WindowDeminimized(Window),
+    WindowSheetCreated(Window),
     WindowTitleChanged(Window),
     DisplayAdded(DisplayID),
     DisplayRemoved(DisplayID),
@@ -74,6 +75,7 @@ pub enum Subscription {
     WindowResized,
     WindowMinimized,
     WindowDeminimized,
+    WindowSheetCreated,
     WindowTitleChanged,
     // Count,
 }

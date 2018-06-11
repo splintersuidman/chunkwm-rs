@@ -1,6 +1,5 @@
 //! The `window` module contains the window type and its implementations.
 
-use ChunkWMError;
 use application::*;
 use core_foundation::base::TCFType;
 use core_foundation::string::CFString;
@@ -8,6 +7,7 @@ use core_graphics::geometry::{CGPoint, CGSize};
 use raw::*;
 use std::ffi;
 use std::os::raw::c_void;
+use ChunkWMError;
 
 #[cfg(feature = "accessibility")]
 use common::accessibility::element;

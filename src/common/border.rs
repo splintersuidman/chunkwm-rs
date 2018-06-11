@@ -1,7 +1,7 @@
 //! The `border` module contains a wrapper for the C methods that handle borders.
 
-use ChunkWMError;
 use std::os::raw::{c_int, c_uint};
+use ChunkWMError;
 
 #[repr(C)]
 #[derive(Debug)]

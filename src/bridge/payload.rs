@@ -1,9 +1,9 @@
 //! The `payload` module contains the payload type and its implementations.
 
-use ChunkWMError;
 use raw::*;
 use std::ffi;
 use std::os::raw::c_void;
+use ChunkWMError;
 
 /// The `Payload` struct.
 #[derive(Debug)]
