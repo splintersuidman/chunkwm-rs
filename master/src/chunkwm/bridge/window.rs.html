@@ -276,7 +276,6 @@
 </pre><pre class="rust ">
 <span class="doccomment">//! The `window` module contains the window type and its implementations.</span>
 
-<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">application</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">base</span>::<span class="ident">TCFType</span>;
 <span class="kw">use</span> <span class="ident">core_foundation</span>::<span class="ident">string</span>::<span class="ident">CFString</span>;
@@ -284,6 +283,7 @@
 <span class="kw">use</span> <span class="ident">raw</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>;
+<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;accessibility&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">common</span>::<span class="ident">accessibility</span>::<span class="ident">element</span>;

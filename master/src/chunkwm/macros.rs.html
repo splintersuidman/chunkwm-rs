@@ -228,27 +228,6 @@
 <span id="228">228</span>
 <span id="229">229</span>
 <span id="230">230</span>
-<span id="231">231</span>
-<span id="232">232</span>
-<span id="233">233</span>
-<span id="234">234</span>
-<span id="235">235</span>
-<span id="236">236</span>
-<span id="237">237</span>
-<span id="238">238</span>
-<span id="239">239</span>
-<span id="240">240</span>
-<span id="241">241</span>
-<span id="242">242</span>
-<span id="243">243</span>
-<span id="244">244</span>
-<span id="245">245</span>
-<span id="246">246</span>
-<span id="247">247</span>
-<span id="248">248</span>
-<span id="249">249</span>
-<span id="250">250</span>
-<span id="251">251</span>
 </pre><pre class="rust ">
 <span class="doccomment">/// This macro makes it easy to subscribe to events.</span>
 <span class="doccomment">///</span>
@@ -342,70 +321,49 @@
         <span class="ident">file</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">file_name</span>:<span class="ident">expr</span>,
         <span class="ident">name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_name</span>:<span class="ident">expr</span>,
         <span class="ident">version</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_version</span>:<span class="ident">expr</span>
-    } <span class="op">=&gt;</span> {<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">__export</span> {
+} <span class="op">=&gt;</span> {<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">__export</span> {
         <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">chunkwm</span>;
         <span class="kw">use</span> <span class="kw">super</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span>;
         <span class="kw">use</span> <span class="ident">chunkwm</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
         <span class="kw">use</span> <span class="ident">chunkwm</span>::<span class="ident">raw</span>::{<span class="ident">ChunkWMPlugin</span>, <span class="ident">ChunkWMPluginDetails</span>};
-        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_uint</span>, <span class="ident">c_void</span>};
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>;
+        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::{<span class="ident">c_char</span>, <span class="ident">c_uint</span>, <span class="ident">c_void</span>};
 
         <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">PLUGIN</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">struct_ident</span><span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">None</span>;
 
         <span class="kw">pub</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">chunkwm_plugin_main</span>(<span class="ident">node</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">data</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
             <span class="kw">use</span> <span class="ident">chunkwm</span>::<span class="ident">event</span>::<span class="ident">DisplayID</span>;
-            <span class="kw">let</span> <span class="ident">event</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                <span class="ident">ffi</span>::<span class="ident">CStr</span>::<span class="ident">from_ptr</span>(<span class="ident">node</span>)
-                    .<span class="ident">to_string_lossy</span>()
-                    .<span class="ident">into_owned</span>()
-            };
+            <span class="kw">let</span> <span class="ident">event</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ffi</span>::<span class="ident">CStr</span>::<span class="ident">from_ptr</span>(<span class="ident">node</span>).<span class="ident">to_string_lossy</span>().<span class="ident">into_owned</span>() };
 
             <span class="kw">let</span> <span class="ident">event</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">event</span>.<span class="ident">as_str</span>() {
-                <span class="string">&quot;chunkwm_export_application_launched&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">ApplicationLaunched</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
+                <span class="string">&quot;chunkwm_export_application_launched&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">ApplicationLaunched</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
                 <span class="string">&quot;chunkwm_export_application_terminated&quot;</span> <span class="op">=&gt;</span> {
                     <span class="ident">Event</span>::<span class="ident">ApplicationTerminated</span>(<span class="ident">data</span>.<span class="ident">into</span>())
                 }
-                <span class="string">&quot;chunkwm_export_application_activated&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">ApplicationActivated</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
+                <span class="string">&quot;chunkwm_export_application_activated&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">ApplicationActivated</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
                 <span class="string">&quot;chunkwm_export_application_deactivated&quot;</span> <span class="op">=&gt;</span> {
                     <span class="ident">Event</span>::<span class="ident">ApplicationDeactivated</span>(<span class="ident">data</span>.<span class="ident">into</span>())
                 }
-                <span class="string">&quot;chunkwm_export_application_hidden&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">ApplicationHidden</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_application_unhidden&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">ApplicationUnhidden</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_created&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowCreated</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_destroyed&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowDestroyed</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_focused&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowFocused</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
+                <span class="string">&quot;chunkwm_export_application_hidden&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">ApplicationHidden</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_application_unhidden&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">ApplicationUnhidden</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_created&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowCreated</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_destroyed&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowDestroyed</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_focused&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowFocused</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
                 <span class="string">&quot;chunkwm_export_window_moved&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowMoved</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
-                <span class="string">&quot;chunkwm_export_window_resized&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowResized</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_minimized&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowMinimized</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_deminimized&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowDeminimized</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_window_title_changed&quot;</span> <span class="op">=&gt;</span> {
-                    <span class="ident">Event</span>::<span class="ident">WindowTitleChanged</span>(<span class="ident">data</span>.<span class="ident">into</span>())
-                }
-                <span class="string">&quot;chunkwm_export_display_added&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> { <span class="ident">Event</span>::<span class="ident">DisplayAdded</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>)) },
+                <span class="string">&quot;chunkwm_export_window_resized&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowResized</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_minimized&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowMinimized</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_deminimized&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowDeminimized</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_sheet_created&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowSheetCreated</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_window_title_changed&quot;</span> <span class="op">=&gt;</span> <span class="ident">Event</span>::<span class="ident">WindowTitleChanged</span>(<span class="ident">data</span>.<span class="ident">into</span>()),
+                <span class="string">&quot;chunkwm_export_display_added&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> {
+                    <span class="ident">Event</span>::<span class="ident">DisplayAdded</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>))
+                },
                 <span class="string">&quot;chunkwm_export_display_removed&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> {
                     <span class="ident">Event</span>::<span class="ident">DisplayRemoved</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>))
                 },
-                <span class="string">&quot;chunkwm_export_display_moved&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> { <span class="ident">Event</span>::<span class="ident">DisplayMoved</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>)) },
+                <span class="string">&quot;chunkwm_export_display_moved&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> {
+                    <span class="ident">Event</span>::<span class="ident">DisplayMoved</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>))
+                },
                 <span class="string">&quot;chunkwm_export_display_resized&quot;</span> <span class="op">=&gt;</span> <span class="kw">unsafe</span> {
                     <span class="ident">Event</span>::<span class="ident">DisplayResized</span>(<span class="kw-2">*</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">DisplayID</span>))
                 },
@@ -493,7 +451,7 @@
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
         <span class="kw">pub</span> <span class="kw">static</span> <span class="ident">Exports</span>: <span class="ident">ChunkWMPluginDetails</span> <span class="op">=</span> <span class="ident">ChunkWMPluginDetails</span> {
-            <span class="ident">api_version</span>: <span class="number">6</span>,
+            <span class="ident">api_version</span>: <span class="number">7</span>,
             <span class="ident">file_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">file_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
             <span class="ident">plugin_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
             <span class="ident">plugin_version</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_version</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,

@@ -105,15 +105,17 @@
 <span id="105">105</span>
 <span id="106">106</span>
 <span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `event` module contains types and traits for event handling.</span>
 
-<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 <span class="kw">use</span> <span class="ident">api</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">application</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core_graphics</span>::<span class="ident">display</span>::<span class="ident">CGDirectDisplayID</span>;
 <span class="kw">use</span> <span class="ident">payload</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">window</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">ChunkWMError</span>;
 
 <span class="doccomment">/// The display identifier.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">DisplayID</span> <span class="op">=</span> <span class="ident">CGDirectDisplayID</span>;
@@ -145,6 +147,7 @@
     <span class="ident">WindowResized</span>(<span class="ident">Window</span>),
     <span class="ident">WindowMinimized</span>(<span class="ident">Window</span>),
     <span class="ident">WindowDeminimized</span>(<span class="ident">Window</span>),
+    <span class="ident">WindowSheetCreated</span>(<span class="ident">Window</span>),
     <span class="ident">WindowTitleChanged</span>(<span class="ident">Window</span>),
     <span class="ident">DisplayAdded</span>(<span class="ident">DisplayID</span>),
     <span class="ident">DisplayRemoved</span>(<span class="ident">DisplayID</span>),
@@ -182,6 +185,7 @@
     <span class="ident">WindowResized</span>,
     <span class="ident">WindowMinimized</span>,
     <span class="ident">WindowDeminimized</span>,
+    <span class="ident">WindowSheetCreated</span>,
     <span class="ident">WindowTitleChanged</span>,
     <span class="comment">// Count,</span>
 }
