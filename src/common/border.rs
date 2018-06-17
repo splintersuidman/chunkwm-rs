@@ -69,6 +69,8 @@ impl Border {
     ///
     /// # Warning: (maybe) do not use (yet).
     /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
+    /// NOTE(splintah): `BorderInternal->View` often becomes 562949953421312, which happens to be
+    /// 2^49.
     pub fn set_color(&self, color: u32) -> Result<(), ChunkWMError> {
         if !self.0.is_null() {
             unsafe { update_border_window_color(self.0, color) }
@@ -82,6 +84,8 @@ impl Border {
     ///
     /// # Warning: (maybe) do not use (yet).
     /// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...
+    /// NOTE(splintah): `BorderInternal->View` often becomes 562949953421312, which happens to be
+    /// 2^49.
     pub fn set_width(&self, width: i32) -> Result<(), ChunkWMError> {
         if !self.0.is_null() {
             unsafe { update_border_window_width(self.0, width) }
