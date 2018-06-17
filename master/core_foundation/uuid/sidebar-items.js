@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["CFUUID","A UUID."]]});
+initSidebarItems({"fn":[["CFUUIDCreate",""],["CFUUIDCreateFromUUIDBytes",""],["CFUUIDGetTypeID",""],["CFUUIDGetUUIDBytes",""]],"struct":[["CFUUID","A UUID."],["CFUUIDBytes",""],["__CFUUID",""]],"type":[["CFUUIDRef",""]]});

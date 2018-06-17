@@ -1,10 +1,475 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `url` mod in crate `core_foundation`."><meta name="keywords" content="rust, rustlang, rust-lang, url"><title>core_foundation::url - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Module url</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#structs">Structs</a></li></ul></div><p class='location'><a href='../index.html'>core_foundation</a></p><script>window.sidebarCurrent = {name: 'url', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>core_foundation</a>::<wbr><a class="mod" href=''>url</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/core_foundation/url.rs.html#10-164' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>A URL type for Core Foundation.</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
-<table><tr><td><code>pub use core_foundation_sys::<a class="mod" href="../../core_foundation_sys/url/index.html" title="mod core_foundation_sys::url">url</a>::*;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `url` mod in crate `core_foundation`."><meta name="keywords" content="rust, rustlang, rust-lang, url"><title>core_foundation::url - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Module url</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>core_foundation</a></p><script>window.sidebarCurrent = {name: 'url', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>core_foundation</a>::<wbr><a class="mod" href=''>url</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/core_foundation/url.rs.html#10-164' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>A URL type for Core Foundation.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.CFURL.html"
                                   title='struct core_foundation::url::CFURL'>CFURL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.__CFURL.html"
+                                  title='struct core_foundation::url::__CFURL'>__CFURL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.kCFURLHFSPathStyle.html"
+                                  title='constant core_foundation::url::kCFURLHFSPathStyle'>kCFURLHFSPathStyle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.kCFURLPOSIXPathStyle.html"
+                                  title='constant core_foundation::url::kCFURLPOSIXPathStyle'>kCFURLPOSIXPathStyle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.kCFURLWindowsPathStyle.html"
+                                  title='constant core_foundation::url::kCFURLWindowsPathStyle'>kCFURLWindowsPathStyle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLAttributeModificationDateKey.html"
+                                  title='static core_foundation::url::kCFURLAttributeModificationDateKey'>kCFURLAttributeModificationDateKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLContentAccessDateKey.html"
+                                  title='static core_foundation::url::kCFURLContentAccessDateKey'>kCFURLContentAccessDateKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLContentModificationDateKey.html"
+                                  title='static core_foundation::url::kCFURLContentModificationDateKey'>kCFURLContentModificationDateKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLCreationDateKey.html"
+                                  title='static core_foundation::url::kCFURLCreationDateKey'>kCFURLCreationDateKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLFileResourceIdentifierKey.html"
+                                  title='static core_foundation::url::kCFURLFileResourceIdentifierKey'>kCFURLFileResourceIdentifierKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLFileResourceTypeKey.html"
+                                  title='static core_foundation::url::kCFURLFileResourceTypeKey'>kCFURLFileResourceTypeKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLFileSecurityKey.html"
+                                  title='static core_foundation::url::kCFURLFileSecurityKey'>kCFURLFileSecurityKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLHasHiddenExtensionKey.html"
+                                  title='static core_foundation::url::kCFURLHasHiddenExtensionKey'>kCFURLHasHiddenExtensionKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsDirectoryKey.html"
+                                  title='static core_foundation::url::kCFURLIsDirectoryKey'>kCFURLIsDirectoryKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsExecutableKey.html"
+                                  title='static core_foundation::url::kCFURLIsExecutableKey'>kCFURLIsExecutableKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsHiddenKey.html"
+                                  title='static core_foundation::url::kCFURLIsHiddenKey'>kCFURLIsHiddenKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsPackageKey.html"
+                                  title='static core_foundation::url::kCFURLIsPackageKey'>kCFURLIsPackageKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsReadableKey.html"
+                                  title='static core_foundation::url::kCFURLIsReadableKey'>kCFURLIsReadableKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsRegularFileKey.html"
+                                  title='static core_foundation::url::kCFURLIsRegularFileKey'>kCFURLIsRegularFileKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsSymbolicLinkKey.html"
+                                  title='static core_foundation::url::kCFURLIsSymbolicLinkKey'>kCFURLIsSymbolicLinkKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsSystemImmutableKey.html"
+                                  title='static core_foundation::url::kCFURLIsSystemImmutableKey'>kCFURLIsSystemImmutableKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsUserImmutableKey.html"
+                                  title='static core_foundation::url::kCFURLIsUserImmutableKey'>kCFURLIsUserImmutableKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsVolumeKey.html"
+                                  title='static core_foundation::url::kCFURLIsVolumeKey'>kCFURLIsVolumeKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLIsWritableKey.html"
+                                  title='static core_foundation::url::kCFURLIsWritableKey'>kCFURLIsWritableKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLLabelNumberKey.html"
+                                  title='static core_foundation::url::kCFURLLabelNumberKey'>kCFURLLabelNumberKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLLinkCountKey.html"
+                                  title='static core_foundation::url::kCFURLLinkCountKey'>kCFURLLinkCountKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLLocalizedLabelKey.html"
+                                  title='static core_foundation::url::kCFURLLocalizedLabelKey'>kCFURLLocalizedLabelKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLLocalizedNameKey.html"
+                                  title='static core_foundation::url::kCFURLLocalizedNameKey'>kCFURLLocalizedNameKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLLocalizedTypeDescriptionKey.html"
+                                  title='static core_foundation::url::kCFURLLocalizedTypeDescriptionKey'>kCFURLLocalizedTypeDescriptionKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLNameKey.html"
+                                  title='static core_foundation::url::kCFURLNameKey'>kCFURLNameKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLParentDirectoryURLKey.html"
+                                  title='static core_foundation::url::kCFURLParentDirectoryURLKey'>kCFURLParentDirectoryURLKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLPreferredIOBlockSizeKey.html"
+                                  title='static core_foundation::url::kCFURLPreferredIOBlockSizeKey'>kCFURLPreferredIOBlockSizeKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLTypeIdentifierKey.html"
+                                  title='static core_foundation::url::kCFURLTypeIdentifierKey'>kCFURLTypeIdentifierKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLVolumeIdentifierKey.html"
+                                  title='static core_foundation::url::kCFURLVolumeIdentifierKey'>kCFURLVolumeIdentifierKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.kCFURLVolumeURLKey.html"
+                                  title='static core_foundation::url::kCFURLVolumeURLKey'>kCFURLVolumeURLKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCanBeDecomposed.html"
+                                  title='fn core_foundation::url::CFURLCanBeDecomposed'>CFURLCanBeDecomposed</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLClearResourcePropertyCache.html"
+                                  title='fn core_foundation::url::CFURLClearResourcePropertyCache'>CFURLClearResourcePropertyCache</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyAbsoluteURL.html"
+                                  title='fn core_foundation::url::CFURLCopyAbsoluteURL'>CFURLCopyAbsoluteURL</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyFileSystemPath.html"
+                                  title='fn core_foundation::url::CFURLCopyFileSystemPath'>CFURLCopyFileSystemPath</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyFragment.html"
+                                  title='fn core_foundation::url::CFURLCopyFragment'>CFURLCopyFragment</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyHostName.html"
+                                  title='fn core_foundation::url::CFURLCopyHostName'>CFURLCopyHostName</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyLastPathComponent.html"
+                                  title='fn core_foundation::url::CFURLCopyLastPathComponent'>CFURLCopyLastPathComponent</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyNetLocation.html"
+                                  title='fn core_foundation::url::CFURLCopyNetLocation'>CFURLCopyNetLocation</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyParameterString.html"
+                                  title='fn core_foundation::url::CFURLCopyParameterString'>CFURLCopyParameterString</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyPassword.html"
+                                  title='fn core_foundation::url::CFURLCopyPassword'>CFURLCopyPassword</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyPath.html"
+                                  title='fn core_foundation::url::CFURLCopyPath'>CFURLCopyPath</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyPathExtension.html"
+                                  title='fn core_foundation::url::CFURLCopyPathExtension'>CFURLCopyPathExtension</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyQueryString.html"
+                                  title='fn core_foundation::url::CFURLCopyQueryString'>CFURLCopyQueryString</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyResourceSpecifier.html"
+                                  title='fn core_foundation::url::CFURLCopyResourceSpecifier'>CFURLCopyResourceSpecifier</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyScheme.html"
+                                  title='fn core_foundation::url::CFURLCopyScheme'>CFURLCopyScheme</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyStrictPath.html"
+                                  title='fn core_foundation::url::CFURLCopyStrictPath'>CFURLCopyStrictPath</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCopyUserName.html"
+                                  title='fn core_foundation::url::CFURLCopyUserName'>CFURLCopyUserName</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCreateFilePathURL.html"
+                                  title='fn core_foundation::url::CFURLCreateFilePathURL'>CFURLCreateFilePathURL</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCreateFromFileSystemRepresentation.html"
+                                  title='fn core_foundation::url::CFURLCreateFromFileSystemRepresentation'>CFURLCreateFromFileSystemRepresentation</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCreateWithBytes.html"
+                                  title='fn core_foundation::url::CFURLCreateWithBytes'>CFURLCreateWithBytes</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCreateWithFileSystemPath.html"
+                                  title='fn core_foundation::url::CFURLCreateWithFileSystemPath'>CFURLCreateWithFileSystemPath</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLCreateWithFileSystemPathRelativeToBase.html"
+                                  title='fn core_foundation::url::CFURLCreateWithFileSystemPathRelativeToBase'>CFURLCreateWithFileSystemPathRelativeToBase</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLGetBytes.html"
+                                  title='fn core_foundation::url::CFURLGetBytes'>CFURLGetBytes</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLGetFileSystemRepresentation.html"
+                                  title='fn core_foundation::url::CFURLGetFileSystemRepresentation'>CFURLGetFileSystemRepresentation</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLGetPortNumber.html"
+                                  title='fn core_foundation::url::CFURLGetPortNumber'>CFURLGetPortNumber</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLGetString.html"
+                                  title='fn core_foundation::url::CFURLGetString'>CFURLGetString</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLGetTypeID.html"
+                                  title='fn core_foundation::url::CFURLGetTypeID'>CFURLGetTypeID</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLHasDirectoryPath.html"
+                                  title='fn core_foundation::url::CFURLHasDirectoryPath'>CFURLHasDirectoryPath</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.CFURLSetResourcePropertyForKey.html"
+                                  title='fn core_foundation::url::CFURLSetResourcePropertyForKey'>CFURLSetResourcePropertyForKey</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.CFURLBookmarkCreationOptions.html"
+                                  title='type core_foundation::url::CFURLBookmarkCreationOptions'>CFURLBookmarkCreationOptions</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.CFURLPathStyle.html"
+                                  title='type core_foundation::url::CFURLPathStyle'>CFURLPathStyle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.CFURLRef.html"
+                                  title='type core_foundation::url::CFURLRef'>CFURLRef</a></td>
                            <td class='docblock-short'>
                                 
                            </td>

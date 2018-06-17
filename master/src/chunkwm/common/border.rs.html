@@ -140,6 +140,10 @@
 <span id="140">140</span>
 <span id="141">141</span>
 <span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `border` module contains a wrapper for the C methods that handle borders.</span>
 
@@ -212,6 +216,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Warning: (maybe) do not use (yet).</span>
     <span class="doccomment">/// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...</span>
+    <span class="doccomment">/// NOTE(splintah): `BorderInternal-&gt;View` often becomes 562949953421312, which happens to be</span>
+    <span class="doccomment">/// 2^49.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_color</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">color</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_null</span>() {
             <span class="kw">unsafe</span> { <span class="ident">update_border_window_color</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">color</span>) }
@@ -225,6 +231,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Warning: (maybe) do not use (yet).</span>
     <span class="doccomment">/// TODO(splintah): (signal: 11, SIGSEGV: invalid memory reference)...</span>
+    <span class="doccomment">/// NOTE(splintah): `BorderInternal-&gt;View` often becomes 562949953421312, which happens to be</span>
+    <span class="doccomment">/// 2^49.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ChunkWMError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_null</span>() {
             <span class="kw">unsafe</span> { <span class="ident">update_border_window_width</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">width</span>) }

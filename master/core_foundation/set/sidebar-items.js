@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["CFSet","An immutable bag of elements."]]});
+initSidebarItems({"fn":[["CFSetApplyFunction",""],["CFSetCreate",""],["CFSetGetCount",""],["CFSetGetTypeID",""]],"static":[["kCFTypeSetCallBacks",""]],"struct":[["CFSet","An immutable bag of elements."],["CFSetCallBacks",""],["__CFSet",""]],"type":[["CFSetApplierFunction",""],["CFSetCopyDescriptionCallBack",""],["CFSetEqualCallBack",""],["CFSetHashCallBack",""],["CFSetRef",""],["CFSetReleaseCallBack",""],["CFSetRetainCallBack",""]]});
