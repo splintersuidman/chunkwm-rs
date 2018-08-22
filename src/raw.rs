@@ -29,6 +29,7 @@ pub struct ChunkWMPlugin {
 /// The raw `plugin_details` type `ChunkWM` uses for getting information about a plugin.
 #[repr(C)]
 pub struct ChunkWMPluginDetails {
+    pub magic: [c_char; 6],
     pub api_version: c_int,
     pub file_name: *const u8,
     pub plugin_name: *const u8,

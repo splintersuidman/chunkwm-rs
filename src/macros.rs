@@ -220,7 +220,15 @@ macro_rules! chunkwm_plugin {
         #[allow(non_upper_case_globals)]
         #[no_mangle]
         pub static Exports: ChunkWMPluginDetails = ChunkWMPluginDetails {
-            api_version: 7,
+            magic: [
+                b'c' as c_char,
+                b'h' as c_char,
+                b'w' as c_char,
+                b'm' as c_char,
+                b'p' as c_char,
+                b'l' as c_char,
+            ],
+            api_version: 8,
             file_name: $file_name as *const u8,
             plugin_name: $plugin_name as *const u8,
             plugin_version: $plugin_version as *const u8,
