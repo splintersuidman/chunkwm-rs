@@ -13,8 +13,10 @@ use ChunkWMError;
 #[repr(C)]
 pub enum LogLevel {
     Debug = 0,
-    Warn = 1,
-    Error = 2,
+    Profile = 1,
+    Warn = 2,
+    Error = 3,
+    None = 10,
 }
 
 /// The `API` struct is a raw type (i.e. the same as used in C code), and contains methods for
