@@ -228,6 +228,14 @@
 <span id="228">228</span>
 <span id="229">229</span>
 <span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
 </pre><pre class="rust ">
 <span class="doccomment">/// This macro makes it easy to subscribe to events.</span>
 <span class="doccomment">///</span>
@@ -451,7 +459,15 @@
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
         <span class="attribute">#[<span class="ident">no_mangle</span>]</span>
         <span class="kw">pub</span> <span class="kw">static</span> <span class="ident">Exports</span>: <span class="ident">ChunkWMPluginDetails</span> <span class="op">=</span> <span class="ident">ChunkWMPluginDetails</span> {
-            <span class="ident">api_version</span>: <span class="number">7</span>,
+            <span class="ident">magic</span>: [
+                <span class="string">b&#39;c&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+                <span class="string">b&#39;h&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+                <span class="string">b&#39;w&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+                <span class="string">b&#39;m&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+                <span class="string">b&#39;p&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+                <span class="string">b&#39;l&#39;</span> <span class="kw">as</span> <span class="ident">c_char</span>,
+            ],
+            <span class="ident">api_version</span>: <span class="number">8</span>,
             <span class="ident">file_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">file_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
             <span class="ident">plugin_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
             <span class="ident">plugin_version</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">plugin_version</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
