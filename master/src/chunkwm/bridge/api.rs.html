@@ -241,6 +241,8 @@
 <span id="241">241</span>
 <span id="242">242</span>
 <span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! The `api` module contains the raw `chunkwm_api` struct, and contains a `CVar` struct to create a</span>
 <span class="doccomment">//! handle to a specific `CVar`.</span>
@@ -257,8 +259,10 @@
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">LogLevel</span> {
     <span class="ident">Debug</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="ident">Warn</span> <span class="op">=</span> <span class="number">1</span>,
-    <span class="ident">Error</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="ident">Profile</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">Warn</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="ident">Error</span> <span class="op">=</span> <span class="number">3</span>,
+    <span class="prelude-val">None</span> <span class="op">=</span> <span class="number">10</span>,
 }
 
 <span class="doccomment">/// The `API` struct is a raw type (i.e. the same as used in C code), and contains methods for</span>
